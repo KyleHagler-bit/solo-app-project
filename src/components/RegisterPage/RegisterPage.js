@@ -3,8 +3,11 @@ import {connect} from 'react-redux';
 
 class RegisterPage extends Component {
   state = {
-    username: '',
+    first_name:'',
+    last_name:'',
+    username: '', //actually email but don't want to chnage too much
     password: '',
+    birthday:'',
   };
 
   registerUser = (event) => {
@@ -14,8 +17,11 @@ class RegisterPage extends Component {
       this.props.dispatch({
         type: 'REGISTER',
         payload: {
+          first_name: this.state.first_name,
+          last_name: this.state.last_name,
           username: this.state.username,
           password: this.state.password,
+          birthday: this.state.birthday
         },
       });
     } else {
@@ -43,8 +49,30 @@ class RegisterPage extends Component {
         <form onSubmit={this.registerUser}>
           <h1>Register User</h1>
           <div>
-            <label htmlFor="username">
-              Username:
+            <label >
+              First Name:
+              <input
+                type="text"
+                name="first_name"
+                value={this.state.first_name}
+                onChange={this.handleInputChangeFor('first_name')}
+              />
+            </label>
+          </div>
+          <div>
+            <label >
+              Last Name:
+              <input
+                type="text"
+                name="last_name"
+                value={this.state.last_name}
+                onChange={this.handleInputChangeFor('last_name')}
+              />
+            </label>
+          </div>
+          <div>
+            <label>
+              Email:
               <input
                 type="text"
                 name="username"
@@ -65,6 +93,17 @@ class RegisterPage extends Component {
             </label>
           </div>
           <div>
+            <label >
+              Birthday:
+              <input
+                type="date"
+                // name="password"
+                value={this.state.birthday}
+                onChange={this.handleInputChangeFor('birthday')}
+              />
+            </label>
+          </div>
+          <div>
             <input
               className="register"
               type="submit"
@@ -79,7 +118,7 @@ class RegisterPage extends Component {
             className="link-button"
             onClick={() => {this.props.dispatch({type: 'SET_TO_LOGIN_MODE'})}}
           >
-            Login
+            Back to Login
           </button>
         </center>
       </div>
