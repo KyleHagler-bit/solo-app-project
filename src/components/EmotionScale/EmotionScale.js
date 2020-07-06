@@ -15,9 +15,10 @@ getValue = (value) =>{
   
 }
 
+//TODO: likely need to make toggle for button instead of just focus.
   render() {
     return (
-      <div className='page'>
+      <div className='page'> 
 
         <button id='icon'><i className='fas fa-tired' defaultValue = '1' onClick={() =>this.getValue(1)}></i></button>
 
