@@ -72,6 +72,15 @@ class LoginPage extends Component {
               value="Log In"
             />
           </div>
+          <div>
+            <input
+              className="link-button"
+              type="button"
+              name="submit"
+              value="Forgot Password?"
+              onClick={() => {alert('This is a placeholder!')}}
+            />
+          </div>
         </form>
         <center>
           <button

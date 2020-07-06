@@ -1,0 +1,46 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import './EmotionScale.css';
+
+import 'font-awesome/css/font-awesome.min.css';
+
+
+class EmotionScale extends Component {
+  state = {
+    emotionValue: 0
+  }
+getValue = (value) =>{
+  
+  this.setState({ emotionValue: value });
+  
+}
+
+  render() {
+    return (
+      <div className='page'>
+
+        <i className='fas fa-tired' defaultValue = '1' onClick={() =>this.getValue(1)}></i>
+
+        <i className='fas fa-sad-tear'defaultValue = '2' onClick={() =>this.getValue(2)}></i>
+
+        <i className='fas fa-frown-open' defaultValue = '3' onClick={() =>this.getValue(3)}></i>
+
+        <i className='fas fa-meh' defaultValue = '4' onClick={() =>this.getValue(4)}></i>
+
+        <i className='fas fa-smile' defaultValue = '5' onClick={() =>this.getValue(5)}></i>
+
+        <i className='fas fa-grin' defaultValue = '6' onClick={() =>this.getValue(6)}></i>
+
+        <i className='fas fa-grin-stars'defaultValue = '7' onClick={() =>this.getValue(7)}></i>
+<br/>
+
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+
+});
+
+export default connect(mapStateToProps)(EmotionScale);
