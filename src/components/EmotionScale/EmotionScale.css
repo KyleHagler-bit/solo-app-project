@@ -1,4 +1,29 @@
-i{
+/* i{
   font-size: 120px;
   color:green;
+} */
+
+#icon {
+  font-size:120px;
+  border-radius: 100%;
+  cursor: pointer;
+  color:red;
+  text-align:center;
+  vertical-align: middle;
+  height:120px;
+  width:120px;
+
+  background: white;
+  border: 1px solid white;
+  
+  
+
+}
+
+#icon:focus {
+  background: #e5e5e5;
+  outline: none;
+  -webkit-box-shadow: inset 0px 0px 15px black;
+     -moz-box-shadow: inset 0px 0px 15px black;
+          box-shadow: inset 0px 0px 15px black;
 }

@@ -17,7 +17,7 @@ class WelcomePage extends Component {
         {/*User cannot move further on in the entry process unless they select an emotion*/}
 {/* {this.state.emotionValue===0 ? <button disabled >Next Page</button>: <button onClick={() => this.props.history.push("/icons")}>Next Page</button>}  */}
         <button onClick={() => this.props.history.push("/icons")}>Next Page</button>
-        <button>Skip to Home Page</button>
+        <button onClick={() => this.props.history.push("/home")}>Skip to Home Page</button>
       </div>
     );
   }
