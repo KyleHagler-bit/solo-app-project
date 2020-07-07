@@ -4,6 +4,9 @@ import loginMode from './loginModeReducer';
 import user from './userReducer';
 import icons from './iconsReducer';
 import entry from './entryReducer';
+import currentItem from './currentItemReducer';
+import lastEntry from './lastEntryReducer';
+import chosenIcons from './chosenIconsReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -16,7 +19,10 @@ const rootReducer = combineReducers({
   loginMode, // will have a value of 'login' or 'registration' to control which screen is shown
   user, // will have an id and email if someone is logged in
   icons,
-  entry
+  entry,
+  currentItem,
+  lastEntry,
+  chosenIcons
 });
 
 export default rootReducer;

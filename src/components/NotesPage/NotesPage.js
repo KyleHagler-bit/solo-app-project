@@ -7,7 +7,10 @@ import Axios from 'axios';
 
 class NotesPage extends Component {
   state = {
-    notes: ''
+    emotionValue:this.props.currentItem[0].emotionValue,
+    iconsArray:this.props.currentItem.iconsArray,
+    note: '',
+    userID: this.props.user.id
   }
 
   //Will probably need for this page to save notes if user goes back?
@@ -17,8 +20,10 @@ class NotesPage extends Component {
   };
 
   submitInfo = (event) => {
-    this.props.history.push("/home")
-    this.postHandler(this.props.entry)
+
+    // if (this.state.note==='' )
+    this.props.history.push('/home')
+    this.postHandler(this.state)
   }
 
   postHandler = (entry) =>{
@@ -29,6 +34,13 @@ class NotesPage extends Component {
     .catch(error=>{
       alert(`ERROR`);
     })
+    // Axios.post(`/api/entryActivity`, entry)
+    // .then(response =>{
+    //   this.props.dispatch({type:'CLEAR', payload: {} });
+    // })
+    // .catch(error=>{
+    //   alert(`ERROR`);
+    // })
     
   }
 
@@ -37,9 +49,9 @@ class NotesPage extends Component {
       <div className="page">
         <button onClick={() => this.props.history.push("/icons")}>Back</button>
         <h2> Have any notes you would like to log today?</h2> <br/>
-        <textarea rows ='10' cols='100' placeholder='Write here' onChange={(event) => this.handleChange(event, "notes")}></textarea>
+        <textarea rows ='10' cols='100' placeholder='Write here' onChange={(event) => this.handleChange(event, "note")}></textarea>
         <br /> <br/>
-        {this.state.notes === undefined || this.state.notes === '' ? <button disabled>Next Page</button> : <button onClick={() => this.submitInfo()}>Next Page</button>}
+        {this.state.note === undefined || this.state.note === '' ? <button disabled>Next Page</button> : <button onClick={() => this.submitInfo()}>Next Page</button>}
         
 
         <button onClick={() => this.props.history.push("/home")}>No Notes! Skip</button>
@@ -49,7 +61,9 @@ class NotesPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  entry:state.entry
+  entry:state.entry,
+  currentItem:state.currentItem,
+  user:state.user
 });
 
 export default withRouter(connect(mapStateToProps)(NotesPage));

@@ -9,11 +9,20 @@ class EmotionScale extends Component {
   state = {
     emotionValue: 0
   }
+
 getValue = (value) =>{
   
   this.setState({ emotionValue: value });
   
+  this.props.dispatch({
+    type: 'CURRENT_ITEM', payload: [{
+      emotionValue: this.state.emotionValue
+    }
+    ]
+
+  })
 }
+
 
 //TODO: likely need to make toggle for button instead of just focus.
   render() {

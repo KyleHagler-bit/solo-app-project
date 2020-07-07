@@ -16,3 +16,14 @@
 .row{
   min-height:100% !important;
 } */
+
+#homeEntry{
+   margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+ 
+  display:block;
+  min-width:1000px;
+
+
+}

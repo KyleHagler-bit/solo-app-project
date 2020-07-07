@@ -16,7 +16,15 @@ class ListOfIcons extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_ICONS' })
     console.log('inside compDidmount');
-    
+  }
+
+  getValue = (value) =>{
+  console.log(value)
+    this.setState({ iconsArray:[...this.state.iconsArray, value] });
+    console.log('this is state', this.state)
+    this.props.dispatch({
+      type: 'CURRENT_ITEM', payload:this.state
+    })
   }
 
   render() {
@@ -31,7 +39,7 @@ class ListOfIcons extends Component {
         
         return(
           <div id='container'>
-          <a type="button" id="activity" class="btn btn-success"><i className={item.activity_icon}></i></a>
+          <a type="button" id="activity" class="btn btn-success" onClick={() =>this.getValue(item.id)}><i className={item.activity_icon}></i></a>
           <h5>{item.activity_name}</h5>
           </div>
           )
