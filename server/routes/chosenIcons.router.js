@@ -15,6 +15,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
   pool.query('SELECT * FROM entry_activity WHERE entry_id=$1;',[req.params.id])
   
     .then((result) => {
+      console.log('result in router is',result)
       res.send(result.rows);
     })
     .catch((error) => {
