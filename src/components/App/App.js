@@ -19,8 +19,9 @@ import InfoPage from '../InfoPage/InfoPage';
 
 import WelcomePage from '../WelcomePage/WelcomePage';
 import IconsPage from '../IconsPage/IconsPage';
-
-import HomePage from '../HomePage/HomePage'
+import NotesPage from '../NotesPage/NotesPage';
+import HomePage from '../HomePage/HomePage';
+import PastEntryPage from '../PastEntryPage/PastEntryPage';
 
 import './App.css';
 
@@ -65,11 +66,21 @@ class App extends Component {
               path="/icons"
               component={IconsPage}
             />
+            <ProtectedRoute
+              exact
+              path="/notes"
+              component={NotesPage}
+            />
 
             <ProtectedRoute
               exact
               path="/home"
               component={HomePage}
+            />
+            <ProtectedRoute
+              exact
+              path="/pastentry"
+              component={PastEntryPage}
             />
 
             {/* If none of the other routes matched, we will show a 404. */}

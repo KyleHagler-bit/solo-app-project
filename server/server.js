@@ -13,6 +13,7 @@ const userRouter = require('./routes/user.router');
 const welcomeRouter = require('./routes/welcome.router')
 const iconsRouter = require('./routes/icons.router')
 const homeRouter = require('./routes/home.router')
+const entryRouter = require('./routes/entry.router')
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -30,6 +31,7 @@ app.use('/api/user', userRouter);
 app.use('/api/welcome',welcomeRouter);
 app.use('/api/icons',iconsRouter);
 app.use('/api/home', homeRouter);
+app.use('/api/entry', entryRouter)
 
 // Serve static files
 app.use(express.static('build'));

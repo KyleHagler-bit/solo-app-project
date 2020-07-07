@@ -14,7 +14,7 @@ class IconsPage extends Component {
         <h2> What have you been up to today?</h2>
         <h3>Please choose all that apply</h3>
         <ListOfIcons/>
-        <button onClick={() => this.props.history.push("/icons")}>Next Page</button>
+        <button onClick={() => this.props.history.push("/notes")}>Next Page</button>
       </div>
     );
   }

@@ -5,9 +5,12 @@ import './ListOfIcons.css';
 import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
-
+//Will I need to pass anything up? Need to have some sort of toggle
+//so that I can show what icons are chosen
+//And need to update state or whatever with values(ids) chosen
 class ListOfIcons extends Component {
   state = {
+    iconsArray:[]
   }
 
   componentDidMount() {
