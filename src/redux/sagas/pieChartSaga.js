@@ -10,7 +10,7 @@ function* fetchPieChart() {
     };
     
     const response = yield axios.get('api/piechart', config);
-    console.log('inside pieSaga', response.data)
+    
     yield put({ type: 'SET_PIE', payload: response.data });
   } catch (error) {
     console.log('Pie get request failed', error);

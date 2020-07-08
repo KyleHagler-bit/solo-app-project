@@ -6,8 +6,10 @@ import ListOfIcons from '../ListOfIcons/ListOfIcons';
 // import './IconsPage.css';
 
 class IconsPage extends Component {
+  
 
   getValue = (value) =>{
+    
     console.log(value)
     
       this.setState({ iconsArray:[...this.state.iconsArray, value] });
@@ -20,20 +22,23 @@ class IconsPage extends Component {
     
 
   render() {
+    console.log('what is count?', this.props.currentItem.count)
     return (
       <div className="page">
         <button onClick={() => this.props.history.push("/welcome")}>Back</button>
         <h2> What have you been up to today?</h2>
         <h3>Please choose all that apply</h3>
         <ListOfIcons getValue={this.getValue}/>
-        <button onClick={() => this.props.history.push("/notes")}>Next Page</button>
+        {this.props.currentItem.count===0 ? <button disabled >Next Page</button>: <button onClick={() => this.props.history.push("/notes")}>Next Page</button>}
+        {/* <button onClick={() => this.props.history.push("/notes")}>Next Page</button> */}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  
+  currentItem: state.currentItem,
+  icons: state.icons
 });
 
 export default withRouter(connect(mapStateToProps)(IconsPage));

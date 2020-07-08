@@ -10,7 +10,7 @@ function* fetchIcons() {
     };
     
     const response = yield axios.get('/api/icons', config);
-    console.log('inside iconSaga', response.data)
+   
     yield put({ type: 'SET_ICONS', payload: response.data });
   } catch (error) {
     console.log('Icons get request failed', error);

@@ -22,6 +22,7 @@ class EntryListItem extends Component {
 
   //this only gets one id... which means all past entries look identical which is WRONG
   componentDidMount() {
+    
     console.log('in comp did mount', this.props.id)
   //   this.props.dispatch({ type: 'FETCH_CHOSEN_ICONS', payload: this.props.id })
   
@@ -66,8 +67,12 @@ class EntryListItem extends Component {
   render() {
     const { id, emotion_value, note, date_logged, icons } = this.props;
     const {text} = this.state;
-    console.log('length',icons.length)
-
+    console.log('HELLO?',this.props.entry)
+if (this.props.entry){
+  return(
+    <h3>Oops! Nothing to display. WHy not make an entry?</h3>
+  )
+} else {
     
     return (
       <div className='page' id='entrylist' style={{ border: '1px solid black', textAlign:'center' }}>
@@ -123,7 +128,7 @@ class EntryListItem extends Component {
 
         </div>
       </div>
-    );
+    );}
   }
 }
 

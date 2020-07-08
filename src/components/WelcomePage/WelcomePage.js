@@ -15,6 +15,7 @@ class WelcomePage extends Component {
 
   //TODO: make on hover for each emoticon saying what emotion it portrays
   render() {
+    console.log('what is in here?',this.props.currentItem[0].emotionValue)
     return (
       <div className="page">
         {/* Do a conditional to say welcome back vs welcome */}
@@ -22,8 +23,8 @@ class WelcomePage extends Component {
         <h3>How are you feeling today?</h3>
         <EmotionScale/> <br/><br/>
         {/*User cannot move further on in the entry process unless they select an emotion*/}
-{/* {this.state.emotionValue===0 ? <button disabled >Next Page</button>: <button onClick={() => this.props.history.push("/icons")}>Next Page</button>}  */}
-        <button onClick={() => this.submitInfo()}>Next Page</button>
+ {this.props.currentItem[0].emotionValue===undefined ? <button disabled >Next Page</button>: <button onClick={() => this.submitInfo()}>Next Page</button>}
+  
         <button onClick={() => this.props.history.push("/home")}>Skip to Home Page</button>
       </div>
     );
@@ -31,7 +32,8 @@ class WelcomePage extends Component {
 }
 
 const mapStateToProps = state => ({
-  entry: state.entry
+  entry: state.entry,
+  currentItem: state.currentItem
 });
 
 export default withRouter(connect(mapStateToProps)(WelcomePage));

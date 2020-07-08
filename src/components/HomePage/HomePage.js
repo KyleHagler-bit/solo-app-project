@@ -4,6 +4,7 @@ import { withRouter } from "react-router";
 
 import EntryListItem from '../EntryListItem/EntryListItem';
 import PieChart from '../PieChart/PieChart';
+import LineChart from '../LineChart/LineChart';
 import axios from 'axios';
 import './HomePage.css';
 
@@ -13,9 +14,13 @@ class HomePage extends Component {
     iconsArray: []
   }
 
+  //think this fixed data not showing right away? NOPE
+  //TODO try to keep data even upon refresh
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_LAST_ENTRY' })
     this.props.dispatch({ type: 'FETCH_ICONS' })
+    this.props.dispatch({ type: 'FETCH_LINE' })
+    this.props.dispatch({ type: 'FETCH_PIE' })
 
     axios({
       method: 'GET',
@@ -38,11 +43,12 @@ class HomePage extends Component {
       <div className="page" style={{ textAlign: 'center', border: '1px solid black', display: 'block', height:'1000px' }}>
         <div style={{minHeight:'100%',width:'5%', backgroundColor:'red', float:'left'}}></div>
         <div style={{minHeight:'100%',width:'5%', backgroundColor:'red', float:'right'}}></div>
-        <h3>Today's entry  conditonally rendered</h3>
+       
         {this.props.lastEntry.map((item, index) => {
           let date = new Date(item.date_logged);
           date = date.toDateString();
           return (
+            
             <div id='homeEntry'>
               <EntryListItem
               id={item.id}
@@ -57,11 +63,13 @@ class HomePage extends Component {
         })}
         <br />
         
-        {/*DOES NOT YET UPDATE PROPERLY UPON LOAD */}
+       
         <div className='card' id='pieChart' style={{width:'40%', margin:'auto', textAlign:'center'}}>
         <PieChart/>
+        </div><br/><br/>
+        <div className='card' id='lineChart' style={{width:'80%', margin:'auto'}}>
+          <LineChart/>
         </div>
-        <h4>Line graph</h4>
         
        
       </div>

@@ -6,7 +6,7 @@ import { Bar, Pie } from 'react-chartjs-2';
 class PieChart extends Component {
 
   componentDidMount() {
-    this.props.dispatch({ type: 'FETCH_PIE' })
+    // this.props.dispatch({ type: 'FETCH_PIE' })
     
   }
 
@@ -20,7 +20,7 @@ class PieChart extends Component {
       //   item.emotion_value
       // )
     })
-    console.log(activityCount)
+    
     return activityCount;
 }
 
@@ -88,7 +88,13 @@ return generatedColors;
 
 
   render() {
-    console.log('inside render', this.props.pie)
+    
+
+    if (this.props.pieChart.length===0 || this.props.pieChart.length===undefined){
+      return(
+        <h3>Oops! It looks like you may not have any data to display at the moment</h3>
+      )
+    } else {
     return (
       <div className="chart" style={{ width: "100%", textAlign:'center' }}>
         <Pie
@@ -107,7 +113,7 @@ return generatedColors;
         <pre>{JSON.stringify(this.props.pie)}</pre>
 
       </div>
-    );
+    );}
   }
 }
 

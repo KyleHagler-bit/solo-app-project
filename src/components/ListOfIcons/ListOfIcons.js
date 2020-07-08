@@ -10,7 +10,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 //And need to update state or whatever with values(ids) chosen
 class ListOfIcons extends Component {
   state = {
-    iconsArray:[]
+    iconsArray:[],
+    count:0,
   }
 
   componentDidMount() {
@@ -19,6 +20,7 @@ class ListOfIcons extends Component {
   }
 
   getValue = (value) =>{
+    this.setState({count: this.state.count+1})
   console.log(value)
   
     this.setState({ iconsArray:[...this.state.iconsArray, value] });

@@ -8,6 +8,7 @@ import entrySaga from './entrySaga';
 import lastEntrySaga from './lastEntrySaga';
 import chosenIconsSaga from './chosenIconsSaga';
 import pieChartSaga from './pieChartSaga';
+import lineChartSaga from './lineChartSaga'
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -25,6 +26,7 @@ export default function* rootSaga() {
     entrySaga(),
     lastEntrySaga(),
     chosenIconsSaga(),
-    pieChartSaga()
+    pieChartSaga(),
+    lineChartSaga(),
   ]);
 }

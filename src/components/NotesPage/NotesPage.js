@@ -9,7 +9,7 @@ class NotesPage extends Component {
   state = {
     emotionValue:this.props.currentItem[0].emotionValue,
     iconsArray:this.props.currentItem.iconsArray,
-    note: '',
+    note: 'No notes written for today',
     userID: this.props.user.id
   }
 
@@ -28,7 +28,7 @@ class NotesPage extends Component {
 
   skipNotes = (event) => {
 
-    this.setState({note: 'No notes logged'})
+    // this.setState({note: 'No notes logged'})
     this.props.history.push('/home')
     this.postHandler(this.state)
   }
