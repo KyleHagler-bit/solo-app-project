@@ -12,10 +12,11 @@ class ProfilePage extends Component {
 
 
   render() {
-    const { icons } = this.props;
+    const { icons, user } = this.props;
     return (
       <div className="page" style={{ textAlign: 'center', border: '1px solid black', display: 'block' }}>
        <h2>Add a profile pic?</h2>
+       <h3>Hello {user.first_name}!</h3>
       </div>
     );
   }

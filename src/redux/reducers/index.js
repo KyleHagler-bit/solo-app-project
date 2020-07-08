@@ -7,6 +7,7 @@ import entry from './entryReducer';
 import currentItem from './currentItemReducer';
 import lastEntry from './lastEntryReducer';
 import chosenIcons from './chosenIconsReducer';
+import pieChart from './pieChartReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -22,7 +23,8 @@ const rootReducer = combineReducers({
   entry,
   currentItem,
   lastEntry,
-  chosenIcons
+  chosenIcons,
+  pieChart
 });
 
 export default rootReducer;

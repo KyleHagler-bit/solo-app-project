@@ -23,6 +23,7 @@ import NotesPage from '../NotesPage/NotesPage';
 import HomePage from '../HomePage/HomePage';
 import PastEntryPage from '../PastEntryPage/PastEntryPage';
 import ProfilePage from '../ProfilePage/ProfilePage';
+import EditEntryPage from '../EditEntryPage/EditEntryPage';
 
 import './App.css';
 
@@ -87,6 +88,11 @@ class App extends Component {
               exact
               path="/profile"
               component={ProfilePage}
+            />
+             <ProtectedRoute
+              exact
+              path="/edit"
+              component={EditEntryPage}
             />
 
             {/* If none of the other routes matched, we will show a 404. */}

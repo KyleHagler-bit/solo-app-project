@@ -5,6 +5,7 @@ import './EntryListItem.css';
 import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import ReactTooltip from 'react-tooltip';
+import { withRouter } from "react-router";
 
 import IconForEntry from '../IconForEntry/IconForEntry';
 import axios from 'axios';
@@ -41,11 +42,17 @@ class EntryListItem extends Component {
   });
    }
 
+   editEntry = (itemID) =>{
+    this.props.history.push('/edit');
+   }
+
+
   deleteEntry = (itemID) => {
     this.props.dispatch({
       type: "DELETE_ENTRY",
       payload: itemID
     })
+    // window.location.reload(); //if don't have this, home page may not update correctly
   }
 
   // getIconValues=(id) => {
@@ -65,7 +72,7 @@ class EntryListItem extends Component {
         <div className='card'>
 
           <div id='head' className='card-header' >
-            <a data-tip data-for ='edit'>
+            <a data-tip data-for ='edit' onClick={() => this.editEntry(id)}>
               
               <i className='fa fa-pencil' aria-hidden='true' style={{float:'left'}}></i>
               </a>
@@ -124,4 +131,4 @@ const mapStateToProps = state => ({
   icons: state.icons
 });
 
-export default connect(mapStateToProps)(EntryListItem);
+export default withRouter(connect(mapStateToProps)(EntryListItem));

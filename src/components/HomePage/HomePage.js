@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 
 import EntryListItem from '../EntryListItem/EntryListItem';
+import PieChart from '../PieChart/PieChart';
 import axios from 'axios';
 import './HomePage.css';
 
@@ -14,9 +15,6 @@ class HomePage extends Component {
 
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_LAST_ENTRY' })
-
-
-
     this.props.dispatch({ type: 'FETCH_ICONS' })
 
     axios({
@@ -37,7 +35,7 @@ class HomePage extends Component {
   render() {
     const { icons } = this.props;
     return (
-      <div className="page" style={{ textAlign: 'center', border: '1px solid black', display: 'block' }}>
+      <div className="page" style={{ textAlign: 'center', border: '1px solid black', display: 'block', height:'1000px' }}>
         <h3>Today's entry  conditonally rendered</h3>
         {this.props.lastEntry.map((item, index) => {
           let date = new Date(item.date_logged);
@@ -57,7 +55,8 @@ class HomePage extends Component {
         })}
         <br />
         <h4>Line graph</h4>
-        <h5>Pie Graph</h5>
+        {/*DOES NOT YET UPDATE PROPERLY UPON LOAD */}
+        <PieChart/>
       </div>
     );
   }
