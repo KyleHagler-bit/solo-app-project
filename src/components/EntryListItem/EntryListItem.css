@@ -14,11 +14,19 @@
   margin-top: 1%;
   /* position: static; */
   float:left;
+}
 
+#entryIcon{
+  font-size: 50px;
   
+}
+
+#head{
+  text-align: center;
+  float:left;
   
-  
- 
-  
-  
+}
+
+a{
+  cursor:pointer;
 }

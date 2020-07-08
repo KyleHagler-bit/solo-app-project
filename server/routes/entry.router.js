@@ -4,7 +4,7 @@ const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 router.get('/', rejectUnauthenticated, (req, res) => {
-  pool.query('SELECT * FROM entry WHERE user_id=$1',[req.user.id]) //only gets entries from specific user
+  pool.query('SELECT * FROM entry WHERE user_id=$1 ORDER BY id DESC',[req.user.id]) //only gets entries from specific user
   
     .then((result) => {
       res.send(result.rows);
