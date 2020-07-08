@@ -23,10 +23,15 @@ class ListOfIcons extends Component {
   
     this.setState({ iconsArray:[...this.state.iconsArray, value] });
     console.log('this is state', this.state)
+    // this.props.dispatch({
+    //   type: 'CURRENT_ITEM', payload:this.state
+    // })
+  }
+
+  componentDidUpdate = () =>{
     this.props.dispatch({
       type: 'CURRENT_ITEM', payload:this.state
     })
-    
   }
 
   render() {
