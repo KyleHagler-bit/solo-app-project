@@ -57,7 +57,7 @@ class LineChart extends Component {
       )
     } else {
     return (
-      <div className="chart" style={{ width: "100%" }}>
+      <div className="chart" style={{ width: "100%", height:'100%' }}>
         <Line
           data={this.state.chartData}
           width={10}

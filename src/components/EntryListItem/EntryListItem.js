@@ -68,7 +68,7 @@ class EntryListItem extends Component {
     const { id, emotion_value, note, date_logged, icons } = this.props;
     const {text} = this.state;
     console.log('HELLO?',this.props.entry)
-if (this.props.entry){
+if (!this.props.entry){
   return(
     <h3>Oops! Nothing to display. WHy not make an entry?</h3>
   )

@@ -4,7 +4,7 @@ import { withRouter } from "react-router";
 
 
 import axios from 'axios';
-// import './HomePage.css';
+import './ProfilePage.css';
 
 class ProfilePage extends Component {
 
@@ -13,10 +13,19 @@ class ProfilePage extends Component {
 
   render() {
     const { icons, user } = this.props;
+    console.log(user)
     return (
-      <div className="page" style={{ textAlign: 'center', border: '1px solid black', display: 'block' }}>
-       <h2>Add a profile pic?</h2>
-       <h3>Hello {user.first_name}!</h3>
+      <div className="page" style={{ textAlign: 'center', border: '1px solid black', display: 'block', height:'100%' }}>
+        <div className='card' style={{float:'right', width:'60%', margin:'3%'}}>
+         <h4 className='card-title'>Hello {user.first_name}!</h4>
+         <h5 className='card-text'>Change Password?</h5>
+         <h5>Add Profile Picture? <button>+</button></h5>
+       </div>
+        <div style={{border:'1px solid black', borderRadius:'100%', height:'300px', width:'300px'}}>
+          {user.profile_pic ? <img src={user.profile_pic}/> : <img id='placeholder' src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'/>}
+          
+        </div>
+       
       </div>
     );
   }

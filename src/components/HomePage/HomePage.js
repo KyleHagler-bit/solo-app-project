@@ -14,7 +14,7 @@ class HomePage extends Component {
     iconsArray: []
   }
 
-  //think this fixed data not showing right away? NOPE
+  //NEED TO FIX SO DATA POPULATES PAGE RIGHT AWAY
   //TODO try to keep data even upon refresh
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_LAST_ENTRY' })
@@ -40,7 +40,7 @@ class HomePage extends Component {
   render() {
     const { icons } = this.props;
     return (
-      <div className="page" style={{ textAlign: 'center', border: '1px solid black', display: 'block', height:'1000px' }}>
+      <div className="page" style={{ textAlign: 'center', border: '1px solid black', display: 'block', height:'825px' }}>
         <div style={{minHeight:'100%',width:'5%', backgroundColor:'red', float:'left'}}></div>
         <div style={{minHeight:'100%',width:'5%', backgroundColor:'red', float:'right'}}></div>
        
@@ -50,6 +50,7 @@ class HomePage extends Component {
           return (
             
             <div id='homeEntry'>
+              <br/>
               <EntryListItem
               id={item.id}
                 emotion_value={item.emotion_value}
@@ -66,7 +67,7 @@ class HomePage extends Component {
        
         <div className='card' id='pieChart' style={{width:'40%', margin:'auto', textAlign:'center'}}>
         <PieChart/>
-        </div><br/><br/>
+        </div><br/><br/><br/><br/><br/><br/>
         <div className='card' id='lineChart' style={{width:'80%', margin:'auto'}}>
           <LineChart/>
         </div>

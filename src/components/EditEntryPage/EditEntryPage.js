@@ -7,6 +7,7 @@ import axios from 'axios';
 
 import EntryListItem from '../EntryListItem/EntryListItem';
 import EmotionScale from '../EmotionScale/EmotionScale';
+import ListOfIcons from '../ListOfIcons/ListOfIcons';
 
 class EditEntryPage extends Component {
 
@@ -66,14 +67,18 @@ class EditEntryPage extends Component {
           <div id='head' className='card-header' >
            
               
-            
+            {/*FIX THIS SO DATE ACTUALLY IS DISPLAYED */}
             <h5 className='card-title' style={{border:'1px solid black', width:'60%', textAlign:'center', marginLeft:'auto', marginRight:'auto'}}>{entry.date_logged}</h5>
             
             </div> <br />
           <div className='card-body'>
             {/* {entry.emotion_value}  */}
-            <EmotionScale/>
-            <textarea value={this.state.note} onChange={(event) => this.handleChange(event, 'note')}></textarea>
+            <h3>How did you feel this day?</h3>
+            <EmotionScale/> <br/> <br/>
+            <h3>What did you do this day?</h3>
+            <ListOfIcons style={{width:'50%', height:'30%'}}/>
+            <textarea  rows ='10' cols='100' value={this.state.note} onChange={(event) => this.handleChange(event, 'note')}></textarea>
+            <br/>
 
 
               {this.state.iconsArray.map ((item, index) =>{
@@ -93,6 +98,7 @@ class EditEntryPage extends Component {
 
                <button>Save</button>
                <button onClick={() => this.props.history.push('/pastentry')}>Cancel Edit</button>
+               <br/><br/>
 
           </div>
 
