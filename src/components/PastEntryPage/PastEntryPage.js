@@ -18,9 +18,9 @@ class PastEntryPage extends Component {
   render() {
     
     return (
-      <div className="page">
+      <div className="page" >
         
-        <button onClick={() => this.props.history.push("/home")}>Back to Home Page</button>
+        <button style={{margin:'2%'}} onClick={() => this.props.history.push("/home")}>Back to Home Page</button>
         <br/> <br/>
 
         {this.props.entry.map((item, index) => {

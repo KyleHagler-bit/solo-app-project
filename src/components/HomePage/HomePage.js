@@ -41,17 +41,19 @@ class HomePage extends Component {
     const { icons } = this.props;
 
     return (
-      <div className="page" style={{ textAlign: 'center', border: '1px solid black', display: 'block', height:'825px' }}>
+      <div className="page" style={{ textAlign: 'center', border: '1px solid black', display: 'block', height:'900px' }}>
         <div style={{minHeight:'100%',width:'5%', backgroundColor:'red', float:'left'}}></div>
         <div style={{minHeight:'100%',width:'5%', backgroundColor:'red', float:'right'}}></div>
+       
        
         {this.props.lastEntry.map((item, index) => {
           let date = new Date(item.date_logged);
           date = date.toDateString();
           return (
-            
-            <div id='homeEntry'>
+            //CONDITIONALLY RENDER THIS SO TODAY"S ENTRY
+            <div id='homeEntry' style={{border:'1px solid white'}}>
               <br/>
+              <h5 style={{textAlign:'left', marginLeft:'200px'}}>Today's Entry:</h5>
               <EntryListItem
               id={item.id}
                 emotion_value={item.emotion_value}
@@ -66,7 +68,7 @@ class HomePage extends Component {
         <br />
         
        
-        <div className='card' id='pieChart' style={{width:'40%', margin:'auto', textAlign:'center'}}>
+        <div className='card' id='pieChart' style={{width:'50%',  margin:'auto', textAlign:'center'}}>
         <PieChart/>
         </div><br/><br/><br/><br/><br/><br/>
         <div className='card' id='lineChart' style={{width:'80%', margin:'auto'}}>

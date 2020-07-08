@@ -18,10 +18,17 @@ class ProfilePage extends Component {
       <div className="page" style={{ textAlign: 'center', border: '1px solid black', display: 'block', height:'100%' }}>
         <div className='card' style={{float:'right', width:'60%', margin:'3%'}}>
          <h4 className='card-title'>Hello {user.first_name}!</h4>
+         <div style={{textAlign:'left', margin:'2%'}}>
          <h5 className='card-text'>Change Password?</h5>
          <h5>Add Profile Picture? <button>+</button></h5>
+         <h5>Change Language? <select>
+           <option value='CHOOSE'>CHOOSE LANGUAGE</option>
+           <option value='English'>English</option>
+           </select></h5>
+           <h5>Change color theme of app?</h5>
+           </div>
        </div>
-        <div style={{border:'1px solid black', borderRadius:'100%', height:'300px', width:'300px'}}>
+        <div style={{borderRadius:'100%', height:'300px', width:'300px', margin:'3%'}}> <br/>
           {user.profile_pic ? <img src={user.profile_pic}/> : <img id='placeholder' src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'/>}
           
         </div>
