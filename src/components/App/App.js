@@ -22,6 +22,7 @@ import IconsPage from '../IconsPage/IconsPage';
 import NotesPage from '../NotesPage/NotesPage';
 import HomePage from '../HomePage/HomePage';
 import PastEntryPage from '../PastEntryPage/PastEntryPage';
+import ProfilePage from '../ProfilePage/ProfilePage';
 
 import './App.css';
 
@@ -81,6 +82,11 @@ class App extends Component {
               exact
               path="/pastentry"
               component={PastEntryPage}
+            />
+            <ProtectedRoute
+              exact
+              path="/profile"
+              component={ProfilePage}
             />
 
             {/* If none of the other routes matched, we will show a 404. */}
