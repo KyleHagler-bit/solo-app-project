@@ -35,12 +35,18 @@ class EntryListItem extends Component {
     this.setState({
       iconsArray: response.data
     })
+    
   }).catch((error) => {
     console.log('Error getting, ', error);
   });
    }
 
-   
+  deleteEntry = (itemID) => {
+    this.props.dispatch({
+      type: "DELETE_ENTRY",
+      payload: itemID
+    })
+  }
 
   // getIconValues=(id) => {
   //   this.props.dispatch({type:'FETCH_CHOSEN_ICONS', payload:id})
@@ -64,7 +70,7 @@ class EntryListItem extends Component {
               <i className='fa fa-pencil' aria-hidden='true' style={{float:'left'}}></i>
               </a>
               <ReactTooltip id='edit'><span>Edit Entry?</span></ReactTooltip>
-            <a data-tip data-for='delete'>
+            <a data-tip data-for='delete' onClick={() => this.deleteEntry(id)}>
               <i className='fa fa-trash' aria-hidden='true' style={{float:'right'}}></i>
               </a> <ReactTooltip id='delete'><span>Delete Entry?</span></ReactTooltip>
             <h5 className='card-title' style={{border:'1px solid black', width:'60%', textAlign:'center', marginLeft:'auto', marginRight:'auto'}}>{date_logged}</h5>

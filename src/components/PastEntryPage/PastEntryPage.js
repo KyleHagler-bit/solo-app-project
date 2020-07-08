@@ -13,7 +13,6 @@ class PastEntryPage extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_ENTRY' })
     
-    
   }
 
   render() {

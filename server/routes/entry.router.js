@@ -86,6 +86,40 @@ router.post("/", async (req, res) => {
 // });
 
 
+router.delete("/:id", rejectUnauthenticated, (req, res) => {
+  let id = req.params.id; // id of the thing to delete
+	// console.log("Delete route called with id of", id);
+	console.log("req.user.id", req.user.id);
+
+  /* if (session.id !== database.id) {sendStatus(403) return;}*/
+  let queryText = `SELECT * FROM entry WHERE id=$1`; //grabs specific item to grab the item user_id
+  const queryValue = [id];
+  pool
+    .query(queryText, queryValue)
+    .then((result) => {
+			console.log("result.rows[0].user_id", result.rows[0].user_id);
+      if (result.rows[0].user_id === req.user.id) {
+        //checks to see if current user is the one who added the image
+        queryText = `DELETE FROM entry WHERE id=$1;`; //deletes from database
+        pool
+          .query(queryText, [id])
+          .then(function (result) {
+            res.sendStatus(201); //status 201
+          })
+          .catch(function (error) {
+            console.log("Sorry, there was an error with your query: ", error);
+            res.sendStatus(500); //HTTP SERVER ERROR
+          });
+      } else {
+        res.sendStatus(401); // user not authorized to delete item
+      }
+    })
+    .catch((error) => {
+      res.sendStatus(500);
+    });
+});
+
+
 
 
 module.exports = router;

@@ -17,8 +17,24 @@ function* fetchEntry() {
   }
 }
 
+function* deleteEntry(action) {
+  try {
+    const config = {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    };
+		//with DELETE, does not need response
+		console.log(action.payload);
+    yield axios.delete(`/api/entry/${action.payload}`, config);
+    yield put({ type: "FETCH_ENTRY" });
+  } catch (error) {
+    console.log("Error deleting entry from past entry:", error);
+  }
+}
+
 function* entrySaga() {
   yield takeEvery('FETCH_ENTRY', fetchEntry);
+  yield takeEvery('DELETE_ENTRY', deleteEntry);
 }
 
 export default entrySaga;
