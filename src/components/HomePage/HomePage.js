@@ -39,6 +39,7 @@ class HomePage extends Component {
 
   render() {
     const { icons } = this.props;
+
     return (
       <div className="page" style={{ textAlign: 'center', border: '1px solid black', display: 'block', height:'825px' }}>
         <div style={{minHeight:'100%',width:'5%', backgroundColor:'red', float:'left'}}></div>

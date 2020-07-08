@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { withRouter } from "react-router";
+
 class LoginPage extends Component {
   state = {
     username: '',
@@ -21,6 +23,8 @@ class LoginPage extends Component {
     } else {
       this.props.dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
+    //CONDITIONAL RENDER TO PUSH TO WELCOME PAGE IF NO ENTRY TODAY???
+    this.props.history.push("/home") //makes sure that login takes user to home page
   } // end login
 
   handleInputChangeFor = propertyName => (event) => {
@@ -78,7 +82,7 @@ class LoginPage extends Component {
               type="button"
               name="submit"
               value="Forgot Password?"
-              onClick={() => {alert('This is a placeholder!')}}
+              onClick={() => {alert('This is a placeholder! NONFUNCTIONAL')}}
             />
           </div>
         </form>
@@ -103,4 +107,4 @@ const mapStateToProps = state => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps)(LoginPage);
+export default withRouter(connect(mapStateToProps)(LoginPage));

@@ -4,11 +4,13 @@
     display: inline-block;
     color: #f2f2f2;
     padding-left: 10px;
+    vertical-align:middle;
 }
 
 .nav {
   overflow: hidden;
   background-color: #00acb0;
+  /* height: 60px !important; */
 }
 
 .nav-link {
@@ -19,6 +21,7 @@
   padding: 24px 10px;
   text-decoration: none;
   font-size: 15px;
+  vertical-align:middle;
 
   /* these last two make the logout button in
   the nav bar look like another link */

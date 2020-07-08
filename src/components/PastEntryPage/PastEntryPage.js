@@ -16,7 +16,7 @@ class PastEntryPage extends Component {
   }
 
   render() {
-    console.log('inside of pastEntryPage line 20',this.props.entry)
+    
     return (
       <div className="page">
         
