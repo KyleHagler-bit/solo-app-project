@@ -27,3 +27,8 @@
 
 
 }
+
+#pieChart{
+  display: flex;
+  position: relative;
+}

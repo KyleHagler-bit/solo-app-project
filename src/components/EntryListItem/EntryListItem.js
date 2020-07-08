@@ -67,6 +67,8 @@ class EntryListItem extends Component {
     const { id, emotion_value, note, date_logged, icons } = this.props;
     const {text} = this.state;
     console.log('length',icons.length)
+
+    
     return (
       <div className='page' id='entrylist' style={{ border: '1px solid black', textAlign:'center' }}>
         <div className='card'>

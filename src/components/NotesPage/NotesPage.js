@@ -26,6 +26,13 @@ class NotesPage extends Component {
     this.postHandler(this.state)
   }
 
+  skipNotes = (event) => {
+
+    this.setState({note: 'No notes logged'})
+    this.props.history.push('/home')
+    this.postHandler(this.state)
+  }
+
   postHandler = (entry) =>{
     Axios.post(`/api/entry`, entry)
     .then(response =>{
@@ -54,7 +61,7 @@ class NotesPage extends Component {
         {this.state.note === undefined || this.state.note === '' ? <button disabled>Next Page</button> : <button onClick={() => this.submitInfo()}>Next Page</button>}
         
 
-        <button onClick={() => this.props.history.push("/home")}>No Notes! Skip</button>
+        <button onClick={() => this.skipNotes()}>No Notes! Skip</button>
       </div>
     );
   }

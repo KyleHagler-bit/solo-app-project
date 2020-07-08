@@ -90,7 +90,7 @@ return generatedColors;
   render() {
     console.log('inside render', this.props.pie)
     return (
-      <div className="chart" style={{ width: "80%" }}>
+      <div className="chart" style={{ width: "100%", textAlign:'center' }}>
         <Pie
           data={this.state.chartData}
           width={7}
