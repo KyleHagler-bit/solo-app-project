@@ -57,17 +57,16 @@ class EntryListItem extends Component {
 
   editEntry = (itemID) => {
     this.props.history.push('/edit');
-    this.props.dispatch({type: 'FETCH_EDIT', payload:itemID})
+    this.props.dispatch({type: 'FETCH_EDIT', payload: itemID})
 
     this.props.dispatch({
       //Here, we grab the movie we are currently clicked on
-      type: 'CURRENT_ITEM', payload: [
+      type: 'CURRENT_ITEM', payload: 
         {
           id: itemID,
           emotionValue: this.props.emotion_value,
           note: this.props.note
         }
-      ]
     })
     
   }

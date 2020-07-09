@@ -7,7 +7,6 @@ function* updateEntry(action) {
       const response = yield axios.put(`/api/entryedit/`, action.payload);
       yield put({ type: 'FETCH_ENTRY', payload: response.data })
       
-      
   } catch (error) {
       console.log('Error updating', error);
   }

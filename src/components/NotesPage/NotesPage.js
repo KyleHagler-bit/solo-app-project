@@ -7,10 +7,11 @@ import './NotesPage.css';
 
 class NotesPage extends Component {
   state = {
-    emotionValue:this.props.currentItem[0].emotionValue,
+    emotionValue:this.props.currentItem.emotionValue,
     iconsArray:this.props.currentItem.iconsArray,
     note: '',
-    userID: this.props.user.id
+    userID: this.props.user.id,
+    // date_logged: 
   }
 
   //Will probably need for this page to save notes if user goes back?

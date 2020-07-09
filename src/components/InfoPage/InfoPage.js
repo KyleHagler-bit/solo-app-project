@@ -15,6 +15,7 @@ const InfoPage = (props) => (
         <div style={{minHeight:'100%',width:'5%', backgroundColor:'red', float:'right'}}></div> */}
         <h3>LIST OF BUGS</h3>
         <p>Lose graph data upon page refresh</p>
+        <p>Cannot properly update past entry</p>
   </div>
 );
 
