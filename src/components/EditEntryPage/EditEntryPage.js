@@ -76,7 +76,9 @@ class EditEntryPage extends Component {
             <h3>How did you feel this day?</h3>
             <EmotionScale/> <br/> <br/>
             <h3>What did you do this day?</h3>
-            <ListOfIcons style={{width:'50%', height:'30%'}}/>
+            <div style={{}}>
+            <ListOfIcons />
+            </div>
             <textarea  rows ='10' cols='100' value={this.state.note} onChange={(event) => this.handleChange(event, 'note')}></textarea>
             <br/>
 

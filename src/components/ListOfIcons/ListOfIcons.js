@@ -39,7 +39,8 @@ class ListOfIcons extends Component {
   render() {
     
     return (
-      <div className='page'>
+      <div className='page' >
+        
 
             {/* <a type="button" id="activity"  ><i className="fab fa-youtube" aria-hidden="true"></i></a>
             <a type="button"  ><i className="far fa-hand-point-right" aria-hidden="true"></i></a> */}

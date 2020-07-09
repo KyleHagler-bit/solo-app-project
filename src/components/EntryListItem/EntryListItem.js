@@ -86,7 +86,13 @@ class EntryListItem extends Component {
   render() {
     const { id, emotion_value, note, date_logged, icons } = this.props;
     const { text } = this.state;
-    console.log('HELLO?', this.props.entry)
+    console.log('HELLO?', note)
+    let noteEntry=''
+    if (note ==='' || note===undefined || note===null){
+      noteEntry = 'No entry written for today'
+    } else {
+      noteEntry = note;
+    }
     //TURN THIS INTO COMPONENT?
     if (!this.props.entry) {
       return (
@@ -114,7 +120,7 @@ class EntryListItem extends Component {
               
               <i style={{fontSize:'70px'}} className={this.emoji(emotion_value)}></i> <br/> <br/>
             
-              {note}<br /> <br />
+              {noteEntry}<br /> <br />
 
               {/* {this.props.chosenIcons.map((item, index) => {
               // console.log('inside entry list item', item);

@@ -11,16 +11,18 @@ import './HomePage.css';
 class HomePage extends Component {
 
   state = {
-    iconsArray: []
+    iconsArray: [],
   }
 
   //NEED TO FIX SO DATA POPULATES PAGE RIGHT AWAY
   //TODO try to keep data even upon refresh
   componentDidMount() {
+
     this.props.dispatch({ type: 'FETCH_LAST_ENTRY' })
     this.props.dispatch({ type: 'FETCH_ICONS' })
     this.props.dispatch({ type: 'FETCH_LINE' })
     this.props.dispatch({ type: 'FETCH_PIE' })
+    this.props.dispatch({type:'FETCH_ENTRY'}) //is this needed?
 
     axios({
       method: 'GET',
@@ -36,12 +38,16 @@ class HomePage extends Component {
     });
   }
 
+  
+
+  
+
 
   render() {
     const { icons } = this.props;
 
     return (
-      <div className="page" style={{ textAlign: 'center', border: '1px solid black', display: 'block', height:'900px' }}>
+      <div className="page" style={{ textAlign: 'center', border: '1px solid black', display: 'block', height:'1200px' }}>
         <div style={{minHeight:'100%',width:'5%', backgroundColor:'red', float:'left'}}></div>
         <div style={{minHeight:'100%',width:'5%', backgroundColor:'red', float:'right'}}></div>
        
@@ -70,7 +76,7 @@ class HomePage extends Component {
        
         <div className='card' id='pieChart' style={{width:'50%',  margin:'auto', textAlign:'center'}}>
         <PieChart/>
-        </div><br/><br/><br/><br/><br/><br/>
+        </div><br/><br/><br/><br/>
         <div className='card' id='lineChart' style={{width:'80%', margin:'auto'}}>
           <LineChart/>
         </div>

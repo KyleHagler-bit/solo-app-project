@@ -6,7 +6,7 @@ import { Bar, Pie } from 'react-chartjs-2';
 class PieChart extends Component {
 
   componentDidMount() {
-    // this.props.dispatch({ type: 'FETCH_PIE' })
+    //  this.props.dispatch({ type: 'FETCH_PIE' })
     
   }
 

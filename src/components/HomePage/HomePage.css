@@ -32,3 +32,8 @@
   display: flex;
   position: relative;
 }
+
+#lineChart{
+  display:flex;
+  position:relative;
+}
