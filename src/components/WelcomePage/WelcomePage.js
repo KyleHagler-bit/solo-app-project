@@ -8,14 +8,15 @@ import { withRouter } from "react-router";
 class WelcomePage extends Component {
 
   submitInfo = (event) =>{
-    this.props.dispatch({ type: "UPDATE", payload: this.state });
+    console.log('WHat is even here in welcome?', this.state)
+    this.props.dispatch({ type: "CURRENT_ENTRY", payload: this.state });
     this.props.history.push("/icons")
 
   }
 
   //TODO: make on hover for each emoticon saying what emotion it portrays
   render() {
-    console.log('what is in here?',this.props.currentItem[0].emotionValue)
+    // console.log('what is in here?',this.props.currentItem[0].emotionValue)
     return (
       <div className="page" style={{height:'825px', display:'block'}}>
         <div style={{minHeight:'100%',width:'5%', backgroundColor:'red', float:'left'}}></div>

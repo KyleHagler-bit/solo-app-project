@@ -4,22 +4,13 @@ const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 router.get('/:id', rejectUnauthenticated, (req, res) => {
- 
-  // console.log('inside chosenIcons router ',req.params.id)
-
-  //    if (req.params.id=== undefined) {
-  //    // stop, dont touch the database
-  //    res.sendStatus(400); // 400 BAD REQUEST
-  //    return;
-  //  }
-  pool.query('SELECT * FROM entry_activity WHERE entry_id=$1;',[req.params.id])
+  pool.query('SELECT * FROM entry WHERE user_id=$1 AND id=$2',[req.user.id,req.params.id ]) //only gets entries from specific user
   
     .then((result) => {
-      // console.log('result in router is',result)
       res.send(result.rows);
     })
     .catch((error) => {
-      console.log("Error GET icons", error);
+      console.log("Error GET entry", error);
       res.sendStatus(500);
     });
 });

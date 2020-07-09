@@ -23,6 +23,7 @@ class EmotionScale extends Component {
 
     }))
 this.setState({word:word})
+// console.log('what is the emotion value',this.props.currentItem[0].emotionValue)
 
   }
 
@@ -62,7 +63,7 @@ this.setState({word:word})
 }
 
 const mapStateToProps = state => ({
-
+  currentItem:state.currentItem
 });
 
 export default connect(mapStateToProps)(EmotionScale);

@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
   const client = await pool.connect();
   let today = new Date();
 
-  console.log(req.body);
+  // console.log(req.body);
 
   try {
     const {
@@ -89,7 +89,7 @@ router.post("/", async (req, res) => {
 router.delete("/:id", rejectUnauthenticated, (req, res) => {
   let id = req.params.id; // id of the thing to delete
 	// console.log("Delete route called with id of", id);
-	console.log("req.user.id", req.user.id);
+	// console.log("req.user.id", req.user.id);
 
   /* if (session.id !== database.id) {sendStatus(403) return;}*/
   let queryText = `SELECT * FROM entry WHERE id=$1`; //grabs specific item to grab the item user_id
@@ -97,7 +97,7 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
   pool
     .query(queryText, queryValue)
     .then((result) => {
-			console.log("result.rows[0].user_id", result.rows[0].user_id);
+			// console.log("result.rows[0].user_id", result.rows[0].user_id);
       if (result.rows[0].user_id === req.user.id) {
         //checks to see if current user is the one who added the image
         queryText = `DELETE FROM entry WHERE id=$1;`; //deletes from database
@@ -119,6 +119,32 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
     });
 });
 
+router.put('/', (req, res) => {
+  console.log('inside put for update',req.body)
+  console.log(req.user.id)
+  const updatedEntry = req.body;
+  
+
+  const queryText = `UPDATE entry
+  SET "user_id" = $1, 
+  "emotion_value" = $2,
+  "note" = $3
+  WHERE id=$4;`
+
+  const queryValues = [
+    req.user.id,
+    updatedEntry.emotionValue,
+    updatedEntry.note,
+    updatedEntry.id
+  ];
+
+  pool.query(queryText, queryValues)
+    .then(() => { res.sendStatus(200); })
+    .catch((err) => {
+      console.log('Error completing UPDATE', err);
+      res.sendStatus(500);
+    });
+});
 
 
 

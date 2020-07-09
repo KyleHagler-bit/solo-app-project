@@ -14,10 +14,10 @@ class EditEntryPage extends Component {
   
   state = {
     
-    id:0,
-    emotionValue:0,
-    iconsArray:[],
-    note:''
+    id:this.props.currentItem[0].id || 0,
+    emotionValue:this.props.currentItem[0].emotionValue,
+    iconsArray:this.props.currentItem[0].iconsArray || [],
+    note: this.props.currentItem[0].note || ''
   };
 
    //this only gets one id... which means all past entries look identical which is WRONG
@@ -26,6 +26,7 @@ class EditEntryPage extends Component {
   //   this.props.dispatch({ type: 'FETCH_CHOSEN_ICONS', payload: this.props.id })
   
     this.props.dispatch({ type: 'FETCH_ICONS' })
+    // this.props.dispatch({type:'CURRENT_ITEM'})
   
   axios({
     method: 'GET',
@@ -50,14 +51,20 @@ class EditEntryPage extends Component {
   //dispatch to update movies as well as push user back to details
   submit = () => {
     console.log('current state of edit.js on submit', this.state)
-    // this.props.dispatch({ type: "UPDATE_MOVIES", payload: this.state })
+   this.props.dispatch({ type: "UPDATE_ENTRY", payload: this.state })
     this.props.history.push("/pastentry");
 
   }
+
+  componentDidUpdate(){
+
+  }
+
   //I tried using conditional to stop refresh error but the state gets upset anyway
   render() {
      const { entry, icons } = this.props;
-    
+    console.log('this is state INSIDE editentrypage', this.state)
+    console.log('this is currentItem', this.props.currentItem)
       return (
      
         <div> 
@@ -79,7 +86,7 @@ class EditEntryPage extends Component {
             <div style={{}}>
             <ListOfIcons />
             </div>
-            <textarea  rows ='10' cols='100' value={this.state.note} onChange={(event) => this.handleChange(event, 'note')}></textarea>
+            <textarea  rows ='10' cols='100' value={this.state.note} defaultValue={this.state.note} onChange={(event) => this.handleChange(event, 'note')}></textarea>
             <br/>
 
 
@@ -98,7 +105,7 @@ class EditEntryPage extends Component {
                 
                })} {/*end iconsArray map*/}
 
-               <button>Save</button>
+               <button onClick={() => this.submit()}>Save</button>
                <button onClick={() => this.props.history.push('/pastentry')}>Cancel Edit</button>
                <br/><br/>
 
@@ -116,7 +123,8 @@ class EditEntryPage extends Component {
 const mapStateToProps = (state) => {
   return {
     entry: state.entry,
-    icons:state.icons
+    icons:state.icons,
+    currentItem: state.currentItem
   };
 };
 

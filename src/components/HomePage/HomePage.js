@@ -23,6 +23,7 @@ class HomePage extends Component {
     this.props.dispatch({ type: 'FETCH_LINE' })
     this.props.dispatch({ type: 'FETCH_PIE' })
     this.props.dispatch({type:'FETCH_ENTRY'}) //is this needed?
+    this.props.dispatch({ type: 'FETCH_LAST_ENTRY' }) //DOUBLE CHECK THIS LATER
 
     axios({
       method: 'GET',

@@ -16,7 +16,10 @@ import axios from 'axios';
 class EntryListItem extends Component {
 
   state = {
+    id:0, //should be entry_id
     iconsArray: [],
+    emotionValue:0,
+    note:'',
 
   }
 
@@ -25,6 +28,15 @@ class EntryListItem extends Component {
 
     console.log('in comp did mount', this.props.id)
     //   this.props.dispatch({ type: 'FETCH_CHOSEN_ICONS', payload: this.props.id })
+
+    // this.setState({ id:this.props.id, emotionValue:this.props.emotion_value}, () => this.props.dispatch({
+    //   type: 'CURRENT_ITEM', payload: [{
+    //     id:this.props.id, emotionValue:this.props.emotion_value
+
+    //   }]
+    //   }))
+
+      
 
     this.props.dispatch({ type: 'FETCH_ICONS' })
 
@@ -45,6 +57,19 @@ class EntryListItem extends Component {
 
   editEntry = (itemID) => {
     this.props.history.push('/edit');
+    this.props.dispatch({type: 'FETCH_EDIT', payload:itemID})
+
+    this.props.dispatch({
+      //Here, we grab the movie we are currently clicked on
+      type: 'CURRENT_ITEM', payload: [
+        {
+          id: itemID,
+          emotionValue: this.props.emotion_value,
+          note: this.props.note
+        }
+      ]
+    })
+    
   }
 
 
@@ -86,7 +111,7 @@ class EntryListItem extends Component {
   render() {
     const { id, emotion_value, note, date_logged, icons } = this.props;
     const { text } = this.state;
-    console.log('HELLO?', note)
+    
     let noteEntry=''
     if (note ==='' || note===undefined || note===null){
       noteEntry = 'No entry written for today'
@@ -96,7 +121,7 @@ class EntryListItem extends Component {
     //TURN THIS INTO COMPONENT?
     if (!this.props.entry) {
       return (
-        <h3>Oops! Nothing to display. WHy not make an entry?</h3>
+        <h3>Oops! Nothing to display. Why not make an entry?</h3>
       )
     } else {
 
