@@ -8,8 +8,8 @@ import { withRouter } from "react-router";
 class WelcomePage extends Component {
 
   submitInfo = (event) =>{
-    console.log('WHat is even here in welcome?', this.state)
-    this.props.dispatch({ type: "CURRENT_ENTRY", payload: this.state });
+    // console.log('What is even here in welcome?', this.state)
+    // this.props.dispatch({ type: "CURRENT_ENTRY", payload: this.state });
     this.props.history.push("/icons")
 
   }
@@ -26,7 +26,7 @@ class WelcomePage extends Component {
         <h3>How are you feeling today?</h3>
         <EmotionScale/> <br/><br/>
         {/*User cannot move further on in the entry process unless they select an emotion*/}
- {this.props.currentItem.emotionValue===undefined ? <button id='nextToIcons' disabled >Next Page</button>: <button onClick={() => this.submitInfo()}>Next Page</button>}
+ {this.props.currentItem.emotionValue===0 ? <button id='nextToIcons' disabled >Next Page</button>: <button onClick={() => this.submitInfo()}>Next Page</button>}
   
         <button id='skipHome' onClick={() => this.props.history.push("/home")}>Skip to Home Page</button>
       </div>

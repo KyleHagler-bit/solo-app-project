@@ -49,39 +49,39 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 
 
-router.post("/", async (req, res) => {
-  const client = await pool.connect();
+// router.post("/", async (req, res) => {
+//   const client = await pool.connect();
 
-  try {
-    const {
-      iconsArray
-    } = req.body;
-    await client.query("BEGIN");
-    const orderInsertResults = await client.query(
-      `INSERT INTO entry_activity ( entry_id, activity_id) 
-   (SELECT id,$1 FROM entry WHERE id = (SELECT MAX(id) FROM entry) AND user_id=$2);`,
-      [iconsArray, req.user.id]
-    );
-    const iconsId = orderInsertResults.rows[0].id;
+//   try {
+//     const {
+//       iconsArray
+//     } = req.body;
+//     await client.query("BEGIN");
+//     const orderInsertResults = await client.query(
+//       `INSERT INTO entry_activity ( entry_id, activity_id) 
+//    (SELECT id,$1 FROM entry WHERE id = (SELECT MAX(id) FROM entry) AND user_id=$2);`,
+//       [iconsArray, req.user.id]
+//     );
+//     const iconsId = orderInsertResults.rows[0].id;
 
-    await Promise.all(
-      pizzas.map((pizza) => {
-        const insertLineItemText = `INSERT INTO "line_item" ("order_id", "pizza_id", "quantity") VALUES ($1, $2, $3)`;
-        const insertLineItemValues = [orderId, pizza.id, pizza.quantity];
-        return client.query(insertLineItemText, insertLineItemValues);
-      })
-    );
+//     await Promise.all(
+//       pizzas.map((pizza) => {
+//         const insertLineItemText = `INSERT INTO "line_item" ("order_id", "pizza_id", "quantity") VALUES ($1, $2, $3)`;
+//         const insertLineItemValues = [orderId, pizza.id, pizza.quantity];
+//         return client.query(insertLineItemText, insertLineItemValues);
+//       })
+//     );
 
-    await client.query("COMMIT");
-    res.sendStatus(201);
-  } catch (error) {
-    await client.query("ROLLBACK");
-    console.log("Error POST /api/order", error);
-    res.sendStatus(500);
-  } finally {
-    client.release();
-  }
-});
+//     await client.query("COMMIT");
+//     res.sendStatus(201);
+//   } catch (error) {
+//     await client.query("ROLLBACK");
+//     console.log("Error POST /api/order", error);
+//     res.sendStatus(500);
+//   } finally {
+//     client.release();
+//   }
+// });
 
 
 

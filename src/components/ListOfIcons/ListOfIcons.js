@@ -23,19 +23,26 @@ class ListOfIcons extends Component {
     this.setState({count: this.state.count+1})
   console.log(value)
   
-    this.setState({ iconsArray:[...this.state.iconsArray, value] });
-    console.log('this is state', this.state)
+    // this.setState({ iconsArray:[...currentItem.iconsArray, value] });
+    // console.log('this is state', this.state)
     
-    this.props.dispatch({
-      type: 'CURRENT_ITEM', payload:this.state
-    })
+    // this.props.dispatch({
+    //   type: 'CURRENT_ITEM', payload:this.state
+    // })
+
+    
+      this.props.dispatch({
+        type: 'CURRENT_ITEM', payload: { iconsArray:[...this.props.currentItem.iconsArray, value] }
+      });
+    
+    
   }
 
-  componentDidUpdate = () =>{
-    this.props.dispatch({
-      type: 'CURRENT_ITEM', payload:this.state
-    })
-  }
+  // componentDidUpdate = () =>{
+  //   this.props.dispatch({
+  //     type: 'CURRENT_ITEM', payload:this.state
+  //   })
+  // }
 
   render() {
     
@@ -62,7 +69,8 @@ class ListOfIcons extends Component {
 }
 
 const mapStateToProps = state => ({
-  icons:state.icons
+  icons:state.icons,
+  currentItem:state.currentItem
 });
 
 export default connect(mapStateToProps)(ListOfIcons);

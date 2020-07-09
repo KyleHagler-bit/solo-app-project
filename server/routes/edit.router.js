@@ -15,29 +15,77 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     });
 });
 
-router.put('/', (req, res) => {
-  console.log('inside edit router', req.body)
-  const updatedEntry = req.body;
+// router.put('/', (req, res) => {
+//   console.log('inside edit router', req.body)
+//   const updatedEntry = req.body;
 
-  const queryText = `UPDATE entry
-  SET 
-  "emotion_value" = $1,
-  "note" = $2
-  WHERE id=$3`;
+//   const queryText = `UPDATE entry
+//   SET 
+//   "emotion_value" = $1,
+//   "note" = $2
+//   WHERE id=$3`;
 
-  const queryValues = [
-    // req.user.id,
-    updatedEntry.emotionValue,
-    updatedEntry.note,
-    updatedEntry.id
-  ];
+//   const queryValues = [
+//     // req.user.id,
+//     updatedEntry.emotionValue,
+//     updatedEntry.note,
+//     updatedEntry.id
+//   ];
 
-  pool.query(queryText, queryValues)
-    .then(() => { res.sendStatus(200); })
-    .catch((err) => {
-      console.log('Error completing UPDATE', err);
-      res.sendStatus(500);
-    });
+//   pool.query(queryText, queryValues)
+//     .then(() => { res.sendStatus(200); })
+//     .catch((err) => {
+//       console.log('Error completing UPDATE', err);
+//       res.sendStatus(500);
+//     });
+// });
+
+router.put("/", async (req, res) => {
+  const client = await pool.connect();
+  let today = new Date();
+
+  // console.log(req.body);
+
+  try {
+    const {
+      emotionValue,
+      iconsArray,
+      note,
+      id,
+    } = req.body;
+    await client.query("BEGIN");
+    const orderInsertResults = await client.query(
+      `UPDATE entry SET "emotion_value" = $1, "note" = $2 WHERE id=$3`,
+      [ emotionValue, note, id]
+    );
+    //const orderId = orderInsertResults.rows[0].id;
+
+    await Promise.all(
+      iconsArray.map((item) => {
+        console.log('What is going wrong',item)
+        const insertLineItemText = `
+           UPDATE entry_activity SET "activity_id" = $1 WHERE "entry_id"=$2
+          ;`
+        
+        const insertLineItemValues = [item,id];
+        return client.query(insertLineItemText, insertLineItemValues);
+      })
+    );
+
+    // `
+    //        INSERT INTO entry_activity ( entry_id, activity_id) 
+    //        (SELECT id,$1 FROM entry WHERE id = (SELECT MAX(id) FROM entry) AND user_id=$2)`;
+
+    await client.query("COMMIT");
+    res.sendStatus(201);
+  } catch (error) {
+    await client.query("ROLLBACK");
+    console.log("Error POST /api/order", error);
+    res.sendStatus(500);
+  } finally {
+    client.release();
+  }
 });
+
 
 module.exports = router;
