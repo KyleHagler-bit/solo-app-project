@@ -6,7 +6,7 @@ import EntryListItem from '../EntryListItem/EntryListItem';
 // import './PastEntryPage.css';
 
 import { withRouter } from "react-router";
-import chosenIconsReducer from '../../redux/reducers/chosenIconsReducer';
+
 
 class PastEntryPage extends Component {
 
@@ -48,7 +48,7 @@ class PastEntryPage extends Component {
 
 const mapStateToProps = state => ({
   entry: state.entry,
-  chosenIcons: state.chosenIcons
+  // chosenIcons: state.chosenIcons
 
 });
 

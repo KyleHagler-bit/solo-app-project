@@ -16,7 +16,7 @@ class EditEntryPage extends Component {
     console.log('in comp did mount', this.props.id)
     //   this.props.dispatch({ type: 'FETCH_CHOSEN_ICONS', payload: this.props.id })
 
-    this.props.dispatch({ type: 'FETCH_ICONS' })
+    // this.props.dispatch({ type: 'FETCH_ICONS' })
     // this.props.dispatch({type:'CURRENT_ITEM'})
 
     this.props.dispatch({type:'FETCH_ACTIVITY_ENTRY'})

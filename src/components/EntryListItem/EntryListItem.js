@@ -37,7 +37,7 @@ class EntryListItem extends Component {
     //   }))
 
       
-
+//move this t the appropriate reducer thing?
     this.props.dispatch({ type: 'FETCH_ICONS' })
 
     axios({
@@ -188,7 +188,7 @@ class EntryListItem extends Component {
 
 const mapStateToProps = state => ({
   entry: state.entry,
-  chosenIcons: state.chosenIcons,
+  // chosenIcons: state.chosenIcons,
   icons: state.icons
 });
 

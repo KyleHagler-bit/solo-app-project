@@ -43,7 +43,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 router.put("/", async (req, res) => {
   const client = await pool.connect();
   let today = new Date();
-
+console.log('this means put in edit router is runnning')
   // console.log(req.body);
 
   try {
@@ -62,17 +62,24 @@ router.put("/", async (req, res) => {
     //const orderId = orderInsertResults.rows[0].id;
     
     await Promise.all(
-      iconsArray.map((item) => {
-        console.log('this is item in iconsArray',item)
-        activityEntry.map((item2)=>{
+      activityEntry.map((item) => {
+        console.log('this is activityEntry',activityEntry)
+        console.log(item.entry_id===id)
+       if (item.entry_id===id){
+        iconsArray.map((item2)=>{
           console.log('this is item2',item2)
+          //WE CANT UPDATE THINGS IF THEY DONT EXIST AT AALL!!!!!!
         const insertLineItemText = `
-           UPDATE entry_activity SET "activity_id" = $1, "entry_id"=$2 WHERE id=$3
-          ;`
-        
-        const insertLineItemValues = [item, id, item2.id];
+        IF EXISTS (SELECT * FROM "entry_activity" WHERE id=$1) THEN
+        UPDATE "entry_activity" SET "activity_id"=$2, "entry_id"=$3 WHERE id=$1;
+        ELSE
+        INSERT INTO "entry_activity" ("entry_id","activity_id") VALUES ($3 ,$2);
+        END IF;`
+                      
+        const insertLineItemValues = [ item.id, item2, id];
         return client.query(insertLineItemText, insertLineItemValues);
         })
+       }
       })
     );
 

@@ -11,13 +11,7 @@ class IconForEntry extends Component {
     iconsArray:[]
   }
 
-  // componentDidMount() {
-  //   console.log('in comp did mount', this.props.id)
-  //   this.props.dispatch({type:'FETCH_CHOSEN_ICONS', payload:this.props.id})
-  //   this.setState({
-  //       iconsArray: this.props.chosenIcons
-  //   })
-  // }
+  
   
 
   render() {
@@ -33,7 +27,7 @@ class IconForEntry extends Component {
 
 const mapStateToProps = state => ({
   entry:state.entry,
-  chosenIcons: state.chosenIcons
+  
 });
 
 export default connect(mapStateToProps)(IconForEntry);

@@ -6,7 +6,7 @@ import icons from './iconsReducer';
 import entry from './entryReducer';
 import currentItem from './currentItemReducer';
 import lastEntry from './lastEntryReducer';
-import chosenIcons from './chosenIconsReducer';
+// import chosenIcons from './chosenIconsReducer';
 import pieChart from './pieChartReducer';
 import lineChart from './lineChartReducer';
 import activityEntry from './entryActivityReducer';
@@ -25,7 +25,7 @@ const rootReducer = combineReducers({
   entry,
   currentItem,
   lastEntry,
-  chosenIcons,
+  // chosenIcons,
   pieChart,
   lineChart,
   activityEntry,

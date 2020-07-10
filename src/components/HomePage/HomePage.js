@@ -24,6 +24,7 @@ class HomePage extends Component {
     this.props.dispatch({ type: 'FETCH_PIE' })
     this.props.dispatch({type:'FETCH_ENTRY'}) //is this needed?
     this.props.dispatch({ type: 'FETCH_LAST_ENTRY' }) //DOUBLE CHECK THIS LATER
+    // this.props.dispatch({type: 'FETCH_CHOSEN_ICONS'})
 
     axios({
       method: 'GET',
@@ -38,11 +39,6 @@ class HomePage extends Component {
       console.log('Error getting, ', error);
     });
   }
-
-  
-
-  
-
 
   render() {
     const { icons } = this.props;
@@ -90,7 +86,8 @@ class HomePage extends Component {
 
 const mapStateToProps = state => ({
   lastEntry: state.lastEntry,
-  icons: state.icons
+  icons: state.icons,
+  // chosenIcons:state.chosenIcons
 });
 
 export default withRouter(connect(mapStateToProps)(HomePage));
