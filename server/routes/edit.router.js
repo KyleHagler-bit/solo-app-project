@@ -56,34 +56,45 @@ router.put("/", async (req, res) => {
     } = req.body;
     await client.query("BEGIN");
     const orderInsertResults = await client.query(
-      `UPDATE entry SET "emotion_value" = $1, "note" = $2 WHERE id=$3`,
+      `UPDATE entry SET "emotion_value" = $1, "note" = $2 WHERE id=$3;`,
       [emotionValue, note, id]
     );
     //const orderId = orderInsertResults.rows[0].id;
 
-    await Promise.all(
-      activityEntry.map((item) => {
-        console.log('this is activityEntry', activityEntry)
-        console.log(item.entry_id === id)
-        if (item.entry_id === id) {
-          iconsArray.map((iconID) => {
-            console.log('this is iconsArray', iconID)
-            //WE CANT UPDATE THINGS IF THEY DONT EXIST AT ALL!!!!!!
-            //SHOULD I JUST DELETE ALL IN THERE AND THEN JUST DO INSERT?
-            const insertLineItemText = `
-        IF EXISTS (SELECT * FROM "entry_activity" WHERE id=$1) THEN
-        UPDATE "entry_activity" SET "activity_id"=$2, "entry_id"=$3 WHERE id=$1;
-        ELSE
-        INSERT INTO "entry_activity" ("entry_id","activity_id") VALUES ($3 ,$2);
-        END IF;`
-
-            const insertLineItemValues = [item.id, iconID, id];
-            return client.query(insertLineItemText, insertLineItemValues);
-          })
-        }
-      })
+    await client.query(
+      `DELETE FROM "entry_activity" WHERE "entry_id"=$1;`,
+      [id]
     );
 
+    await Promise.all(
+      iconsArray.map((item) => {
+        // console.log('this is activityEntry', activityEntry)
+        // console.log(item.entry_id === id)
+        
+          console.log('what is this', item, id)
+            // console.log('this is iconsArray', iconID)
+            //WE CANT UPDATE THINGS IF THEY DONT EXIST AT ALL!!!!!!
+            //SHOULD I JUST DELETE ALL IN THERE AND THEN JUST DO INSERT?
+        //     const insertLineItemText = `
+        // IF EXISTS (SELECT * FROM "entry_activity" WHERE id=$1) THEN
+        // UPDATE "entry_activity" SET "activity_id"=$2, "entry_id"=$3 WHERE id=$1;
+        // ELSE
+        // INSERT INTO "entry_activity" ("entry_id","activity_id") VALUES ($3 ,$2);
+        // END IF;`
+        // add a double-column unique constraint
+        // on conflict do nothing
+        const insertLineItemText =`
+        INSERT INTO entry_activity ( entry_id, activity_id) 
+        VALUES ($1,$2);`
+        //on conflict LOOK INTO
+
+            const insertLineItemValues = [id,item];
+            return client.query(insertLineItemText, insertLineItemValues);
+          })
+        
+     
+    );
+    await client.query("END");
     await client.query("COMMIT");
     res.sendStatus(201);
   } catch (error) {

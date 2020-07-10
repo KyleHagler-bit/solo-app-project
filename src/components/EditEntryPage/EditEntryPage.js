@@ -44,7 +44,7 @@ class EditEntryPage extends Component {
   render() {
     const { entry, icons } = this.props;
     // console.log('this is currentItem', this.props.currentItem)
-    console.log('this is activtyEntry', this.props.activityEntry)
+    // console.log('this is activtyEntry', this.props.activityEntry)
     return (
       <div>
         <div className='page' id='editBox' style={{ border: '1px solid black', textAlign: 'center', width: '100%' }}>

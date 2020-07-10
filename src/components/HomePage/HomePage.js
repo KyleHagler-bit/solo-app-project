@@ -20,6 +20,7 @@ class HomePage extends Component {
     this.props.dispatch({ type: 'FETCH_LINE' })
     this.props.dispatch({ type: 'FETCH_PIE' })
     this.props.dispatch({type:'FETCH_ENTRY'}) //is this needed?
+    this.props.dispatch({type:'FETCH_ACTIVITY_ENTRY'})
     
     // this.props.dispatch({type: 'FETCH_CHOSEN_ICONS'})
 
@@ -50,7 +51,7 @@ class HomePage extends Component {
           let date = new Date(item.date_logged);
           date = date.toDateString();
           return (
-            //CONDITIONALLY RENDER THIS SO TODAY"S ENTRY
+            //CONDITIONALLY RENDER THIS SO TODAY'S ENTRY
             <div id='homeEntry' style={{border:'1px solid white'}}>
               <br/>
               <h5 style={{textAlign:'left', marginLeft:'200px'}}>Today's Entry:</h5>
