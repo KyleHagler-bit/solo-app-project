@@ -18,6 +18,8 @@ class EditEntryPage extends Component {
 
     this.props.dispatch({ type: 'FETCH_ICONS' })
     // this.props.dispatch({type:'CURRENT_ITEM'})
+
+    this.props.dispatch({type:'FETCH_ACTIVITY_ENTRY'})
   }
 
 
@@ -41,7 +43,8 @@ class EditEntryPage extends Component {
   //I tried using conditional to stop refresh error but the state gets upset anyway
   render() {
     const { entry, icons } = this.props;
-    console.log('this is currentItem', this.props.currentItem)
+    // console.log('this is currentItem', this.props.currentItem)
+    console.log('this is activtyEntry', this.props.activityEntry)
     return (
       <div>
         <div className='page' id='editBox' style={{ border: '1px solid black', textAlign: 'center', width: '100%' }}>
@@ -96,7 +99,8 @@ const mapStateToProps = (state) => {
   return {
     entry: state.entry,
     icons: state.icons,
-    currentItem: state.currentItem
+    currentItem: state.currentItem,
+    activityEntry: state.activityEntry
   };
 };
 

@@ -10,7 +10,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
       res.send(result.rows);
     })
     .catch((error) => {
-      console.log("Error GET icons", error);
+      console.log("Error GET icons in router", error);
       res.sendStatus(500);
     });
 });

@@ -17,6 +17,11 @@ class ListOfIcons extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_ICONS' })
     console.log('inside compDidmount');
+
+    this.props.dispatch({
+      type: 'CURRENT_ITEM', payload: { activityEntry:this.props.activityEntry  }
+    });
+  
   }
 
   getValue = (value) =>{
@@ -34,7 +39,7 @@ class ListOfIcons extends Component {
       this.props.dispatch({
         type: 'CURRENT_ITEM', payload: { iconsArray:[...this.props.currentItem.iconsArray, value] }
       });
-    
+      
     
   }
 
@@ -70,7 +75,8 @@ class ListOfIcons extends Component {
 
 const mapStateToProps = state => ({
   icons:state.icons,
-  currentItem:state.currentItem
+  currentItem:state.currentItem,
+  activityEntry: state.activityEntry
 });
 
 export default connect(mapStateToProps)(ListOfIcons);

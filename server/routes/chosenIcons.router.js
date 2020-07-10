@@ -4,7 +4,8 @@ const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 router.get('/:id', rejectUnauthenticated, (req, res) => {
- 
+  //loses req.params.id at times?
+ console.log('this should be a number', req.params.id)
   // console.log('inside chosenIcons router ',req.params.id)
 
   //    if (req.params.id=== undefined) {
@@ -19,7 +20,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
       res.send(result.rows);
     })
     .catch((error) => {
-      console.log("Error GET icons", error);
+      console.log("Error GET icons in chosenIcons", error);
       res.sendStatus(500);
     });
 });

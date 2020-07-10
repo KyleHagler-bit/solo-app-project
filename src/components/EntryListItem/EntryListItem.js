@@ -158,6 +158,7 @@ class EntryListItem extends Component {
               );})} */}
 
               {this.state.iconsArray.map((item, index) => {
+                console.log('this is icons reducer thing',item.id)
 
                 for (let i = 0; i < icons.length; i++) {
                   if (icons[i].id === item.activity_id) {

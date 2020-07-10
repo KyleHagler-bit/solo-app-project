@@ -52,6 +52,7 @@ router.put("/", async (req, res) => {
       iconsArray,
       note,
       id,
+      activityEntry
     } = req.body;
     await client.query("BEGIN");
     const orderInsertResults = await client.query(
@@ -59,16 +60,19 @@ router.put("/", async (req, res) => {
       [ emotionValue, note, id]
     );
     //const orderId = orderInsertResults.rows[0].id;
-
+    
     await Promise.all(
       iconsArray.map((item) => {
-        console.log('What is going wrong',item)
+        console.log('this is item in iconsArray',item)
+        activityEntry.map((item2)=>{
+          console.log('this is item2',item2)
         const insertLineItemText = `
-           UPDATE entry_activity SET "activity_id" = $1 WHERE "entry_id"=$2
+           UPDATE entry_activity SET "activity_id" = $1, "entry_id"=$2 WHERE id=$3
           ;`
         
-        const insertLineItemValues = [item,id];
+        const insertLineItemValues = [item, id, item2.id];
         return client.query(insertLineItemText, insertLineItemValues);
+        })
       })
     );
 
