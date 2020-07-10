@@ -10,10 +10,7 @@ import './HomePage.css';
 
 class HomePage extends Component {
 
-  state = {
-    iconsArray: [],
-  }
-
+ 
   //NEED TO FIX SO DATA POPULATES PAGE RIGHT AWAY
   //TODO try to keep data even upon refresh
   componentDidMount() {
@@ -23,21 +20,21 @@ class HomePage extends Component {
     this.props.dispatch({ type: 'FETCH_LINE' })
     this.props.dispatch({ type: 'FETCH_PIE' })
     this.props.dispatch({type:'FETCH_ENTRY'}) //is this needed?
-    this.props.dispatch({ type: 'FETCH_LAST_ENTRY' }) //DOUBLE CHECK THIS LATER
+    
     // this.props.dispatch({type: 'FETCH_CHOSEN_ICONS'})
 
-    axios({
-      method: 'GET',
-      url: `/api/chosen/${this.props.id}`,
-    }).then((response) => {
-      console.log('Success in getting ');
+    // axios({
+    //   method: 'GET',
+    //   url: `/api/chosen/${this.props.id}`,
+    // }).then((response) => {
+    //   console.log('Success in getting ');
 
-      this.setState({
-        iconsArray: response.data
-      })
-    }).catch((error) => {
-      console.log('Error getting, ', error);
-    });
+    //   this.setState({
+    //     iconsArray: response.data
+    //   })
+    // }).catch((error) => {
+    //   console.log('Error getting, ', error);
+    // });
   }
 
   render() {
@@ -87,6 +84,8 @@ class HomePage extends Component {
 const mapStateToProps = state => ({
   lastEntry: state.lastEntry,
   icons: state.icons,
+  entry:state.entry,
+  iconsArray:state.iconsArray
   // chosenIcons:state.chosenIcons
 });
 

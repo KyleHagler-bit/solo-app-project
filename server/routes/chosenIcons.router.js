@@ -5,7 +5,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 router.get('/:id', rejectUnauthenticated, (req, res) => {
   //loses req.params.id at times?
-//  console.log('this should be a number', req.params.id)
+console.log('this should be a number inside chosenIcons router', req.params.id)
   // console.log('inside chosenIcons router ',req.params.id)
 
   //    if (req.params.id=== undefined) {

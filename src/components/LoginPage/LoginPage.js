@@ -47,6 +47,7 @@ class LoginPage extends Component {
         )}
         <form onSubmit={this.login}>
           <h1>Login</h1>
+          <h5>Please use <b>'test'</b> and <b>'test'</b> to login</h5>
           <div>
             <label>
               Email:

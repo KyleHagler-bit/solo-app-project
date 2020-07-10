@@ -43,7 +43,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 router.put("/", async (req, res) => {
   const client = await pool.connect();
   let today = new Date();
-console.log('this means put in edit router is runnning')
+  console.log('this means put in edit router is runnning')
   // console.log(req.body);
 
   try {
@@ -57,35 +57,32 @@ console.log('this means put in edit router is runnning')
     await client.query("BEGIN");
     const orderInsertResults = await client.query(
       `UPDATE entry SET "emotion_value" = $1, "note" = $2 WHERE id=$3`,
-      [ emotionValue, note, id]
+      [emotionValue, note, id]
     );
     //const orderId = orderInsertResults.rows[0].id;
-    
+
     await Promise.all(
       activityEntry.map((item) => {
-        console.log('this is activityEntry',activityEntry)
-        console.log(item.entry_id===id)
-       if (item.entry_id===id){
-        iconsArray.map((item2)=>{
-          console.log('this is item2',item2)
-          //WE CANT UPDATE THINGS IF THEY DONT EXIST AT AALL!!!!!!
-        const insertLineItemText = `
+        console.log('this is activityEntry', activityEntry)
+        console.log(item.entry_id === id)
+        if (item.entry_id === id) {
+          iconsArray.map((iconID) => {
+            console.log('this is iconsArray', iconID)
+            //WE CANT UPDATE THINGS IF THEY DONT EXIST AT ALL!!!!!!
+            //SHOULD I JUST DELETE ALL IN THERE AND THEN JUST DO INSERT?
+            const insertLineItemText = `
         IF EXISTS (SELECT * FROM "entry_activity" WHERE id=$1) THEN
         UPDATE "entry_activity" SET "activity_id"=$2, "entry_id"=$3 WHERE id=$1;
         ELSE
         INSERT INTO "entry_activity" ("entry_id","activity_id") VALUES ($3 ,$2);
         END IF;`
-                      
-        const insertLineItemValues = [ item.id, item2, id];
-        return client.query(insertLineItemText, insertLineItemValues);
-        })
-       }
+
+            const insertLineItemValues = [item.id, iconID, id];
+            return client.query(insertLineItemText, insertLineItemValues);
+          })
+        }
       })
     );
-
-    // `
-    //        INSERT INTO entry_activity ( entry_id, activity_id) 
-    //        (SELECT id,$1 FROM entry WHERE id = (SELECT MAX(id) FROM entry) AND user_id=$2)`;
 
     await client.query("COMMIT");
     res.sendStatus(201);
