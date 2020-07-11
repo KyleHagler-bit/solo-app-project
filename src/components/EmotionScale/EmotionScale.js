@@ -39,25 +39,25 @@ class EmotionScale extends Component {
     return (
       <div className='page'>
 
-        <button id='icon' data-tip data-for='Horrible'><i className='fas fa-tired' onClick={() => this.getValue(1)}></i></button>
+        <button id='icon' data-tip data-for='Horrible' onClick={() => this.getValue(1)}><i className='fas fa-tired' ></i></button>
         <ReactTooltip id='Horrible'><span>Horrible</span></ReactTooltip>
 
-        <button id='icon' data-tip data-for='Bad'><i className='fas fa-sad-tear'  onClick={() => this.getValue(2)}></i></button>
+        <button id='icon' data-tip data-for='Bad' onClick={() => this.getValue(2)}><i className='fas fa-sad-tear'  ></i></button>
         <ReactTooltip id='Bad'><span>Bad</span></ReactTooltip>
 
-        <button id='icon' data-tip data-for='Poor'> <i className='fas fa-frown-open'  onClick={() => this.getValue(3)}></i></button>
+        <button id='icon' data-tip data-for='Poor' onClick={() => this.getValue(3)}> <i className='fas fa-frown-open'  ></i></button>
         <ReactTooltip id='Poor'><span>Poor</span></ReactTooltip>
 
-        <button id='icon' data-tip data-for='Neutral'><i className='fas fa-meh' onClick={() => this.getValue(4)}></i></button>
+        <button id='icon' data-tip data-for='Neutral' onClick={() => this.getValue(4)}><i className='fas fa-meh' ></i></button>
         <ReactTooltip id='Neutral'><span>Neutral</span></ReactTooltip>
 
-        <button id='icon' data-tip data-for='Okay'><i className='fas fa-smile'  onClick={() => this.getValue(5)}></i></button>
+        <button id='icon' data-tip data-for='Okay' onClick={() => this.getValue(5)}><i className='fas fa-smile'  ></i></button>
         <ReactTooltip id='Okay'><span>Okay</span></ReactTooltip>
 
-        <button id='icon' data-tip data-for='Good'><i className='fas fa-grin'  onClick={() => this.getValue(6)}></i></button>
+        <button id='icon' data-tip data-for='Good' onClick={() => this.getValue(6)}><i className='fas fa-grin'  ></i></button>
         <ReactTooltip id='Good'><span>Good</span></ReactTooltip>
 
-        <button id='icon' data-tip data-for='Great'><i className='fas fa-grin-stars'  onClick={() => this.getValue(7)}></i></button>
+        <button id='icon' data-tip data-for='Great'  onClick={() => this.getValue(7)}><i className='fas fa-grin-stars' ></i></button>
         <ReactTooltip id='Great'><span>Great</span></ReactTooltip>
         <br />
         <h3>I feel... {emotion(this.props.currentItem.emotionValue)} </h3>

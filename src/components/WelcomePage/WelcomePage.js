@@ -7,6 +7,12 @@ import { withRouter } from "react-router";
 
 class WelcomePage extends Component {
 
+  componentDidMount() {
+    this.props.dispatch({type:'RESET_CURRENT_ITEM'})
+    console.log('this is current item?', this.props.currentItem)
+   
+  }
+
   submitInfo = (event) =>{
     // console.log('What is even here in welcome?', this.state)
     // this.props.dispatch({ type: "CURRENT_ENTRY", payload: this.state });

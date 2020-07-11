@@ -43,7 +43,8 @@ class IconsPage extends Component {
         <h3>Please choose all that apply</h3>
         <ListOfIcons getValue={this.getValue} toggleSelected={this.toggleSelected}/>
         <button id='backToWelcome' onClick={() => this.props.history.push("/welcome")}>Back</button>
-        <button  id='nextIcon' onClick={() => this.props.history.push("/notes")}>Next Page</button>
+        {this.props.currentItem.iconsArray.length===0? <button  id='nextIcon' disabled>Next Page</button> : <button  id='nextIcon' onClick={() => this.props.history.push("/notes")}>Next Page</button>}
+        
         {/* <button onClick={() => this.props.history.push("/notes")}>Next Page</button> */}
       </div>
     );

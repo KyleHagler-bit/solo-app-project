@@ -43,7 +43,8 @@ class ListOfIcons extends Component {
       
       if (selected === true) {
        
-        this.props.dispatch({ type: "REMOVE_ICON", payload: icon });
+        this.props.dispatch({ type: "REMOVE_ICON", payload: icon
+      });
       } else if (selected === false){
         
       //   this.props.dispatch({ type: "ADD_ICON", payload:  { iconsArray:[...this.props.currentItem.iconsArray, icon] } });
@@ -83,7 +84,7 @@ class ListOfIcons extends Component {
         return(
           <div id='container'>
            <SelectedIcon id={item.id} nameForClass={item.activity_icon} toggleSelected={this.toggleSelected}
-           selected={selectedIcons.some((cur) => cur ===item.id)}/>
+           selected={selectedIcons.some((cur) => cur ===item.id)} name={item.activity_name}/>
           </div>
           )
       })}

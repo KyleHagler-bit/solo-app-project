@@ -77,7 +77,7 @@ class EntryListItem extends Component {
       type: "DELETE_ENTRY",
       payload: itemID
     })
-    window.location.reload(); //if don't have this, home page may not update correctly
+    //window.location.reload(); //if don't have this, home page may not update correctly
   }
 
   // getIconValues=(id) => {
