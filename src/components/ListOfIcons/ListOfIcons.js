@@ -5,6 +5,8 @@ import './ListOfIcons.css';
 import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
+import SelectedIcon from '../SelectedIcon/SelectedIcon'
+
 //Will I need to pass anything up? Need to have some sort of toggle
 //so that I can show what icons are chosen
 //And need to update state or whatever with values(ids) chosen
@@ -80,10 +82,8 @@ class ListOfIcons extends Component {
         console.log('item.id is', item.id)
         return(
           <div id='container'>
-           { selected = selectedIcons.some((cur) => cur ===item.id)}
-           {console.log('selected is', selected)}
-          <a type="button" id="activity" class="btn btn-success" onClick={() =>this.toggleSelected(item.id,selected)}><i className={item.activity_icon}></i></a>
-          <h5>{item.activity_name}</h5>
+           <SelectedIcon id={item.id} nameForClass={item.activity_icon} toggleSelected={this.toggleSelected}
+           selected={selectedIcons.some((cur) => cur ===item.id)}/>
           </div>
           )
       })}

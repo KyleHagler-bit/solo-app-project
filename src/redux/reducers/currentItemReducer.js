@@ -15,7 +15,7 @@ const currentItemReducer = (state = {
     //return action.payload;
     case 'REMOVE_ICON':
       const filteredIcons = newState.iconsArray.filter(
-        (item) => item.id !== action.payload
+        (item) => item !== action.payload
       );
       newState = { ...newState, iconsArray: filteredIcons };
       case 'RESET_CURRENT_ITEM':
