@@ -24,9 +24,11 @@ class ListOfIcons extends Component {
   
   }
 
-  getValue = (value) =>{
+  // getValue = (value) =>{
+    toggleSelected = (icon, selected) =>{
+      
     this.setState({count: this.state.count+1})
-  console.log(value)
+  
   
     // this.setState({ iconsArray:[...currentItem.iconsArray, value] });
     // console.log('this is state', this.state)
@@ -36,9 +38,22 @@ class ListOfIcons extends Component {
     // })
 
     
+      
+      if (selected === true) {
+       
+        this.props.dispatch({ type: "REMOVE_ICON", payload: icon });
+      } else if (selected === false){
+        
+      //   this.props.dispatch({ type: "ADD_ICON", payload:  { iconsArray:[...this.props.currentItem.iconsArray, icon] } });
+      // }
+    
+
+    
       this.props.dispatch({
-        type: 'CURRENT_ITEM', payload: { iconsArray:[...this.props.currentItem.iconsArray, value] }
+        type: 'CURRENT_ITEM', payload: { iconsArray:[...this.props.currentItem.iconsArray, icon] }
       });
+    }
+
       
     
   }
@@ -50,7 +65,9 @@ class ListOfIcons extends Component {
   // }
 
   render() {
-    
+    let {selected, toggleSelected} = this.props;
+    let selectedIcons = this.props.currentItem.iconsArray;
+    console.log('this is selected Icons (attached to currentItem) I guess', selectedIcons)
     return (
       <div className='page' >
         
@@ -60,9 +77,12 @@ class ListOfIcons extends Component {
             
       {this.props.icons.map((item,index) =>{
         
+        console.log('item.id is', item.id)
         return(
           <div id='container'>
-          <a type="button" id="activity" class="btn btn-success" onClick={() =>this.getValue(item.id)}><i className={item.activity_icon}></i></a>
+           { selected = selectedIcons.some((cur) => cur ===item.id)}
+           {console.log('selected is', selected)}
+          <a type="button" id="activity" class="btn btn-success" onClick={() =>this.toggleSelected(item.id,selected)}><i className={item.activity_icon}></i></a>
           <h5>{item.activity_name}</h5>
           </div>
           )

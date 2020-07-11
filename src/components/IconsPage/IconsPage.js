@@ -8,17 +8,28 @@ import './IconsPage.css';
 class IconsPage extends Component {
   
 
-  getValue = (value) =>{
+  // getValue = (value) =>{
     
-    console.log(value)
+  //   console.log(value)
     
-      this.setState({ iconsArray:[...this.state.iconsArray, value] });
-      console.log('this is state', this.state)
-      this.props.dispatch({
-        type: 'CURRENT_ITEM', payload:this.state
-      })
+  //     this.setState({ iconsArray:[...this.state.iconsArray, value] });
+  //     console.log('this is state', this.state)
+  //     this.props.dispatch({
+  //       type: 'CURRENT_ITEM', payload:this.state
+  //     })
       
-    }
+  //   }
+
+  //   toggleSelected = (icon, selected) => {
+      
+  //     if (selected === true) {
+       
+  //       this.props.dispatch({ type: "REMOVE_ICON", payload: icon });
+  //     } else {
+        
+  //       this.props.dispatch({ type: "ADD_ICON", payload: icon });
+  //     }
+  //   };
     
 
   render() {
@@ -30,7 +41,7 @@ class IconsPage extends Component {
         
         <h2> What have you been up to today?</h2>
         <h3>Please choose all that apply</h3>
-        <ListOfIcons getValue={this.getValue}/>
+        <ListOfIcons getValue={this.getValue} toggleSelected={this.toggleSelected}/>
         <button id='backToWelcome' onClick={() => this.props.history.push("/welcome")}>Back</button>
         <button  id='nextIcon' onClick={() => this.props.history.push("/notes")}>Next Page</button>
         {/* <button onClick={() => this.props.history.push("/notes")}>Next Page</button> */}

@@ -12,6 +12,7 @@ class PastEntryPage extends Component {
 
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_ENTRY' })
+    // this.props.dispatch({type: 'RESET_CURRENT_ITEM'})
     
   }
 
