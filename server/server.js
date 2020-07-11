@@ -20,6 +20,7 @@ const lastEntryRouter= require('./routes/lastEntry.router')
 const lineChartRouter = require('./routes/lineChart.router')
 const pieChartRouter = require('./routes/pieChart.router');
 const editRouter = require('./routes/edit.router')
+const pictureRouter = require('./routes/picture.router')
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -44,6 +45,7 @@ app.use('/api/lastEntry',lastEntryRouter);
 app.use('/api/linechart',lineChartRouter);
 app.use('/api/piechart', pieChartRouter);
 app.use('/api/entryedit', editRouter);
+app.use('/api/picture',pictureRouter)
 
 // Serve static files
 app.use(express.static('build'));

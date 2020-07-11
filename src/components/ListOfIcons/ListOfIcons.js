@@ -43,8 +43,8 @@ class ListOfIcons extends Component {
       
       if (selected === true) {
        
-        this.props.dispatch({ type: "REMOVE_ICON", payload: icon
-      });
+        //THIS IS CAUSING ISSUES AS IT IS CURRENTLY WRITTEN
+        //  this.props.dispatch({ type: "REMOVE_ICON", payload: icon});
       } else if (selected === false){
         
       //   this.props.dispatch({ type: "ADD_ICON", payload:  { iconsArray:[...this.props.currentItem.iconsArray, icon] } });
