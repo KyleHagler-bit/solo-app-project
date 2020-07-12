@@ -42,8 +42,10 @@ class HomePage extends Component {
     const { icons } = this.props;
 
     return (
-      <div className="page" style={{ textAlign: 'center', border: '1px solid black', display: 'block', height:'1200px' }}>
-        <div style={{minHeight:'100%',width:'5%', backgroundColor:'red', float:'left'}}></div>
+      <>
+      <div style={{minHeight:'100%', width:'5%', backgroundColor:'red', float:'left'}}></div>
+      <div className="page" style={{ textAlign: 'center', border: '1px solid black', display: 'block', margin:'auto', width:'', marginBottom:'5%'}}>
+        
         <div style={{minHeight:'100%',width:'5%', backgroundColor:'red', float:'right'}}></div>
        
        
@@ -64,6 +66,7 @@ class HomePage extends Component {
               />
               
             </div>
+            
           );
         })}
         <br />
@@ -78,6 +81,7 @@ class HomePage extends Component {
         
        
       </div>
+      </>
     );
   }
 }

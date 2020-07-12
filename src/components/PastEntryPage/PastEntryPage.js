@@ -19,7 +19,7 @@ class PastEntryPage extends Component {
   render() {
     
     return (
-      <div className="page" >
+      <div className="page" style={{ display:'block'}}>
         
         <button style={{margin:'2%'}} onClick={() => this.props.history.push("/home")}>Back to Home Page</button>
         <br/> <br/>
@@ -30,7 +30,7 @@ class PastEntryPage extends Component {
           date=date.toDateString();
           console.log('this is inside pastpagenetry',item.id)
             return (
-              <div>
+              
               <EntryListItem 
               id={item.id} //this SHOULD be the entry_id
               emotion_value={item.emotion_value}
@@ -39,7 +39,7 @@ class PastEntryPage extends Component {
               
               
               />
-              </div>
+              
             );
           })}
       </div>

@@ -77,7 +77,7 @@ class EntryListItem extends Component {
       type: "DELETE_ENTRY",
       payload: itemID
     })
-    //window.location.reload(); //if don't have this, home page may not update correctly
+    window.location.reload(); //if don't have this, home page may not update correctly
   }
 
   // getIconValues=(id) => {
@@ -125,7 +125,7 @@ class EntryListItem extends Component {
     } else {
 
       return (
-        <div className='page' id='entrylist' style={{ border: '1px solid black', textAlign: 'center' }}>
+        <div id='entrylist' style={{ border: '1px solid black', textAlign: 'center', minHeight:'100%' }}>
           <div className='card'>
 
             <div id='head' className='card-header' >
@@ -142,7 +142,7 @@ class EntryListItem extends Component {
             </div> <br />
             <div className='card-body'>
               
-              <i style={{fontSize:'70px'}} className={this.emoji(emotion_value)}></i> <br/> <br/>
+              <i style={{fontSize:'500%'}} className={this.emoji(emotion_value)}></i> <br/> <br/>
             
               {noteEntry}<br /> <br />
 
@@ -163,7 +163,7 @@ class EntryListItem extends Component {
                 for (let i = 0; i < icons.length; i++) {
                   if (icons[i].id === item.activity_id) {
                     return (
-                      <div style={{ display: 'inline-block', margin: '5%' }}>
+                      <div style={{ display: 'inline-block', margin: '5%', fontSize:'90%' }}>
                         <i className={icons[i].activity_icon} id='entryIcon'></i>
                         <p>{icons[i].activity_name}</p>
                       </div>

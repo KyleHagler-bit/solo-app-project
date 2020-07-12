@@ -37,7 +37,7 @@ class EmotionScale extends Component {
   //TODO: likely need to make toggle for button instead of just focus.
   render() {
     return (
-      <div className='page'>
+      <div className=''>
 
         <button id='icon' data-tip data-for='Horrible' onClick={() => this.getValue(1)}><i className='fas fa-tired' ></i></button>
         <ReactTooltip id='Horrible'><span>Horrible</span></ReactTooltip>

@@ -2,6 +2,7 @@
   
   text-align:center;
   /* padding-bottom: 4%; */
+  
 
 }
 
@@ -10,8 +11,8 @@
   display:block;
   margin-left: 4%;
   margin-right: 4%;
-  margin-bottom: 1.5%;
-  margin-top: 1%;
+  margin-bottom: 3%;
+  margin-top: 0%;
   /* position: static; */
   float:left;
 }

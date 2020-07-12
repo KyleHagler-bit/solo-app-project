@@ -35,9 +35,9 @@ class IconsPage extends Component {
   render() {
     console.log('what is count?', this.props.currentItem.count)
     return (
-      <div className="page" style={{height:'825px'}}>
-        <div style={{minHeight:'100%',width:'5%', backgroundColor:'red', float:'left'}}></div>
-        <div style={{minHeight:'100%',width:'5%', backgroundColor:'red', float:'right'}}></div>
+      <div className="page" style={{height:'680px'}}>
+        <div style={{minHeight:'130%',width:'5%', backgroundColor:'red', float:'left'}}></div>
+        <div style={{minHeight:'130%',width:'5%', backgroundColor:'red', float:'right'}}></div>
         
         <h2> What have you been up to today?</h2>
         <h3>Please choose all that apply</h3>

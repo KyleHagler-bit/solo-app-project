@@ -32,6 +32,20 @@ function* deleteEntry(action) {
   }
 }
 
+function* addEntry(action) {
+  try {
+    const config = {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    };
+    //with POST, does not need response
+    yield axios.post("/api/entry", action.payload, config);
+    yield put({ type: "FETCH_ENTRY" });
+  } catch (error) {
+    console.log("Error with adding entry:", error);
+  }
+}
+
 // function* updateEntry(action) {
   
 //   try {
@@ -48,6 +62,7 @@ function* deleteEntry(action) {
 function* entrySaga() {
   yield takeEvery('FETCH_ENTRY', fetchEntry);
   yield takeEvery('DELETE_ENTRY', deleteEntry);
+  yield takeEvery('ADD_ENTRY', addEntry)
   //yield takeEvery('UPDATE_ENTRY', updateEntry)
 }
 

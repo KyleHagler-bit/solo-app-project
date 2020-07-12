@@ -44,13 +44,12 @@ class ListOfIcons extends Component {
       if (selected === true) {
        
         //THIS IS CAUSING ISSUES AS IT IS CURRENTLY WRITTEN
-        //  this.props.dispatch({ type: "REMOVE_ICON", payload: icon});
+         this.props.dispatch({ type: "REMOVE_ICON", payload: icon});
       } else if (selected === false){
         
       //   this.props.dispatch({ type: "ADD_ICON", payload:  { iconsArray:[...this.props.currentItem.iconsArray, icon] } });
       // }
-    
-
+ 
     
       this.props.dispatch({
         type: 'CURRENT_ITEM', payload: { iconsArray:[...this.props.currentItem.iconsArray, icon] }
@@ -80,7 +79,7 @@ class ListOfIcons extends Component {
             
       {this.props.icons.map((item,index) =>{
         
-        console.log('item.id is', item.id)
+        // console.log('item.id is', item.id)
         return(
           <div id='container'>
            <SelectedIcon id={item.id} nameForClass={item.activity_icon} toggleSelected={this.toggleSelected}

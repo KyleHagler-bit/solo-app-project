@@ -24,17 +24,19 @@ class WelcomePage extends Component {
   render() {
     // console.log('what is in here?',this.props.currentItem.emotionValue)
     return (
-      <div className="page" style={{height:'825px', display:'block'}}>
-        <div style={{minHeight:'100%',width:'5%', backgroundColor:'red', float:'left'}}></div>
-        <div style={{minHeight:'100%',width:'5%', backgroundColor:'red', float:'right'}}></div>
+      <div className="page" style={{display:'block', height:'680px'}}>
+        <div style={{minHeight:'130%',width:'5%', backgroundColor:'red', float:'left', overflowX:'hidden'}}></div>
+        <div style={{minHeight:'130%',width:'5%', backgroundColor:'red', float:'right'}}></div>
         {/* Do a conditional to say welcome back vs welcome */}
         <h2>Welcome!</h2>
         <h3>How are you feeling today?</h3>
-        <EmotionScale/> <br/><br/>
+        <EmotionScale/> 
         {/*User cannot move further on in the entry process unless they select an emotion*/}
- {this.props.currentItem.emotionValue===0 ? <button id='nextToIcons' disabled >Next Page</button>: <button onClick={() => this.submitInfo()}>Next Page</button>}
+        <div>
+ {this.props.currentItem.emotionValue===0 ? <button id='nextToIcons' disabled >Next Page</button>: <button id='nextToIcons' onClick={() => this.submitInfo()}>Next Page</button>}
   
         <button id='skipHome' onClick={() => this.props.history.push("/home")}>Skip to Home Page</button>
+        </div>
       </div>
     );
   }

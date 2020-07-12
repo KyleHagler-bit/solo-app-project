@@ -37,13 +37,13 @@ class NotesPage extends Component {
   }
 
   postHandler = (entry) =>{
-    Axios.post(`/api/entry`, entry)
-    .then(response =>{
-      this.props.dispatch({type:'CLEAR', payload: {} });
-    })
-    .catch(error=>{
-      alert(`ERROR`);
-    })
+    // Axios.post(`/api/entry`, entry)
+    // .then(response =>{
+    //   this.props.dispatch({type:'CLEAR', payload: {} });
+    // })
+    // .catch(error=>{
+    //   alert(`ERROR`); 
+    // })
     // Axios.post(`/api/entryActivity`, entry)
     // .then(response =>{
     //   this.props.dispatch({type:'CLEAR', payload: {} });
@@ -51,15 +51,17 @@ class NotesPage extends Component {
     // .catch(error=>{
     //   alert(`ERROR`);
     // })
+
+    this.props.dispatch({type:'ADD_ENTRY', payload:entry})
     
   }
 
   render() {
     console.log('inside note', this.state.note)
     return (
-      <div className="page" style={{height:'825px'}}>
-        <div style={{minHeight:'100%',width:'5%', backgroundColor:'red', float:'left'}}></div>
-        <div style={{minHeight:'100%',width:'5%', backgroundColor:'red', float:'right'}}></div>
+      <div className="page" style={{height:'680px', display:'block'}}>
+        <div style={{minHeight:'130%',width:'5%', backgroundColor:'red', float:'left'}}></div>
+        <div style={{minHeight:'130%',width:'5%', backgroundColor:'red', float:'right'}}></div>
         
         <h2> Have any notes you would like to log today?</h2> <br/>
         <textarea rows ='10' cols='100' placeholder='Write here' onChange={(event) => this.handleChange(event, "note")}></textarea>
