@@ -14,13 +14,14 @@ class HomePage extends Component {
   //NEED TO FIX SO DATA POPULATES PAGE RIGHT AWAY
   //TODO try to keep data even upon refresh
   componentDidMount() {
-
-    this.props.dispatch({ type: 'FETCH_LAST_ENTRY' })
-    this.props.dispatch({ type: 'FETCH_ICONS' })
-    this.props.dispatch({ type: 'FETCH_LINE' })
-    this.props.dispatch({ type: 'FETCH_PIE' })
-    this.props.dispatch({type:'FETCH_ENTRY'}) //is this needed?
-    this.props.dispatch({type:'FETCH_ACTIVITY_ENTRY'})
+  this.props.dispatch({type:'FETCH_ENTRY'}) //is this needed?
+    this.props.dispatch({ type: 'FETCH_LAST_ENTRY' }) //I need this one or wont appear on home
+    // this.props.dispatch({ type: 'FETCH_ICONS' })
+     this.props.dispatch({ type: 'FETCH_LINE' }) //I Do this in lineChart.js
+     
+    // this.props.dispatch({ type: 'FETCH_PIE' })
+   
+    //this.props.dispatch({type:'FETCH_ACTIVITY_ENTRY'})
     
     // this.props.dispatch({type: 'FETCH_CHOSEN_ICONS'})
 
@@ -43,11 +44,10 @@ class HomePage extends Component {
 
     return (
       <>
-      <div style={{minHeight:'100%', width:'5%', backgroundColor:'red', float:'left'}}></div>
-      <div className="page" style={{ textAlign: 'center', border: '1px solid black', display: 'block', margin:'auto', width:'', marginBottom:'5%'}}>
+      
+      <div className="page" style={{ textAlign: 'center', border: '1px solid black', display: 'block', margin:'auto', width:'', height:'100%', marginBottom:'5%'}}>
         
-        <div style={{minHeight:'100%',width:'5%', backgroundColor:'red', float:'right'}}></div>
-       
+        
        
         {this.props.lastEntry.map((item, index) => {
           let date = new Date(item.date_logged);
@@ -56,7 +56,7 @@ class HomePage extends Component {
             //CONDITIONALLY RENDER THIS SO TODAY'S ENTRY
             <div id='homeEntry' style={{border:'1px solid white'}}>
               <br/>
-              <h5 style={{textAlign:'left', marginLeft:'200px'}}>Today's Entry:</h5>
+              <h4 style={{textAlign:'left', marginLeft:'200px'}}>Latest Entry:</h4>
               <EntryListItem
               id={item.id}
                 emotion_value={item.emotion_value}

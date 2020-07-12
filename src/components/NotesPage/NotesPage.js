@@ -25,6 +25,9 @@ class NotesPage extends Component {
     // if (this.state.note==='' )
     this.props.history.push('/home')
     this.postHandler(this.state)
+    this.props.dispatch({ type: 'FETCH_LINE' })
+    this.props.dispatch({ type: 'FETCH_PIE' })
+    window.location.reload();
   }
 
   skipNotes = (event) => {
@@ -59,9 +62,8 @@ class NotesPage extends Component {
   render() {
     console.log('inside note', this.state.note)
     return (
-      <div className="page" style={{height:'680px', display:'block'}}>
-        <div style={{minHeight:'130%',width:'5%', backgroundColor:'red', float:'left'}}></div>
-        <div style={{minHeight:'130%',width:'5%', backgroundColor:'red', float:'right'}}></div>
+      <div className="page" style={{height:'100%', display:'block'}}>
+        
         
         <h2> Have any notes you would like to log today?</h2> <br/>
         <textarea rows ='10' cols='100' placeholder='Write here' onChange={(event) => this.handleChange(event, "note")}></textarea>

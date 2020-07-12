@@ -19,10 +19,10 @@ class PastEntryPage extends Component {
   render() {
     
     return (
-      <div className="page" style={{ display:'block'}}>
+      <div className="page" style={{ display:'block', height:'100%', border:'1px solid red'}}>
         
         <button style={{margin:'2%'}} onClick={() => this.props.history.push("/home")}>Back to Home Page</button>
-        <br/> <br/>
+        <br/> 
 
         {this.props.entry.map((item, index) => {
           let date=new Date (item.date_logged);
@@ -42,6 +42,7 @@ class PastEntryPage extends Component {
               
             );
           })}
+          
       </div>
     );
   }

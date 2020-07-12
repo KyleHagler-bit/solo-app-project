@@ -5,7 +5,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 
 router.get('/', rejectUnauthenticated, (req, res) => {
-  const queryText=`SELECT emotion_value, date_logged FROM "entry" WHERE user_id=$1;`
+  const queryText=`SELECT emotion_value, date_logged FROM "entry" WHERE user_id=$1 ORDER BY id ASC;`
   const queryValues=[req.user.id]
     pool.query(queryText,queryValues)
         .then(results => {

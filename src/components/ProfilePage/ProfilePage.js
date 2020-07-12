@@ -37,9 +37,9 @@ class ProfilePage extends Component {
     window.location.reload()
   }
 
-  cancel= ()=> {
+  cancel = () => {
     this.setState({
-      picIsEditable:false
+      picIsEditable: false
     })
   }
 
@@ -47,26 +47,25 @@ class ProfilePage extends Component {
   render() {
     const { icons, user } = this.props;
     console.log(user)
-    return (
+    return (<>
 
-      <div className="page" style={{ textAlign: 'center', border: '1px solid black', display: 'block',  margin: 'auto', minHeight:'680px' }}>
-        <div style={{ minHeight: '100%', width: '5%', backgroundColor: 'red', float: 'left' }}></div>
-        <div style={{ minHeight: '100%', width: '5%', backgroundColor: 'red', float: 'right' }}></div>
+      <div className="page" style={{ textAlign: 'center', border: '1px solid black', display: 'flex', margin: 'auto', height: '100%' }}>
 
-        <div className='card' style={{ width: '60%', margin: 'auto', minHeight:'680px' }}><br /><br />
-        <h2>Your Profile Page!</h2>
+
+        <div className='card' style={{ width: '60%', margin: 'auto', height: '100%' }}><br /><br />
+          <h2>Your Profile Page!</h2>
           <h4 className='card-title'>Hello {user.first_name}</h4>
           <div style={{ borderRadius: '100%', height: '300px', width: '300px', margin: '3%' }}> <br />
             {user.profile_pic ? <img id='profilePic' src={user.profile_pic} /> : <img id='placeholder' src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png' />}
 
           </div>
 
-          <div style={{ textAlign: 'left', margin: '2%', height:'90px' }}>
+          <div style={{ textAlign: 'left', margin: '2%', height: '100%' }}>
             <h5 className='card-text'>Change Password?</h5>
-            <div><h5 style={{display:'inline-block'}}>Add Profile Picture?</h5>  
-            {this.state.picIsEditable ? <div ><input style={{width:'100%'}} value={this.state.picture} placeholder='image URL please' onChange={this.handlePicture}></input>
-            <button onClick={this.savePicture}>Save</button><button onClick={this.cancel}>Cancel</button></div> 
-            : <button id='addImageBtn' onClick={this.editPicture}>+</button>} </div>
+            <div><h5 style={{ display: 'inline-block' }}>Add Profile Picture?</h5>
+              {this.state.picIsEditable ? <div ><input style={{ width: '100%' }} value={this.state.picture} placeholder='image URL please' onChange={this.handlePicture}></input>
+                <button onClick={this.savePicture}>Save</button><button onClick={this.cancel}>Cancel</button></div>
+                : <button id='addImageBtn' onClick={this.editPicture}>+</button>} </div>
 
             <h5>Change Language? <select>
               <option value='CHOOSE'>CHOOSE LANGUAGE</option>
@@ -78,6 +77,7 @@ class ProfilePage extends Component {
 
 
       </div>
+    </>
     );
   }
 }

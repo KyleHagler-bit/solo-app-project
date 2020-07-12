@@ -24,10 +24,9 @@ class WelcomePage extends Component {
   render() {
     // console.log('what is in here?',this.props.currentItem.emotionValue)
     return (
-      <div className="page" style={{display:'block', height:'680px'}}>
-        <div style={{minHeight:'130%',width:'5%', backgroundColor:'red', float:'left', overflowX:'hidden'}}></div>
-        <div style={{minHeight:'130%',width:'5%', backgroundColor:'red', float:'right'}}></div>
-        {/* Do a conditional to say welcome back vs welcome */}
+      <div className="page" style={{display:'block', minHeight:'100%', border:'1px solid black'}}>
+        
+        <br/><br/>
         <h2>Welcome!</h2>
         <h3>How are you feeling today?</h3>
         <EmotionScale/> 

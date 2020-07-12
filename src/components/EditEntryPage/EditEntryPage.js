@@ -51,7 +51,7 @@ class EditEntryPage extends Component {
           <div className='card'>
             <div id='head' className='card-header' >
               {/*FIX THIS SO DATE ACTUALLY IS DISPLAYED */}
-              <h5 className='card-title' style={{ border: '1px solid black', width: '60%', textAlign: 'center', marginLeft: 'auto', marginRight: 'auto' }}>{entry.date_logged}</h5>
+              <h2 className='card-title' style={{ border: '1px solid black', width: '60%', textAlign: 'center', marginLeft: 'auto', marginRight: 'auto' }}>{this.props.currentItem.date}</h2>
 
             </div> <br />
             <div className='card-body'>

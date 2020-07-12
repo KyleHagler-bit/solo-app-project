@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
+import './RegisterPage.css';
+
 class RegisterPage extends Component {
   state = {
     first_name:'',
@@ -46,11 +48,11 @@ class RegisterPage extends Component {
             {this.props.errors.registrationMessage}
           </h2>
         )}
-        <form onSubmit={this.registerUser}>
-          <h1>Register User</h1>
+        <form id='registerForm' onSubmit={this.registerUser}>
+          <h1 id='registerTitle'>Register User</h1> <br/>
           <div>
             <label >
-              First Name:
+              First Name: &nbsp;
               <input
                 type="text"
                 name="first_name"
@@ -61,7 +63,7 @@ class RegisterPage extends Component {
           </div>
           <div>
             <label >
-              Last Name:
+              Last Name: &nbsp;
               <input
                 type="text"
                 name="last_name"
@@ -72,7 +74,7 @@ class RegisterPage extends Component {
           </div>
           <div>
             <label>
-              Email:
+              Email: &nbsp; &nbsp; &nbsp; &nbsp; {/*'No-break space */}
               <input
                 type="text"
                 name="username"
@@ -83,7 +85,7 @@ class RegisterPage extends Component {
           </div>
           <div>
             <label htmlFor="password">
-              Password:
+              Password: &nbsp; &nbsp;
               <input
                 type="password"
                 name="password"
@@ -94,22 +96,24 @@ class RegisterPage extends Component {
           </div>
           <div>
             <label >
-              Birthday:
+              Birthday: &nbsp; &nbsp; &nbsp;
               <input
                 type="date"
-                // name="password"
+                
                 value={this.state.birthday}
                 onChange={this.handleInputChangeFor('birthday')}
               />
             </label>
           </div>
           <div>
-            <input
+            <center>
+            <input id='registerBtn'
               className="register"
               type="submit"
               name="submit"
               value="Register"
             />
+            </center>
           </div>
         </form>
         <center>

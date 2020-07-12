@@ -6,8 +6,10 @@ import moment from 'moment';
 
 class LineChart extends Component {
 
+
+
   componentDidMount() {
-    // this.props.dispatch({ type: 'FETCH_LINE' })
+    this.props.dispatch({ type: 'FETCH_LINE' })
 
   }
 

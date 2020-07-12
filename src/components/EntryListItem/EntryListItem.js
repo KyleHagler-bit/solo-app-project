@@ -16,10 +16,10 @@ import axios from 'axios';
 class EntryListItem extends Component {
 
   state = {
-    id:0, //should be entry_id
+    id: 0, //should be entry_id
     iconsArray: [],
-    emotionValue:0,
-    note:'',
+    emotionValue: 0,
+    note: '',
 
   }
 
@@ -36,8 +36,8 @@ class EntryListItem extends Component {
     //   }]
     //   }))
 
-      
-//move this t the appropriate reducer thing?
+
+    //move this t the appropriate reducer thing?
     this.props.dispatch({ type: 'FETCH_ICONS' })
 
     axios({
@@ -57,18 +57,19 @@ class EntryListItem extends Component {
 
   editEntry = (itemID) => {
     this.props.history.push('/edit');
-    this.props.dispatch({type: 'FETCH_EDIT', payload: itemID})
+    this.props.dispatch({ type: 'FETCH_EDIT', payload: itemID })
 
     this.props.dispatch({
       //Here, we grab the movie we are currently clicked on
-      type: 'CURRENT_ITEM', payload: 
-        {
-          id: itemID,
-          emotionValue: this.props.emotion_value,
-          note: this.props.note
-        }
+      type: 'CURRENT_ITEM', payload:
+      {
+        id: itemID,
+        emotionValue: this.props.emotion_value,
+        note: this.props.note,
+        date: this.props.date_logged
+      }
     })
-    
+
   }
 
 
@@ -110,9 +111,9 @@ class EntryListItem extends Component {
   render() {
     const { id, emotion_value, note, date_logged, icons } = this.props;
     const { text } = this.state;
-    
-    let noteEntry=''
-    if (note ==='' || note===undefined || note===null){
+
+    let noteEntry = ''
+    if (note === '' || note === undefined || note === null) {
       noteEntry = 'No entry written for today'
     } else {
       noteEntry = note;
@@ -125,7 +126,7 @@ class EntryListItem extends Component {
     } else {
 
       return (
-        <div id='entrylist' style={{ border: '1px solid black', textAlign: 'center', minHeight:'100%' }}>
+        <div id='entrylist' style={{ border: '1px solid black', textAlign: 'center', minHeight: '100%' }}>
           <div className='card'>
 
             <div id='head' className='card-header' >
@@ -137,13 +138,13 @@ class EntryListItem extends Component {
               <a data-tip data-for='delete' onClick={() => this.deleteEntry(id)}>
                 <i className='fa fa-trash' aria-hidden='true' style={{ float: 'right' }}></i>
               </a> <ReactTooltip id='delete'><span>Delete Entry?</span></ReactTooltip>
-              <h5 className='card-title' style={{ border: '1px solid black', width: '60%', textAlign: 'center', marginLeft: 'auto', marginRight: 'auto' }}>{date_logged}</h5>
+              <h5 className='card-title' style={{ border: '1px solid black', width: '60%', textAlign: 'center', marginLeft: 'auto', marginRight: 'auto' }}><i>{date_logged}</i></h5>
 
             </div> <br />
             <div className='card-body'>
-              
-              <i style={{fontSize:'500%'}} className={this.emoji(emotion_value)}></i> <br/> <br/>
-            
+
+              <i style={{ fontSize: '500%' }} className={this.emoji(emotion_value)}></i> <br /> <br />
+
               {noteEntry}<br /> <br />
 
               {/* {this.props.chosenIcons.map((item, index) => {
@@ -158,23 +159,19 @@ class EntryListItem extends Component {
               );})} */}
 
               {this.state.iconsArray.map((item, index) => {
-                console.log('this is icons array item.id',item.id)
+                console.log('this is icons array item.id', item.id)
 
                 for (let i = 0; i < icons.length; i++) {
                   if (icons[i].id === item.activity_id) {
                     return (
-                      <div style={{ display: 'inline-block', margin: '5%', fontSize:'90%' }}>
+                      <div style={{ display: 'inline-block', margin: '5%', fontSize: '90%' }}>
                         <i className={icons[i].activity_icon} id='entryIcon'></i>
                         <p>{icons[i].activity_name}</p>
                       </div>
                     )
                   }
                 }
-                // return(
-                //   <div>
-                // {item.activity_id}
-                // </div>
-                // )
+                
               })}
 
             </div>

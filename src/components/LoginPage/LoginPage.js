@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import { withRouter } from "react-router";
 
+import './LoginPage.css';
+
 class LoginPage extends Component {
   state = {
     username: '',
@@ -36,7 +38,7 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
-         
+
         {this.props.errors.loginMessage && (
           <h2
             className="alert"
@@ -45,12 +47,12 @@ class LoginPage extends Component {
             {this.props.errors.loginMessage}
           </h2>
         )}
-        <form onSubmit={this.login}>
-          <h1>Login</h1>
+        <form id='loginForm' onSubmit={this.login}>
+          <h1 id='loginTitle'>Login</h1>
           <h5>Please use <b>'test'</b> and <b>'test'</b> to login</h5>
           <div>
             <label>
-              Email:
+              Email: &nbsp; &nbsp; &nbsp; &nbsp;
               <input
                 type="text"
                 name="username"
@@ -61,7 +63,7 @@ class LoginPage extends Component {
           </div>
           <div>
             <label htmlFor="password">
-              Password:
+              Password: &nbsp;
               <input
                 type="password"
                 name="password"
@@ -71,12 +73,14 @@ class LoginPage extends Component {
             </label>
           </div>
           <div>
+            <center>
             <input
               className="log-in"
               type="submit"
               name="submit"
               value="Log In"
             />
+            </center>
           </div>
           <div>
             <input
@@ -84,7 +88,7 @@ class LoginPage extends Component {
               type="button"
               name="submit"
               value="Forgot Password?"
-              onClick={() => {alert('This is a placeholder! NONFUNCTIONAL')}}
+              onClick={() => { alert('This is a placeholder! NONFUNCTIONAL') }}
             />
           </div>
         </form>
@@ -92,7 +96,7 @@ class LoginPage extends Component {
           <button
             type="button"
             className="link-button"
-            onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}
+            onClick={() => { this.props.dispatch({ type: 'SET_TO_REGISTER_MODE' }) }}
           >
             Register
           </button>
