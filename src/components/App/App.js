@@ -8,15 +8,18 @@ import {
 
 import { connect } from 'react-redux';
 
+//CSS
+import './App.css';
+
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
+//App components
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
-
 import WelcomePage from '../WelcomePage/WelcomePage';
 import IconsPage from '../IconsPage/IconsPage';
 import NotesPage from '../NotesPage/NotesPage';
@@ -24,8 +27,6 @@ import HomePage from '../HomePage/HomePage';
 import PastEntryPage from '../PastEntryPage/PastEntryPage';
 import ProfilePage from '../ProfilePage/ProfilePage';
 import EditEntryPage from '../EditEntryPage/EditEntryPage';
-
-import './App.css';
 
 class App extends Component {
   componentDidMount() {

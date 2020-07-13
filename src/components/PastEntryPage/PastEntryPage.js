@@ -12,11 +12,18 @@ class PastEntryPage extends Component {
 
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_ENTRY' })
-    // this.props.dispatch({type: 'RESET_CURRENT_ITEM'})
-    
   }
 
   render() {
+    //Check to see if any entries exist. If none, prompt user to make an entry
+    if (this.props.entry.length===0){
+      return(
+        <center> <br/> <br/>
+      <h4 >Oops! It's empty in here... why not make an entry?</h4>
+      <button style={{margin:'2%'}} onClick={() => this.props.history.push("/welcome")}>Make an Entry</button>
+      </center>
+      )
+    } else {
     
     return (
       <div className="page" style={{ display:'block', height:'100%', border:'1px solid red'}}>
@@ -45,7 +52,7 @@ class PastEntryPage extends Component {
           
       </div>
     );
-  }
+  }}
 }
 
 const mapStateToProps = state => ({

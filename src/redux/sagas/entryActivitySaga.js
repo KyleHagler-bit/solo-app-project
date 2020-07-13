@@ -18,8 +18,6 @@ function* fetchActivityEntry() {
 }
 
 
-
-
 function* activityEntrySaga() {
   yield takeEvery('FETCH_ACTIVITY_ENTRY', fetchActivityEntry);
  

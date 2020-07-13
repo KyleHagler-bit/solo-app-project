@@ -17,6 +17,7 @@ class ProfilePage extends Component {
     this.props.dispatch({ type: 'FETCH_PICTURE' })
   }
 
+  //used to help toggle between button and input box
   editPicture = () => {
     this.setState({
       picIsEditable: true
@@ -29,14 +30,13 @@ class ProfilePage extends Component {
 
   savePicture = () => {
     console.log('this is state.picturre', this.state.picture)
-    this.setState({
-      picIsEditable: false
-    })
+    this.setState({ picIsEditable: false })
     this.props.dispatch({ type: 'UPDATE_PICTURE', payload: this.state })
     this.props.dispatch({ type: 'FETCH_PICTURE' })
     window.location.reload()
   }
 
+  //User will not input anything. Change input box back into a button
   cancel = () => {
     this.setState({
       picIsEditable: false
@@ -75,7 +75,6 @@ class ProfilePage extends Component {
           </div>
         </div>
 
-
       </div>
     </>
     );
@@ -84,8 +83,7 @@ class ProfilePage extends Component {
 
 const mapStateToProps = state => ({
   user: state.user,
-  lastEntry: state.lastEntry,
-  icons: state.icons
+
 });
 
 export default withRouter(connect(mapStateToProps)(ProfilePage));

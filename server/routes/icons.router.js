@@ -3,6 +3,9 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
+//GETs all icons from the library of icons in the database
+//This means grabbing:
+//      id    activity_name     activity_icon (this would be the bootstrap className)
 router.get('/', rejectUnauthenticated, (req, res) => {
   pool.query('SELECT * FROM activity_library')
   

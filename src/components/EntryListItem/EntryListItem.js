@@ -7,12 +7,10 @@ import 'bootstrap/dist/css/bootstrap.css';
 import ReactTooltip from 'react-tooltip';
 import { withRouter } from "react-router";
 
-import IconForEntry from '../IconForEntry/IconForEntry';
+
 import axios from 'axios';
 
-//Will I need to pass anything up? Need to have some sort of toggle
-//so that I can show what icons are chosen
-//And need to update state or whatever with values(ids) chosen
+
 class EntryListItem extends Component {
 
   state = {
@@ -23,23 +21,11 @@ class EntryListItem extends Component {
 
   }
 
-  //this only gets one id... which means all past entries look identical which is WRONG
+
   componentDidMount() {
-
-    console.log('in comp did mount', this.props.id)
-    //   this.props.dispatch({ type: 'FETCH_CHOSEN_ICONS', payload: this.props.id })
-
-    // this.setState({ id:this.props.id, emotionValue:this.props.emotion_value}, () => this.props.dispatch({
-    //   type: 'CURRENT_ITEM', payload: [{
-    //     id:this.props.id, emotionValue:this.props.emotion_value
-
-    //   }]
-    //   }))
-
-
-    //move this t the appropriate reducer thing?
     this.props.dispatch({ type: 'FETCH_ICONS' })
 
+    //Move this to reducer or whatever?
     axios({
       method: 'GET',
       url: `/api/chosen/${this.props.id}`,
@@ -52,15 +38,16 @@ class EntryListItem extends Component {
 
     }).catch((error) => {
       console.log('Error getting, ', error);
-    });
+    }); //end axios
+
   }
+
 
   editEntry = (itemID) => {
     this.props.history.push('/edit');
     this.props.dispatch({ type: 'FETCH_EDIT', payload: itemID })
 
     this.props.dispatch({
-      //Here, we grab the movie we are currently clicked on
       type: 'CURRENT_ITEM', payload:
       {
         id: itemID,
@@ -69,25 +56,19 @@ class EntryListItem extends Component {
         date: this.props.date_logged
       }
     })
-
+    this.props.dispatch({ type: 'FETCH_ENTRY' }) //Does this do anything?
   }
 
-
+  //DELETE entry with selected ID
   deleteEntry = (itemID) => {
     this.props.dispatch({
       type: "DELETE_ENTRY",
       payload: itemID
     })
-    window.location.reload(); //if don't have this, home page may not update correctly
+    window.location.reload(); //if don't have this, past entries do not show deleting correctly
   }
 
-  // getIconValues=(id) => {
-  //   this.props.dispatch({type:'FETCH_CHOSEN_ICONS', payload:id})
-  //   return(
-
-  //   )
-  // }
-
+  //This will display the specific emoticon associated with the entry
   emoji = (emoticonID) => {
     switch (emoticonID) {
       case 1:
@@ -110,83 +91,66 @@ class EntryListItem extends Component {
 
   render() {
     const { id, emotion_value, note, date_logged, icons } = this.props;
-    const { text } = this.state;
 
-    let noteEntry = ''
+    let noteEntry = ''; //conditional rendering to see if note field is left empty
     if (note === '' || note === undefined || note === null) {
       noteEntry = 'No entry written for today'
     } else {
       noteEntry = note;
     }
-    //TURN THIS INTO COMPONENT?
-    if (!this.props.entry) {
-      return (
-        <h3>Oops! Nothing to display. Why not make an entry?</h3>
-      )
-    } else {
 
-      return (
-        <div id='entrylist' style={{ border: '1px solid black', textAlign: 'center', minHeight: '100%' }}>
-          <div className='card'>
+    return (
 
-            <div id='head' className='card-header' >
-              <a data-tip data-for='edit' onClick={() => this.editEntry(id)}>
+      <div id='entrylist' style={{ border: '1px solid black', textAlign: 'center', minHeight: '100%' }}>
 
-                <i className='fa fa-pencil' aria-hidden='true' style={{ float: 'left' }}></i>
-              </a>
-              <ReactTooltip id='edit'><span>Edit Entry?</span></ReactTooltip>
-              <a data-tip data-for='delete' onClick={() => this.deleteEntry(id)}>
-                <i className='fa fa-trash' aria-hidden='true' style={{ float: 'right' }}></i>
-              </a> <ReactTooltip id='delete'><span>Delete Entry?</span></ReactTooltip>
-              <h5 className='card-title' style={{ border: '1px solid black', width: '60%', textAlign: 'center', marginLeft: 'auto', marginRight: 'auto' }}><i>{date_logged}</i></h5>
+        <div className='card'>
 
-            </div> <br />
-            <div className='card-body'>
+          <div id='head' className='card-header' >
+            <a data-tip data-for='edit' onClick={() => this.editEntry(id)}>
+              <i className='fa fa-pencil' aria-hidden='true' style={{ float: 'left' }}></i>
+            </a> <ReactTooltip id='edit'><span>Edit Entry?</span></ReactTooltip>
 
-              <i style={{ fontSize: '500%' }} className={this.emoji(emotion_value)}></i> <br /> <br />
+            <a data-tip data-for='delete' onClick={() => this.deleteEntry(id)}>
+              <i className='fa fa-trash' aria-hidden='true' style={{ float: 'right' }}></i>
+            </a> <ReactTooltip id='delete'><span>Delete Entry?</span></ReactTooltip>
 
-              {noteEntry}<br /> <br />
+            <h5 className='card-title' style={{ border: '1px solid black', width: '60%', textAlign: 'center', marginLeft: 'auto', marginRight: 'auto' }}><i>{date_logged}</i></h5>
 
-              {/* {this.props.chosenIcons.map((item, index) => {
-              // console.log('inside entry list item', item);
-              return (
-                <div>
-                {/* {item.activity_id} */}
-              {/* <IconForEntry id ={id} activity={item.activity_id}/> */} {/*
-                {item.entry_id} <br/>
-                {item.activity_id}
-                </div>
-              );})} */}
+          </div> <br />
+          <div className='card-body'>
 
-              {this.state.iconsArray.map((item, index) => {
-                console.log('this is icons array item.id', item.id)
+            <i style={{ fontSize: '500%' }} className={this.emoji(emotion_value)}></i> <br /> <br />
 
-                for (let i = 0; i < icons.length; i++) {
-                  if (icons[i].id === item.activity_id) {
-                    return (
-                      <div style={{ display: 'inline-block', margin: '5%', fontSize: '90%' }}>
-                        <i className={icons[i].activity_icon} id='entryIcon'></i>
-                        <p>{icons[i].activity_name}</p>
-                      </div>
-                    )
-                  }
+            {noteEntry}<br /> <br /> {/*The note section of the entry */}
+
+            {/*The will map over and display the chosen icons for the specific entry */}
+            {this.state.iconsArray.map((item, index) => {
+
+              for (let i = 0; i < icons.length; i++) {
+                if (icons[i].id === item.activity_id) {
+
+                  return (
+                    <div style={{ display: 'inline-block', margin: '5%', fontSize: '90%' }}>
+                      <i className={icons[i].activity_icon} id='entryIcon'></i>
+                      <p>{icons[i].activity_name}</p>
+                    </div>
+                  )
                 }
-                
-              })}
+              }
 
-            </div>
+            })}
 
           </div>
+
         </div>
-      );
-    }
+      </div>
+    );
   }
+
 }
 
 const mapStateToProps = state => ({
-  entry: state.entry,
-  // chosenIcons: state.chosenIcons,
-  icons: state.icons
+  icons: state.icons,
 });
 
 export default withRouter(connect(mapStateToProps)(EntryListItem));

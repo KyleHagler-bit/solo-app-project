@@ -10,7 +10,7 @@ function* fetchLineChart() {
     };
     
     const response = yield axios.get('api/linechart', config);
-    console.log('inside chartSaga', response.data)
+   
     yield put({ type: 'SET_LINE', payload: response.data });
   } catch (error) {
     console.log('Chart get request failed', error);

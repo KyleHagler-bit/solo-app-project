@@ -3,6 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
+//GET all entries tied to user to display for past entries
 router.get('/', rejectUnauthenticated, (req, res) => {
   pool.query('SELECT * FROM entry WHERE user_id=$1 ORDER BY id DESC',[req.user.id]) //only gets entries from specific user
   
@@ -15,7 +16,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     });
 });
 
- //POST////////////////////
+ //POST a new entry
 router.post("/", async (req, res) => {
   const client = await pool.connect();
   let today = new Date();
@@ -37,6 +38,8 @@ router.post("/", async (req, res) => {
     );
     //const orderId = orderInsertResults.rows[0].id;
 
+    //this will make sure to add all the new icons related to that specific entry
+    //MAX(id) is used to target the newest/latest entry as it will always have the largest id #
     await Promise.all(
       iconsArray.map((item) => {
         const insertLineItemText = `
@@ -58,38 +61,10 @@ router.post("/", async (req, res) => {
   }
 });
 
-// router.post("/", rejectUnauthenticated, (req, res) => {
-//   const entry = req.body; // pull the object out out of the HTTP REQUEST
-//   const client = await pool.connect();
-//   const { emotionValue, iconsArray, note, userID } = entry;
-//   let today = new Date();
-//   if (entry === undefined) {
-//     // stop, dont touch the database
-//     res.sendStatus(400); // 400 BAD REQUEST
-//     return;
-//   }
-
-//   const queryText = `
-//         INSERT INTO entry (user_id, emotion_value, note, date_logged) 
-//         VALUES ($1, $2, $3, $4);`; //grabs database
-//   pool
-//     .query(queryText, [req.user.id, emotionValue, note, today])
-//     .then(function (result) {
-//       // result.rows: 'INSERT 0 1';
-//       // it worked!
-//       res.sendStatus(200); // 200: OK
-//     })
-//     .catch(function (error) {
-//       console.log("Sorry, there was an error with your query: ", error);
-//       res.sendStatus(500); // HTTP SERVER ERROR
-//     });
-// });
-
-
+//DELETEs the chosen entry with the entry id given
 router.delete("/:id", rejectUnauthenticated, (req, res) => {
   let id = req.params.id; // id of the thing to delete
-	// console.log("Delete route called with id of", id);
-	// console.log("req.user.id", req.user.id);
+	
 
   /* if (session.id !== database.id) {sendStatus(403) return;}*/
   let queryText = `SELECT * FROM entry WHERE id=$1`; //grabs specific item to grab the item user_id
@@ -99,7 +74,6 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
     .then((result) => {
 			// console.log("result.rows[0].user_id", result.rows[0].user_id);
       if (result.rows[0].user_id === req.user.id) {
-        //checks to see if current user is the one who added the image
         queryText = `DELETE FROM entry WHERE id=$1;`; //deletes from database
         pool
           .query(queryText, [id])
@@ -111,41 +85,12 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
             res.sendStatus(500); //HTTP SERVER ERROR
           });
       } else {
-        res.sendStatus(401); // user not authorized to delete item
+        res.sendStatus(401);
       }
     })
     .catch((error) => {
       res.sendStatus(500);
     });
 });
-
-router.put('/', (req, res) => {
-  console.log('inside put for update',req.body)
-  console.log(req.user.id)
-  const updatedEntry = req.body;
-  
-
-  const queryText = `UPDATE entry
-  SET "user_id" = $1, 
-  "emotion_value" = $2,
-  "note" = $3
-  WHERE id=$4;`
-
-  const queryValues = [
-    req.user.id,
-    updatedEntry.emotionValue,
-    updatedEntry.note,
-    updatedEntry.id
-  ];
-
-  pool.query(queryText, queryValues)
-    .then(() => { res.sendStatus(200); })
-    .catch((err) => {
-      console.log('Error completing UPDATE', err);
-      res.sendStatus(500);
-    });
-});
-
-
 
 module.exports = router;

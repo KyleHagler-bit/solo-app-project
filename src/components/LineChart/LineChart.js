@@ -6,25 +6,16 @@ import moment from 'moment';
 
 class LineChart extends Component {
 
-
-
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_LINE' })
-
   }
 
-  //NEED TO: label y-axis with moods AND fix how dates are displayed on x axis
+  
   values = () => {
     let emotionValues = [];
     this.props.lineChart.map((item, index) => {
       emotionValues.push(item.emotion_value);
-
-
-      // return (
-      //   item.emotion_value
-      // )
     })
-
     return emotionValues;
   }
 
@@ -35,11 +26,10 @@ class LineChart extends Component {
         return (
           x.toDateString()
         )
-      }), //need to be the date of entries
+      }), 
       datasets: [
         {
           label: 'Mood over time',
-
           data: this.values(), //dont have an array in an array
           backgroundColor: '#7FFFD4'
         }],
@@ -119,8 +109,6 @@ class LineChart extends Component {
 
 
           }} />
-
-        {/* <pre>{JSON.stringify(this.props.chart)}</pre> */}
 
       </div>
     )}

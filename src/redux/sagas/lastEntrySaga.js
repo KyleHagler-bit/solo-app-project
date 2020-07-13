@@ -10,7 +10,7 @@ function* fetchLastEntry() {
     };
     
     const response = yield axios.get('/api/lastEntry', config);
-    console.log('inside Saga', response.data)
+  
     yield put({ type: 'SET_LAST_ENTRY', payload: response.data });
   } catch (error) {
     console.log('Icons get request failed', error);

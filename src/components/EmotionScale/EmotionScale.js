@@ -6,6 +6,7 @@ import ReactTooltip from 'react-tooltip';
 
 import 'font-awesome/css/font-awesome.min.css';
 
+//Fills in associated word when mood is clicked
 const emotion = (emoticonID) => {
   switch (emoticonID) {
     case 1:
@@ -34,11 +35,10 @@ class EmotionScale extends Component {
     });
   }
 
-  //TODO: likely need to make toggle for button instead of just focus.
   render() {
     return (
       <div className=''>
-
+          {/*Each one is a button with a tooltip attached and returns a numerical value on click */}
         <button id='icon' data-tip data-for='Horrible' onClick={() => this.getValue(1)}><i className='fas fa-tired' ></i></button>
         <ReactTooltip id='Horrible'><span>Horrible</span></ReactTooltip>
 

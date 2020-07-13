@@ -3,9 +3,10 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
+//GETs the picture saved in the database (from user table) tied to the user
 router.get('/', rejectUnauthenticated, (req, res) => {
-  pool.query('SELECT "profile_pic" FROM "user" WHERE id=$1',[req.user.id]) //only gets entries from specific user
-  
+  pool.query('SELECT "profile_pic" FROM "user" WHERE id=$1', [req.user.id]) //only gets entries from specific user
+
     .then((result) => {
       res.send(result.rows);
     })
@@ -15,19 +16,12 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     });
 });
 
- 
+//PUT used to update picture in database
 router.put('/', (req, res) => {
-console.log('this is req.body',req.body.picture)
+  console.log('this is req.body', req.body.picture)
 
-  const queryText = `UPDATE "user"
-  SET profile_pic = $1 
-  WHERE id=$2;`
-
-  const queryValues = [
-    req.body.picture,
-    req.user.id,
-    
-  ];
+  const queryText = `UPDATE "user" SET profile_pic = $1 WHERE id=$2;`
+  const queryValues = [req.body.picture, req.user.id];
 
   pool.query(queryText, queryValues)
     .then(() => { res.sendStatus(200); })
@@ -36,7 +30,6 @@ console.log('this is req.body',req.body.picture)
       res.sendStatus(500);
     });
 });
-
 
 
 module.exports = router;

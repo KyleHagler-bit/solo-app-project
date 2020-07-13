@@ -8,21 +8,16 @@ import { withRouter } from "react-router";
 class WelcomePage extends Component {
 
   componentDidMount() {
-    this.props.dispatch({type:'RESET_CURRENT_ITEM'})
-    console.log('this is current item?', this.props.currentItem)
-   
+    this.props.dispatch({type:'RESET_CURRENT_ITEM'}) //try to make sure data gets cleared if user goes to first question
   }
 
   submitInfo = (event) =>{
-    // console.log('What is even here in welcome?', this.state)
-    // this.props.dispatch({ type: "CURRENT_ENTRY", payload: this.state });
     this.props.history.push("/icons")
-
   }
 
-  //TODO: make on hover for each emoticon saying what emotion it portrays
+ 
   render() {
-    // console.log('what is in here?',this.props.currentItem.emotionValue)
+
     return (
       <div className="page" style={{display:'block', minHeight:'100%', border:'1px solid black'}}>
         

@@ -6,10 +6,9 @@ import './SelectedIcon.css';
 class SelectedIcon extends Component {
   
 
-
   render() {
     let {selected, toggleSelected, id, nameForClass,name} = this.props;
-    let selectedIcons = this.props.currentItem.iconsArray;
+    
     return (
       <div className="page" >
        
@@ -23,9 +22,7 @@ class SelectedIcon extends Component {
 }
 
 const mapStateToProps = state => ({
-  entry:state.entry,
-  currentItem:state.currentItem,
-  user:state.user
+
 });
 
 export default withRouter(connect(mapStateToProps)(SelectedIcon));

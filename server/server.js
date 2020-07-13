@@ -10,13 +10,13 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
-const welcomeRouter = require('./routes/welcome.router')
+
 const iconsRouter = require('./routes/icons.router')
-const homeRouter = require('./routes/home.router')
+
 const entryRouter = require('./routes/entry.router')
 const entryActivityRouter = require('./routes/entryActivity.router')
 const lastEntryRouter= require('./routes/lastEntry.router')
- const chosenIconsRouter=require('./routes/chosenIcons.router')
+const chosenIconsRouter=require('./routes/chosenIcons.router')
 const lineChartRouter = require('./routes/lineChart.router')
 const pieChartRouter = require('./routes/pieChart.router');
 const editRouter = require('./routes/edit.router')
@@ -35,13 +35,13 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
-app.use('/api/welcome',welcomeRouter);
+
 app.use('/api/icons',iconsRouter);
-app.use('/api/home', homeRouter);
+
 app.use('/api/entry', entryRouter);
 app.use('/api/entryActivity',entryActivityRouter);
 app.use('/api/lastEntry',lastEntryRouter);
- app.use('/api/chosen', chosenIconsRouter)
+app.use('/api/chosen', chosenIconsRouter)
 app.use('/api/linechart',lineChartRouter);
 app.use('/api/piechart', pieChartRouter);
 app.use('/api/entryedit', editRouter);

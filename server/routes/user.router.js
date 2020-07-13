@@ -1,3 +1,5 @@
+//BIG CHANGE HERE: got email out of database instead of username
+//DID NOT want to change much because I am new to Passport
 const express = require('express');
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 const encryptLib = require('../modules/encryption');

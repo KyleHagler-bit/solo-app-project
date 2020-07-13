@@ -3,9 +3,9 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
+//GET entry to edit that is tied to the logged in user AND was specfically clicked on
 router.get('/:id', rejectUnauthenticated, (req, res) => {
   pool.query('SELECT * FROM entry WHERE user_id=$1 AND id=$2', [req.user.id, req.params.id]) //only gets entries from specific user
-
     .then((result) => {
       res.send(result.rows);
     })
@@ -15,36 +15,11 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     });
 });
 
-// router.put('/', (req, res) => {
-//   console.log('inside edit router', req.body)
-//   const updatedEntry = req.body;
 
-//   const queryText = `UPDATE entry
-//   SET 
-//   "emotion_value" = $1,
-//   "note" = $2
-//   WHERE id=$3`;
-
-//   const queryValues = [
-//     // req.user.id,
-//     updatedEntry.emotionValue,
-//     updatedEntry.note,
-//     updatedEntry.id
-//   ];
-
-//   pool.query(queryText, queryValues)
-//     .then(() => { res.sendStatus(200); })
-//     .catch((err) => {
-//       console.log('Error completing UPDATE', err);
-//       res.sendStatus(500);
-//     });
-// });
-
+//UPDATE entries (techincally will update everything but DELETE and INSERT icons as chosen)
 router.put("/", async (req, res) => {
   const client = await pool.connect();
   let today = new Date();
-  console.log('this means put in edit router is runnning')
-  // console.log(req.body);
 
   try {
     const {
@@ -52,7 +27,6 @@ router.put("/", async (req, res) => {
       iconsArray,
       note,
       id,
-      activityEntry
     } = req.body;
     await client.query("BEGIN");
     const orderInsertResults = await client.query(
@@ -68,31 +42,26 @@ router.put("/", async (req, res) => {
 
     await Promise.all(
       iconsArray.map((item) => {
-        // console.log('this is activityEntry', activityEntry)
-        // console.log(item.entry_id === id)
-        
-          console.log('what is this', item, id)
-            // console.log('this is iconsArray', iconID)
-            //WE CANT UPDATE THINGS IF THEY DONT EXIST AT ALL!!!!!!
-            //SHOULD I JUST DELETE ALL IN THERE AND THEN JUST DO INSERT?
+
+
+        console.log('what is this', item, id)
+        //This is what I orginally was going for -->
         //     const insertLineItemText = `
         // IF EXISTS (SELECT * FROM "entry_activity" WHERE id=$1) THEN
         // UPDATE "entry_activity" SET "activity_id"=$2, "entry_id"=$3 WHERE id=$1;
         // ELSE
         // INSERT INTO "entry_activity" ("entry_id","activity_id") VALUES ($3 ,$2);
         // END IF;`
-        // add a double-column unique constraint
-        // on conflict do nothing
-        const insertLineItemText =`
+        // add a double-column unique constraint? on conflict do nothing
+
+        const insertLineItemText = `
         INSERT INTO entry_activity ( entry_id, activity_id) 
         VALUES ($1,$2);`
-        //on conflict LOOK INTO
 
-            const insertLineItemValues = [id,item];
-            return client.query(insertLineItemText, insertLineItemValues);
-          })
-        
-     
+        const insertLineItemValues = [id, item];
+        return client.query(insertLineItemText, insertLineItemValues);
+      })
+
     );
     await client.query("END");
     await client.query("COMMIT");

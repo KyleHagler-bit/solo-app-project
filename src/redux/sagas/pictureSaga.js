@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { put, takeLatest, takeEvery } from 'redux-saga/effects';
 
-
+//GET picture from database
 function* fetchPicture() {
   try {
     const config = {
@@ -17,6 +17,7 @@ function* fetchPicture() {
   }
 }
 
+//PUT (update) picture in database
 function* updatePicture(action) {
   
   try {

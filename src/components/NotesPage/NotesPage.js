@@ -21,18 +21,14 @@ class NotesPage extends Component {
   };
 
   submitInfo = (event) => {
-
-    // if (this.state.note==='' )
     this.props.history.push('/home')
     this.postHandler(this.state)
-    this.props.dispatch({ type: 'FETCH_LINE' })
-    this.props.dispatch({ type: 'FETCH_PIE' })
-    window.location.reload();
+    this.props.dispatch({ type: 'FETCH_LINE' }) //if these are not here, then graphs dont appear after submitting note page
+    this.props.dispatch({ type: 'FETCH_PIE' }) //BUT they are one entyr behind in data
   }
 
+  //Handle case where user does not want to write any notes
   skipNotes = (event) => {
-
-    // this.setState({note: 'No notes logged'})
     this.props.history.push('/home')
     this.setState({ note: 'No entry written for today' });
     this.postHandler(this.state)
@@ -40,23 +36,7 @@ class NotesPage extends Component {
   }
 
   postHandler = (entry) =>{
-    // Axios.post(`/api/entry`, entry)
-    // .then(response =>{
-    //   this.props.dispatch({type:'CLEAR', payload: {} });
-    // })
-    // .catch(error=>{
-    //   alert(`ERROR`); 
-    // })
-    // Axios.post(`/api/entryActivity`, entry)
-    // .then(response =>{
-    //   this.props.dispatch({type:'CLEAR', payload: {} });
-    // })
-    // .catch(error=>{
-    //   alert(`ERROR`);
-    // })
-
     this.props.dispatch({type:'ADD_ENTRY', payload:entry})
-    
   }
 
   render() {
@@ -64,15 +44,14 @@ class NotesPage extends Component {
     return (
       <div className="page" style={{height:'100%', display:'block'}}>
         
-        
         <h2> Have any notes you would like to log today?</h2> <br/>
         <textarea rows ='10' cols='100' placeholder='Write here' onChange={(event) => this.handleChange(event, "note")}></textarea>
         <br /> <br/>
         <button id='backToIcons' onClick={() => this.props.history.push("/icons")}>Back</button>
+        {/*The next page becomes clickable and the skip button disabled if the user decides to write something in the textarea */}
         {this.state.note === ''  ? <button id='nextToHome' disabled>Next Page</button> : <button onClick={() => this.submitInfo()}>Next Page</button>}
         {this.state.note !== ''  ? <button id='skipHome' disabled>No Notes! Skip</button> : <button id='skipHome' onClick={() => this.skipNotes()}>No Notes! Skip</button>}
 
-        
       </div>
     );
   }

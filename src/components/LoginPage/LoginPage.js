@@ -52,7 +52,7 @@ class LoginPage extends Component {
           <h5>Please use <b>'test'</b> and <b>'test'</b> to login</h5>
           <div>
             <label>
-              Email: &nbsp; &nbsp; &nbsp; &nbsp;
+              Email: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
               <input
                 type="text"
                 name="username"

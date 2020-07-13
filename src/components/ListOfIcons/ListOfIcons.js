@@ -7,15 +7,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import SelectedIcon from '../SelectedIcon/SelectedIcon'
 
-//Will I need to pass anything up? Need to have some sort of toggle
-//so that I can show what icons are chosen
-//And need to update state or whatever with values(ids) chosen
-class ListOfIcons extends Component {
-  state = {
-    iconsArray:[],
-    count:0,
-  }
 
+class ListOfIcons extends Component {
+ 
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_ICONS' })
     console.log('inside compDidmount');
@@ -26,64 +20,33 @@ class ListOfIcons extends Component {
   
   }
 
-  // getValue = (value) =>{
+  //Used to figure out if the icon should be selected or not (i.e. add to currentItem or take out)
     toggleSelected = (icon, selected) =>{
       
-    this.setState({count: this.state.count+1})
-  
-  
-    // this.setState({ iconsArray:[...currentItem.iconsArray, value] });
-    // console.log('this is state', this.state)
-    
-    // this.props.dispatch({
-    //   type: 'CURRENT_ITEM', payload:this.state
-    // })
-
-    
-      
       if (selected === true) {
-       
-        //THIS IS CAUSING ISSUES AS IT IS CURRENTLY WRITTEN
          this.props.dispatch({ type: "REMOVE_ICON", payload: icon});
       } else if (selected === false){
-        
-      //   this.props.dispatch({ type: "ADD_ICON", payload:  { iconsArray:[...this.props.currentItem.iconsArray, icon] } });
-      // }
- 
-    
-      this.props.dispatch({
+      this.props.dispatch({ //Should this be made into an 'ADD_ICON' instead of just making CURRENT_ITEM?
         type: 'CURRENT_ITEM', payload: { iconsArray:[...this.props.currentItem.iconsArray, icon] }
       });
     }
-
-      
-    
   }
 
-  // componentDidUpdate = () =>{
-  //   this.props.dispatch({
-  //     type: 'CURRENT_ITEM', payload:this.state
-  //   })
-  // }
 
   render() {
-    let {selected, toggleSelected} = this.props;
+   
     let selectedIcons = this.props.currentItem.iconsArray;
-    console.log('this is selected Icons (attached to currentItem) I guess', selectedIcons)
+
     return (
       <div className='page' >
-        
 
-            {/* <a type="button" id="activity"  ><i className="fab fa-youtube" aria-hidden="true"></i></a>
-            <a type="button"  ><i className="far fa-hand-point-right" aria-hidden="true"></i></a> */}
-            
-      {this.props.icons.map((item,index) =>{
-        
-        // console.log('item.id is', item.id)
+      {this.props.icons.map((item,index) =>{  
         return(
           <div id='container'>
            <SelectedIcon id={item.id} nameForClass={item.activity_icon} toggleSelected={this.toggleSelected}
+           
            selected={selectedIcons.some((cur) => cur ===item.id)} name={item.activity_name}/>
+           {/*Use the .some built-in to see if the icon clicked is "in" the clicked icons or not */}
           </div>
           )
       })}

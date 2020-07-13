@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { put, takeLatest, takeEvery } from 'redux-saga/effects';
 
-
+//GET entries from database
 function* fetchEntry() {
   try {
     const config = {
@@ -17,6 +17,7 @@ function* fetchEntry() {
   }
 }
 
+//DELETE entry from database with action.payload id
 function* deleteEntry(action) {
   try {
     const config = {
@@ -32,6 +33,7 @@ function* deleteEntry(action) {
   }
 }
 
+//POST new entry to database
 function* addEntry(action) {
   try {
     const config = {
@@ -45,19 +47,6 @@ function* addEntry(action) {
     console.log("Error with adding entry:", error);
   }
 }
-
-// function* updateEntry(action) {
-  
-//   try {
-//       const response = yield axios.put(`/api/entry/`, action.payload);
-//       yield put({ type: 'FETCH_ENTRY', payload: response.data })
-      
-      
-//   } catch (error) {
-//       console.log('Error updating', error);
-//   }
-// }
-
 
 function* entrySaga() {
   yield takeEvery('FETCH_ENTRY', fetchEntry);
