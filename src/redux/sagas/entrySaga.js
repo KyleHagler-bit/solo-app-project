@@ -10,10 +10,10 @@ function* fetchEntry() {
     };
     
     const response = yield axios.get('/api/entry', config);
-    console.log('inside Saga', response.data)
+    
     yield put({ type: 'SET_ENTRY', payload: response.data });
   } catch (error) {
-    console.log('Icons get request failed', error);
+    console.log('entry get request failed', error);
   }
 }
 

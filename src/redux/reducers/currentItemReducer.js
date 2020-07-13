@@ -4,7 +4,7 @@ const currentItemReducer = (state = {
   iconsArray: [],
   note: '',
 }, action) => {
-  console.log('This is inside currItem Reducer', state)
+  // console.log('This is inside currItem Reducer', state)
   let newState = { ...state };
   switch (action.type) {
     case 'CURRENT_ITEM':

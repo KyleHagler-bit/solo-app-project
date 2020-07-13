@@ -67,8 +67,9 @@ return generatedColors;
 // return generatedHighlights;
 // }
 
-  state = {
-    chartData: {
+
+  render() {
+    const chartData = {
       labels: this.props.pieChart.map((item, index) => {
         return (
           item.activity_name
@@ -84,11 +85,6 @@ return generatedColors;
         //end dataset
       ] //end datset
     }
-  } //end chartData
-
-
-  render() {
-    
 
     if (this.props.pieChart.length===0 || this.props.pieChart.length===undefined){
       return(
@@ -98,7 +94,7 @@ return generatedColors;
     return (
       <div className="chart" style={{ width: "100%", textAlign:'center' }}>
         <Pie
-          data={this.state.chartData}
+          data={chartData}
           width={7}
           height={3}
           options={{

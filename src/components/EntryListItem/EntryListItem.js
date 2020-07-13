@@ -23,23 +23,25 @@ class EntryListItem extends Component {
 
 
   componentDidMount() {
-    this.props.dispatch({ type: 'FETCH_ICONS' })
+    // this.props.dispatch({ type: 'FETCH_ICONS' })
 
+    console.log(`---> in componentDidMount() with id of ${this.props.id}`);
     //Move this to reducer or whatever?
-    axios({
-      method: 'GET',
-      url: `/api/chosen/${this.props.id}`,
-    }).then((response) => {
-      console.log('Success in getting ');
+    if (this.props.id) {
+      axios({
+        method: 'GET',
+        url: `/api/chosen/${this.props.id}`,
+      }).then((response) => {
+        // console.log('Success in getting ');
 
-      this.setState({
-        iconsArray: response.data
-      })
+        this.setState({
+          iconsArray: response.data
+        })
 
-    }).catch((error) => {
-      console.log('Error getting, ', error);
-    }); //end axios
-
+      }).catch((error) => {
+        console.log('Error getting, ', error);
+      }); //end axios
+    }
   }
 
 
@@ -65,7 +67,7 @@ class EntryListItem extends Component {
       type: "DELETE_ENTRY",
       payload: itemID
     })
-    window.location.reload(); //if don't have this, past entries do not show deleting correctly
+    // window.location.reload(); //if don't have this, past entries do not show deleting correctly
   }
 
   //This will display the specific emoticon associated with the entry
@@ -124,13 +126,14 @@ class EntryListItem extends Component {
             {noteEntry}<br /> <br /> {/*The note section of the entry */}
 
             {/*The will map over and display the chosen icons for the specific entry */}
+            {JSON.stringify(this.state.iconsArray)}
             {this.state.iconsArray.map((item, index) => {
 
               for (let i = 0; i < icons.length; i++) {
                 if (icons[i].id === item.activity_id) {
 
                   return (
-                    <div style={{ display: 'inline-block', margin: '5%', fontSize: '90%' }}>
+                    <div key={index} style={{ display: 'inline-block', margin: '5%', fontSize: '90%' }}>
                       <i className={icons[i].activity_icon} id='entryIcon'></i>
                       <p>{icons[i].activity_name}</p>
                     </div>
@@ -143,6 +146,7 @@ class EntryListItem extends Component {
           </div>
 
         </div>
+        {this.props.id}
       </div>
     );
   }

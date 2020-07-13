@@ -33,18 +33,18 @@ class PastEntryPage extends Component {
 
         {this.props.entry.map((item, index) => {
           let date=new Date (item.date_logged);
-          console.log(item.iconsArray)
+          // console.log(item.iconsArray)
           date=date.toDateString();
-          console.log('this is inside pastpagenetry',item.id)
+          //console.log('this is inside pastpagenetry',item.id)
             return (
               
               <EntryListItem 
-              id={item.id} //this SHOULD be the entry_id
-              emotion_value={item.emotion_value}
-              note={item.note}
-              date_logged={date}
-              
-              
+                id={item.id} //this SHOULD be the entry_id
+                emotion_value={item.emotion_value}
+                note={item.note}
+                date_logged={date}
+                key={`entrylistitem-${item.id}`} //need this or react can't tell them apart!
+                //If props are the same, then won't re-mount
               />
               
             );

@@ -10,22 +10,13 @@ import './HomePage.css';
 
 class HomePage extends Component {
 
-experiment = () => new Promise ((resolve, reject)=>{
-  this.props.dispatch({ type: 'FETCH_ENTRY' });
-  resolve();
-  })
+
 
   componentDidMount() {
-    this.props.dispatch({type: 'FETCH_CHOSEN_ICONS'}) //This I guess does NOTHING
+    // this.props.dispatch({type: 'FETCH_CHOSEN_ICONS'}) //This I guess does NOTHING
     this.props.dispatch({ type: 'FETCH_ENTRY' }) //is this needed?
     this.props.dispatch({ type: 'FETCH_LAST_ENTRY' }) //I need this one or wont appear on home
     this.props.dispatch({ type: 'FETCH_LINE' }) //I do this in lineChart.js
-
-    this.experiment.then(() => {
-      this.props.dispatch({type: 'FETCH_PIE'})
-    })
-
-
    
   }
 
