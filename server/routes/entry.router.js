@@ -3,12 +3,24 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
+async function getIconsById(entry_id) {
+  // grab all entry_activities for a given entry_id
+  const result = await pool.query('SELECT * FROM entry_activity WHERE entry_id=$1;',[entry_id]);
+  return result.rows;
+}
+
 //GET all entries tied to user to display for past entries
 router.get('/', rejectUnauthenticated, (req, res) => {
   pool.query('SELECT * FROM entry WHERE user_id=$1 ORDER BY id DESC',[req.user.id]) //only gets entries from specific user
-  
-    .then((result) => {
-      res.send(result.rows);
+    .then(async (result) => {
+      const rows = result.rows;
+      // add chosen_icons key to each entry (so the client doesnt have to)
+      await Promise.all(
+        rows.map( async (entry) => {
+          entry.chosen_icons = await getIconsById(entry.id);
+        })
+      )
+      res.send(rows);
     })
     .catch((error) => {
       console.log("Error GET entry", error);

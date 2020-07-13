@@ -25,23 +25,24 @@ class EntryListItem extends Component {
   componentDidMount() {
     // this.props.dispatch({ type: 'FETCH_ICONS' })
 
-    console.log(`---> in componentDidMount() with id of ${this.props.id}`);
-    //Move this to reducer or whatever?
-    if (this.props.id) {
-      axios({
-        method: 'GET',
-        url: `/api/chosen/${this.props.id}`,
-      }).then((response) => {
-        // console.log('Success in getting ');
+    // console.log(`---> in componentDidMount() with id of ${this.props.id}`);
+    // //Move this to reducer or whatever?
+    // if (this.props.id) {
+    //   axios({
+    //     method: 'GET',
+    //     url: `/api/chosen/${this.props.id}`,
+    //   }).then((response) => {
+    //     // console.log('Success in getting ');
 
-        this.setState({
-          iconsArray: response.data
-        })
+    //     this.setState({
+    //       iconsArray: response.data
+    //     })
 
-      }).catch((error) => {
-        console.log('Error getting, ', error);
-      }); //end axios
-    }
+    //   }).catch((error) => {
+    //     console.log('Error getting, ', error);
+    //   }); //end axios
+    // }
+    
   }
 
 
@@ -92,7 +93,7 @@ class EntryListItem extends Component {
 
 
   render() {
-    const { id, emotion_value, note, date_logged, icons } = this.props;
+    const { id, emotion_value, note, date_logged, icons, iconsArray } = this.props;
 
     let noteEntry = ''; //conditional rendering to see if note field is left empty
     if (note === '' || note === undefined || note === null) {
@@ -126,8 +127,8 @@ class EntryListItem extends Component {
             {noteEntry}<br /> <br /> {/*The note section of the entry */}
 
             {/*The will map over and display the chosen icons for the specific entry */}
-            {JSON.stringify(this.state.iconsArray)}
-            {this.state.iconsArray.map((item, index) => {
+            {JSON.stringify(this.props.iconsArray)}
+            {this.props.iconsArray.map((item, index) => {
 
               for (let i = 0; i < icons.length; i++) {
                 if (icons[i].id === item.activity_id) {
@@ -155,6 +156,7 @@ class EntryListItem extends Component {
 
 const mapStateToProps = state => ({
   icons: state.icons,
+  entry: state.entry
 });
 
 export default withRouter(connect(mapStateToProps)(EntryListItem));

@@ -41,6 +41,7 @@ class PastEntryPage extends Component {
               <EntryListItem 
                 id={item.id} //this SHOULD be the entry_id
                 emotion_value={item.emotion_value}
+                iconsArray={item.chosen_icons}
                 note={item.note}
                 date_logged={date}
                 key={`entrylistitem-${item.id}`} //need this or react can't tell them apart!

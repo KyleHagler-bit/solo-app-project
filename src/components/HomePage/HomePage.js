@@ -37,8 +37,10 @@ class HomePage extends Component {
                 <EntryListItem
                   id={item.id}
                   emotion_value={item.emotion_value}
+                  iconsArray={item.chosen_icons}
                   note={item.note}
-                  date_logged={date} />
+                  date_logged={date}
+                  key={`entrylistitem-${item.id}`} />
               </div>
             );
           })}
