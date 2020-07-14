@@ -5,7 +5,7 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 
 const Nav = (props) => (
-  <div className="nav" style={{backgroundColor:props.color.color}}>
+  <div className="nav" style={{backgroundColor:props.color.outlineColor}}>
     <Link to="/home"> {/*If user clicks on the name of the app, they are taken to the homepage */}
       <h2 className="nav-title">Quick Journal</h2>
     </Link>

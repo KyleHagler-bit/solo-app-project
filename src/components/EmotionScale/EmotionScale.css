@@ -1,13 +1,10 @@
-/* i{
-  font-size: 120px;
-  color:green;
-} */
+
 
 #icon {
   font-size:120px;
   border-radius: 100%;
   cursor: pointer;
-  color:red;
+ 
   text-align:center;
   vertical-align: middle;
    /* height:120px;  */

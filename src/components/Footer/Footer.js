@@ -10,7 +10,7 @@ import { withRouter } from "react-router";
 // or even care what the redux state is, so it doesn't need 'connect()'
 
 const Footer = props => (
-  <footer style={{backgroundColor:props.color.color}}>
+  <footer style={{backgroundColor:props.color.outlineColor}}>
     &copy; Prime Digital Academy
   </footer>
 );

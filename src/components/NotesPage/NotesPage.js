@@ -42,7 +42,7 @@ class NotesPage extends Component {
     console.log('inside note', this.state.note)
     return (
       <div className="page" style={{display:'flex', border:'1px solid black', height:'92%', top:'38px'}}>
-      <div className='col-sm' style={{backgroundColor:'red', float:'left', maxWidth:'5%' }}></div>
+      <div className='col-sm' style={{backgroundColor:this.props.color.outlineColor, float:'left', maxWidth:'5%' }}></div>
         <div style={{width:'90%'}}>
         <br/><br/><br/>
         <h2> Have any notes you would like to log today?</h2> <br/>
@@ -54,7 +54,7 @@ class NotesPage extends Component {
         {this.state.note !== ''  ? <button id='skipHome' className='btn btn-info' disabled>No Notes! Skip</button> : <button id='skipHome' className='btn btn-info' onClick={() => this.skipNotes()}>No Notes! Skip</button>}
 
       </div>
-      <div className='col-sm' style={{backgroundColor:'red', float:'right', maxWidth:'5%' }}></div>
+      <div className='col-sm' style={{backgroundColor:this.props.color.outlineColor, float:'right', maxWidth:'5%' }}></div>
       </div>
     );
   }
@@ -63,7 +63,8 @@ class NotesPage extends Component {
 const mapStateToProps = state => ({
   entry:state.entry,
   currentItem:state.currentItem,
-  user:state.user
+  user:state.user,
+  color:state.color
 });
 
 export default withRouter(connect(mapStateToProps)(NotesPage));

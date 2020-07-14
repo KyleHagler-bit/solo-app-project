@@ -26,19 +26,19 @@
   margin:5%;
 }
 
-#colorSelectorRed{
+#colorSelectorOne{
  
-  background-color:red;
+  background-color:#50A586;
   outline:none;
   
 }
-#colorSelectorGreen{
+#colorSelectorTwo{
  
   background-color:green;
   outline:none;
   
 }
-#colorSelectorBlue{
+#colorSelectorThree{
  
   background-color:blue;
   outline:none;
@@ -56,6 +56,3 @@
 
 }
 
-.red{
-  background-color: red;
-}

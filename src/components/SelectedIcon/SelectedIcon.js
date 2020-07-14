@@ -11,7 +11,7 @@ class SelectedIcon extends Component {
     
     return (
       <div>
-          <a type="button" id={selected? "activityClicked":"activity"} class="btn btn-success" onClick={() =>toggleSelected(id,selected)}><i className={nameForClass}></i></a>
+          <a type="button" style={{backgroundColor:this.props.color.iconColor}} id={selected? "activityClicked":"activity"} class="btn btn-success" onClick={() =>toggleSelected(id,selected)}><i className={nameForClass}></i></a>
           <h5>{name}</h5>
       </div>
     );
@@ -19,7 +19,7 @@ class SelectedIcon extends Component {
 }
 
 const mapStateToProps = state => ({
-
+color:state.color
 });
 
 export default withRouter(connect(mapStateToProps)(SelectedIcon));

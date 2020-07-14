@@ -20,7 +20,7 @@ class WelcomePage extends Component {
 
     return (
       <div className="page" style={{display:'flex', border:'none', height:'94%', top:'38px'}}>
-        <div className='col-sm' style={{backgroundColor:'red', float:'left', maxWidth:'5%' }}></div>
+        <div className='col-sm' style={{backgroundColor:this.props.color.outlineColor, float:'left', maxWidth:'5%' }}></div>
         <div style={{width:'90%'}}>
         <br/><br/>
         <h2>Welcome!</h2><br/>
@@ -33,7 +33,7 @@ class WelcomePage extends Component {
         
         </div>
         </div>
-        <div className='col-sm' style={{backgroundColor:'red', float:'right', maxWidth:'5%' }}></div>
+        <div className='col-sm' style={{backgroundColor:this.props.color.outlineColor, float:'right', maxWidth:'5%' }}></div>
       </div>
     );
   }
@@ -41,7 +41,8 @@ class WelcomePage extends Component {
 
 const mapStateToProps = state => ({
   entry: state.entry,
-  currentItem: state.currentItem
+  currentItem: state.currentItem,
+  color:state.color
 });
 
 export default withRouter(connect(mapStateToProps)(WelcomePage));

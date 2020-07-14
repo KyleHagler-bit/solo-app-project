@@ -12,7 +12,7 @@ class IconsPage extends Component {
     console.log('what is count?', this.props.currentItem.count)
     return (
       <div className="page" style={{display:'flex', border:'1px solid black', height:'92%', top:'38px'}}>
-      <div className='col-sm' style={{backgroundColor:'red', float:'left', maxWidth:'5%' }}></div>
+      <div className='col-sm' style={{backgroundColor:this.props.color.outlineColor, float:'left', maxWidth:'5%' }}></div>
         <div style={{width:'90%'}}>
         <br /> <br />
         <h2> What have you been up to today?</h2>
@@ -24,7 +24,7 @@ class IconsPage extends Component {
           <button id='nextIcon' className='btn btn-info' disabled>Next Page</button> :
           <button id='nextIcon' className='btn btn-info' onClick={() => this.props.history.push("/notes")}>Next Page</button>}
           </div>
-          <div className='col-sm' style={{backgroundColor:'red', float:'right', maxWidth:'5%' }}></div>
+          <div className='col-sm' style={{backgroundColor:this.props.color.outlineColor, float:'right', maxWidth:'5%' }}></div>
       </div>
     );
   }
@@ -32,6 +32,7 @@ class IconsPage extends Component {
 
 const mapStateToProps = state => ({
   currentItem: state.currentItem,
+  color:state.color
 
 });
 

@@ -43,19 +43,19 @@ class ProfilePage extends Component {
     })
   }
 
-  handleColor = (event) => {
-    console.log(event)
-    this.props.dispatch({type:'SET_COLOR', payload:event})
+  handleColor = (outline, icon, button) => {
+    console.log(outline, icon, button)
+    this.props.dispatch({type:'SET_COLOR', payload:{outline, icon, button}})
   }
 
 
   render() {
     const { icons, user, color } = this.props;
-    console.log(color.color)
+   
     return (<>
 
-      <div className="page" style={{ textAlign: 'center', border: '1px solid black', display: 'flex', height:'95%', top:'38px'}}>
-<div className='col-sm' style={{backgroundColor:color.color,float:'left', maxWidth:'5%' }}></div>
+      <div className="page" style={{ textAlign: 'center',  display: 'flex', height:'95%', top:'38px'}}>
+<div className='col-sm' style={{backgroundColor:color.outlineColor,float:'left', maxWidth:'5%' }}></div>
 
         <div className='card' style={{ width: '80%', margin: 'auto', display:'inline-block', height:'100%' }}><br/>
           <h1>{user.first_name}'s Profile Page!</h1><br/>
@@ -79,15 +79,15 @@ class ProfilePage extends Component {
             <div >
             <h4 id='profileText'>Change color theme of app?</h4>
 
-            <div><button className = 'colorSelector' id='colorSelectorRed' onClick={()=> this.handleColor('red')}></button>
-            <button className = 'colorSelector' id='colorSelectorGreen' onClick={()=> this.handleColor('green')}></button>
-            <button className = 'colorSelector' id='colorSelectorBlue' onClick={()=> this.handleColor('blue')}></button></div>
+            <div><button className = 'colorSelector' id='colorSelectorOne' onClick={()=> this.handleColor('#50A586','#3AAED8','#0195B7')}></button>
+            <button className = 'colorSelector' id='colorSelectorTwo' onClick={()=> this.handleColor('white','yellow','black')}></button>
+            <button className = 'colorSelector' id='colorSelectorThree' onClick={()=> this.handleColor('blue')}></button></div>
             </div>
           </div>
 
         </div>
 
-        <div className='col-sm' style={{backgroundColor:color.color, float:'right', maxWidth:'5%' }}></div>
+        <div className='col-sm' style={{backgroundColor:color.outlineColor, float:'right', maxWidth:'5%' }}></div>
       </div>
     </>
     );

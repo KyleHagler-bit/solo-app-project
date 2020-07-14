@@ -26,7 +26,7 @@ class HomePage extends Component {
     return (
       <>
         <div className="page" style={{ textAlign: 'center', border: 'none', display: 'flex', top:'38px', minHeight:'100%' }}>
-<div className='col-sm' style={{backgroundColor:'red', float:'left', maxWidth:'5%' }}></div>
+<div className='col-sm' style={{backgroundColor:this.props.color.outlineColor, float:'left', maxWidth:'5%' }}></div>
 <div style={{display:'inline-block', width:'90%', marginBottom:'5%'}}>
           {this.props.lastEntry.map((item, index) => {
             let date = new Date(item.date_logged);
@@ -58,7 +58,7 @@ class HomePage extends Component {
           </div>
 
           </div>
-<div className='col-sm' style={{backgroundColor:'red', float:'right', maxWidth:'5%' }}></div>
+<div className='col-sm' style={{backgroundColor:this.props.color.outlineColor, float:'right', maxWidth:'5%' }}></div>
         </div>
       </>
     );
@@ -67,6 +67,7 @@ class HomePage extends Component {
 
 const mapStateToProps = state => ({
   lastEntry: state.lastEntry, //Needed to map over
+  color: state.color
 });
 
 export default withRouter(connect(mapStateToProps)(HomePage));

@@ -37,7 +37,7 @@ class EditEntryPage extends Component {
     return (
       <div>
         <div className='page' id='editBox' style={{ textAlign: 'center', width: '100%', top:'38px', display:'flex' }}>
-        <div className='col-sm' style={{backgroundColor:'red', float:'left', maxWidth:'5%' }}></div>
+        <div className='col-sm' style={{backgroundColor:this.props.color.outlineColor, float:'left', maxWidth:'5%' }}></div>
           <div className='card' style={{minHeight:'100%', width:'90%'}}>
             <div id='head' className='card-header'  >
               {/*Displays date for entry on top of page*/}
@@ -61,7 +61,7 @@ class EditEntryPage extends Component {
             </div>
 
           </div>
-          <div className='col-sm' style={{backgroundColor:'red', float:'left', maxWidth:'5%' }}></div>
+          <div className='col-sm' style={{backgroundColor:this.props.color.outlineColor, float:'left', maxWidth:'5%' }}></div>
         </div>
         
       </div>
@@ -74,6 +74,7 @@ class EditEntryPage extends Component {
 const mapStateToProps = (state) => {
   return {
     currentItem: state.currentItem,
+    color:state.color
   };
 };
 

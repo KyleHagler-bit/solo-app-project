@@ -32,7 +32,7 @@ class LineChart extends Component {
       datasets: [
         {
           data: this.values(), //dont have an array in an array
-          backgroundColor: '#7FFFD4'
+          backgroundColor: this.props.color.outlineColor
         }],
 
     }
@@ -117,6 +117,7 @@ class LineChart extends Component {
 
 const mapStateToProps = state => ({
   lineChart: state.lineChart,
+  color:state.color
 });
 
 export default connect(mapStateToProps)(LineChart);

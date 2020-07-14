@@ -38,7 +38,7 @@ class LoginPage extends Component {
   render() {
     return (
       <div className='page' style={{display:'flex', height:'94%', top:'38px'}}>
-<div className='col-sm' style={{backgroundColor:'red', float:'left', maxWidth:'5%' }}></div>
+<div className='col-sm' style={{backgroundColor:this.props.color.outlineColor, float:'left', maxWidth:'5%' }}></div>
 <div style={{display:'inline-block', width:'90%', height:'50%'}}><br/><br/>
         {this.props.errors.loginMessage && (
           <h2
@@ -104,7 +104,7 @@ class LoginPage extends Component {
           </button>
         </center>
         </div>
-        <div className='col-sm' style={{backgroundColor:'red', float:'right', maxWidth:'5%' }}></div>
+        <div className='col-sm' style={{backgroundColor:this.props.color.outlineColor, float:'right', maxWidth:'5%' }}></div>
       </div>
     );
   }
@@ -115,6 +115,7 @@ class LoginPage extends Component {
 // const mapStateToProps = ({errors}) => ({ errors });
 const mapStateToProps = state => ({
   errors: state.errors,
+  color: state.color
 });
 
 export default withRouter(connect(mapStateToProps)(LoginPage));
