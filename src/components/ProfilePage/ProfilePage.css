@@ -11,7 +11,7 @@
 
 #addImageBtn {
   border-radius: 100%;
-  margin:1%;
+  margin:0%;
 }
 
 #savePic, #cancelPic{
@@ -19,12 +19,9 @@
 }
 
 #profileOptions{
-  background: rgb(18,171,179);
-background: radial-gradient(circle, rgba(18,171,179,0) 30%, turquoise 99%);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.3), inset 0 -3px 3px rgba(0,0,0,0.1);
   
-  border-radius:8%;
 }
-
-h4{
-  margin:3%;
+#profileText{
+  margin:6%;
 }

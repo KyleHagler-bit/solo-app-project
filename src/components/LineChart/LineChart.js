@@ -58,7 +58,7 @@ class LineChart extends Component {
             },
             title: {
               display: true,
-              fontColor: 'blue',
+              fontColor: 'black',
               fontSize: 24,
               text: 'Mood Over Time'
             },
@@ -68,8 +68,8 @@ class LineChart extends Component {
                 display: true,
                 scaleLabel: {
                   display: true,
-                  labelString: 'Date',
-                  fontColor: 'red',
+                  labelString: 'Date of Entry',
+                  fontColor: 'black',
                   fontSize: 24
                 }
               }],
@@ -100,7 +100,7 @@ class LineChart extends Component {
                 scaleLabel: {
                   display: true,
                   labelString: 'Mood',
-                  fontColor: 'red',
+                  fontColor: 'black',
                   fontSize: 24
 
                 }

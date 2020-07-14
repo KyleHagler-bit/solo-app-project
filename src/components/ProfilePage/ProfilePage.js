@@ -60,18 +60,18 @@ class ProfilePage extends Component {
 
           </div><br/><br/>
 
-          <div id='profileOptions' style={{ textAlign: 'left', margin: '2%',  float:'right', width: '50%', display:'inline-block' }}>
-            <h4 className='card-text'>Change Password?</h4>
-            <div><h4 style={{ display: 'inline-block' }}>Add Profile Picture?</h4>
-              {this.state.picIsEditable ? <div ><input style={{ width: '40%' }} value={this.state.picture} placeholder='image URL please' onChange={this.handlePicture}></input><br/>
+          <div id='profileOptions' className='card' style={{ textAlign: 'left', margin: '2%',  float:'right', width: '50%', display:'inline-block', height:'60%' }}>
+            <h4 id='profileText' className='card-text'>Change Password?</h4>
+            <div><h4 id='profileText' style={{ display: 'inline-block' }}>Add Profile Picture?</h4>
+              {this.state.picIsEditable ? <div style={{marginLeft:'8%'}}><input style={{ width: '40%' }} value={this.state.picture} placeholder='image URL please' onChange={this.handlePicture}></input>
                 <button id='savePic' className='btn btn-info' onClick={this.savePicture}>Save</button><button className='btn btn-danger' id='cancelPic' onClick={this.cancel}>Cancel</button></div>
-                : <button id='addImageBtn' className='btn btn-success' onClick={this.editPicture}>+</button>} </div>
+                : <button id='addImageBtn' className='btn btn-info' onClick={this.editPicture}>+</button>} </div>
 
-            <h4>Change Language? <select>
+            <h4 id='profileText'>Change Language? <select>
               <option value='CHOOSE'>CHOOSE LANGUAGE</option>
               <option value='English' selected>English</option>
             </select></h4>
-            <h4>Change color theme of app?</h4>
+            <h4 id='profileText'>Change color theme of app?</h4>
           </div>
 
         </div>

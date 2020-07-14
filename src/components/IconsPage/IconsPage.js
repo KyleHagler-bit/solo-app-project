@@ -18,11 +18,11 @@ class IconsPage extends Component {
         <h2> What have you been up to today?</h2>
         <h3>Please choose all that apply</h3>
         <ListOfIcons getValue={this.getValue} toggleSelected={this.toggleSelected} />
-        <button id='backToWelcome' onClick={() => this.props.history.push("/welcome")}>Back</button>
+        <button id='backToWelcome' className='btn btn-info' onClick={() => this.props.history.push("/welcome")}>Back</button>
         {/*Button will be clickable when it detects an icon has been selected */}
         {this.props.currentItem.iconsArray.length === 0 ?
-          <button id='nextIcon' disabled>Next Page</button> :
-          <button id='nextIcon' onClick={() => this.props.history.push("/notes")}>Next Page</button>}
+          <button id='nextIcon' className='btn btn-info' disabled>Next Page</button> :
+          <button id='nextIcon' className='btn btn-info' onClick={() => this.props.history.push("/notes")}>Next Page</button>}
           </div>
           <div className='col-sm' style={{backgroundColor:'red', float:'right', maxWidth:'5%' }}></div>
       </div>

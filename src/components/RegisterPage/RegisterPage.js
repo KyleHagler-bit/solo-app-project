@@ -9,13 +9,18 @@ class RegisterPage extends Component {
     last_name:'',
     username: '', //actually email but don't want to chnage too much
     password: '',
+    passwordReenter:'',
     birthday:'',
   };
 
   registerUser = (event) => {
     event.preventDefault();
 
-    if (this.state.username && this.state.password) {
+    if (this.state.password !== this.state.passwordReenter){ //handle case where user puts password or reenter in wrong
+      alert('Password and Password Rentry do not match')
+      return;
+    }
+    else if (this.state.username && this.state.password) {
       this.props.dispatch({
         type: 'REGISTER',
         payload: {
@@ -41,7 +46,7 @@ class RegisterPage extends Component {
     return (
       <div className='page' style={{display:'flex', height:'94%', top:'38px'}}>
 <div className='col-sm' style={{backgroundColor:'red', float:'left', maxWidth:'5%' }}></div>
-<div style={{display:'inline-block', width:'90%', height:'50%'}}>
+<div style={{display:'inline-block', width:'90%', height:'50%'}}> <br/><br/>
         {this.props.errors.registrationMessage && (
           <h2
             className="alert"
@@ -51,10 +56,10 @@ class RegisterPage extends Component {
           </h2>
         )}
         <form id='registerForm' onSubmit={this.registerUser}>
-          <h1 id='registerTitle'>Register User</h1> <br/>
+          <h1 id='registerTitle'>Register New User</h1> <br/>
           <div>
             <label >
-              First Name: &nbsp;
+              First Name: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
               <input
                 type="text"
                 name="first_name"
@@ -65,7 +70,7 @@ class RegisterPage extends Component {
           </div>
           <div>
             <label >
-              Last Name: &nbsp;
+              Last Name: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
               <input
                 type="text"
                 name="last_name"
@@ -76,7 +81,7 @@ class RegisterPage extends Component {
           </div>
           <div>
             <label>
-              Email: &nbsp; &nbsp; &nbsp; &nbsp; {/*'No-break space */}
+              Email: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {/*'No-break space */} 
               <input
                 type="text"
                 name="username"
@@ -87,7 +92,7 @@ class RegisterPage extends Component {
           </div>
           <div>
             <label htmlFor="password">
-              Password: &nbsp; &nbsp;
+              Password: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
               <input
                 type="password"
                 name="password"
@@ -97,8 +102,19 @@ class RegisterPage extends Component {
             </label>
           </div>
           <div>
+            <label htmlFor="password">
+              Re-enter Password: &nbsp; &nbsp; 
+              <input
+                type="password"
+                name="password"
+                value={this.state.passwordReenter}
+                onChange={this.handleInputChangeFor('passwordReenter')}
+              />
+            </label>
+          </div>
+          <div>
             <label >
-              Birthday: &nbsp; &nbsp; &nbsp;
+              Birthday: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
               <input
                 type="date"
                 
@@ -108,7 +124,7 @@ class RegisterPage extends Component {
             </label>
           </div>
           <div>
-            <center>
+            <center> <br/>
             <input id='registerBtn'
               className="register"
               type="submit"

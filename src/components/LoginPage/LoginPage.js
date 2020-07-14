@@ -39,7 +39,7 @@ class LoginPage extends Component {
     return (
       <div className='page' style={{display:'flex', height:'94%', top:'38px'}}>
 <div className='col-sm' style={{backgroundColor:'red', float:'left', maxWidth:'5%' }}></div>
-<div style={{display:'inline-block', width:'90%', height:'50%'}}>
+<div style={{display:'inline-block', width:'90%', height:'50%'}}><br/><br/>
         {this.props.errors.loginMessage && (
           <h2
             className="alert"

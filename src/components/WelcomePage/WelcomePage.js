@@ -28,9 +28,9 @@ class WelcomePage extends Component {
         <EmotionScale/> 
         {/*User cannot move further on in the entry process unless they select an emotion*/}
         <div>
- {this.props.currentItem.emotionValue===0 ? <button id='nextToIcons' disabled >Next Page</button>: <button id='nextToIcons' onClick={() => this.submitInfo()}>Next Page</button>}
+ {this.props.currentItem.emotionValue===0 ? <button id='nextToIcons' className='btn btn-info' disabled >Next Page</button>: <button id='nextToIcons' className='btn btn-info' onClick={() => this.submitInfo()}>Next Page</button>}
   
-        <button id='skipHome' onClick={() => this.props.history.push("/home")}>Skip to Home Page</button>
+        
         </div>
         </div>
         <div className='col-sm' style={{backgroundColor:'red', float:'right', maxWidth:'5%' }}></div>

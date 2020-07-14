@@ -12,7 +12,7 @@ class EditEntryPage extends Component {
 
   
   componentDidMount() {
-   //What all do I need to FETCH here?
+    this.props.dispatch({type:'FETCH_ENTRY'})
     this.props.dispatch({type:'FETCH_ACTIVITY_ENTRY'})
   }
 
@@ -36,11 +36,12 @@ class EditEntryPage extends Component {
   
     return (
       <div>
-        <div className='page' id='editBox' style={{ border: '1px solid black', textAlign: 'center', width: '100%' }}>
-          <div className='card'>
-            <div id='head' className='card-header' >
+        <div className='page' id='editBox' style={{ textAlign: 'center', width: '100%', top:'38px', display:'flex' }}>
+        <div className='col-sm' style={{backgroundColor:'red', float:'left', maxWidth:'5%' }}></div>
+          <div className='card' style={{minHeight:'100%', width:'90%'}}>
+            <div id='head' className='card-header'  >
               {/*Displays date for entry on top of page*/}
-              <h2 className='card-title' style={{ border: '1px solid black', width: '60%', textAlign: 'center', marginLeft: 'auto', marginRight: 'auto' }}>{this.props.currentItem.date}</h2>
+              <h2 className='card-title' style={{   textAlign: 'center', marginLeft: 'auto', marginRight: 'auto' }}>{this.props.currentItem.date}</h2>
 
             </div> <br />
             <div className='card-body'>
@@ -53,14 +54,16 @@ class EditEntryPage extends Component {
               <textarea rows='10' cols='100' value={this.props.currentItem.note} onChange={(event) => this.handleChange(event, 'note')}></textarea>
               <br />
 
-              <button onClick={() => this.submit()}>Save</button>
-              <button onClick={() => this.props.history.push('/pastentry')}>Cancel Edit</button>
+              <button style = {{margin: '1%'}} className='btn btn-info' onClick={() => this.submit()}>Save</button>
+              <button style = {{margin: '1%'}} className='btn btn-danger' onClick={() => this.props.history.push('/pastentry')}>Cancel Edit</button>
               <br /><br />
 
             </div>
 
           </div>
+          <div className='col-sm' style={{backgroundColor:'red', float:'left', maxWidth:'5%' }}></div>
         </div>
+        
       </div>
 
     ); // end return

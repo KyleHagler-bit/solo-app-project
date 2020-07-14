@@ -25,7 +25,7 @@ class HomePage extends Component {
 
     return (
       <>
-        <div className="page" style={{ textAlign: 'center', border: 'none', display: 'flex', top:'38px' }}>
+        <div className="page" style={{ textAlign: 'center', border: 'none', display: 'flex', top:'38px', minHeight:'100%' }}>
 <div className='col-sm' style={{backgroundColor:'red', float:'left', maxWidth:'5%' }}></div>
 <div style={{display:'inline-block', width:'90%', marginBottom:'5%'}}>
           {this.props.lastEntry.map((item, index) => {
@@ -35,7 +35,7 @@ class HomePage extends Component {
             return (
               <div id='homeEntry' style={{ border: '1px solid white' }}>
                
-                <h4 style={{ textAlign: 'left', marginLeft: '13%' }}>Latest Entry:</h4>
+                <h4 style={{ textAlign: 'left', marginLeft: '13%', marginTop:'3%' }}>Latest Entry:</h4>
                 <EntryListItem
                   id={item.id}
                   emotion_value={item.emotion_value}

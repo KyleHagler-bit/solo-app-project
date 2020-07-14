@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 //npm install --save react-chartjs-2 chart.js
 import { Bar, Pie } from 'react-chartjs-2';
+import { withRouter } from "react-router";
 
 class PieChart extends Component {
 
@@ -14,11 +15,6 @@ class PieChart extends Component {
     let activityCount = [];
     this.props.pieChart.map((item, index) => {
       activityCount.push(item.count);
-      
-
-      // return (
-      //   item.emotion_value
-      // )
     })
     
     return activityCount;
@@ -90,7 +86,11 @@ return generatedColors;
 
     if (this.props.pieChart.length===0 || this.props.pieChart.length===undefined){
       return(
-        <h3>Oops! It looks like you may not have any data to display at the moment</h3>
+        <div style={{marginTop:'10%'}}>
+        <h3>Oops! It looks like you may not have any data to display at the moment...</h3>
+       
+        <button className = 'btn btn-info' style={{margin:'2%'}} onClick={() => this.props.history.push("/welcome")}>Make an Entry</button>
+        </div>
       )
     } else {
     return (
@@ -104,7 +104,8 @@ return generatedColors;
             title:{
               display: true,
               fontSize:24,
-              text: 'Activities Breakdown'
+              text: 'Activities Breakdown',
+              fontColor:'black'
             }
           }} />
 
@@ -119,4 +120,4 @@ const mapStateToProps = state => ({
   pieChart:state.pieChart,
 });
 
-export default connect(mapStateToProps)(PieChart);
+export default withRouter(connect(mapStateToProps)(PieChart));
