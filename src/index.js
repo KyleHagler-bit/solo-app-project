@@ -10,6 +10,11 @@ import rootSaga from './redux/sagas'; // imports ./redux/sagas/index.js
 
 import App from './components/App/App';
 
+import {
+  Route,
+  BrowserRouter
+} from 'react-router-dom';
+
 const sagaMiddleware = createSagaMiddleware();
 
 // this line creates an array of all of redux middleware you want to use
@@ -34,8 +39,10 @@ window.store = store;
 sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
+  <BrowserRouter>
   <Provider store={store}>
     <App />
-  </Provider>,
+  </Provider>
+  </BrowserRouter>,
   document.getElementById('react-root'),
 );

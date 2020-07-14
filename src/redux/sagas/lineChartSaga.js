@@ -21,4 +21,4 @@ function* lineChartSaga() {
   yield takeEvery('FETCH_LINE', fetchLineChart);
 }
 
-export default lineChartSaga;
+export default lineChartSaga; 

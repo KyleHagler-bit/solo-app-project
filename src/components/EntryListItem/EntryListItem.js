@@ -13,35 +13,9 @@ import axios from 'axios';
 
 class EntryListItem extends Component {
 
-  state = {
-    id: 0, //should be entry_id
-    iconsArray: [],
-    emotionValue: 0,
-    note: '',
-
-  }
-
+  
 
   componentDidMount() {
-    // this.props.dispatch({ type: 'FETCH_ICONS' })
-
-    // console.log(`---> in componentDidMount() with id of ${this.props.id}`);
-    // //Move this to reducer or whatever?
-    // if (this.props.id) {
-    //   axios({
-    //     method: 'GET',
-    //     url: `/api/chosen/${this.props.id}`,
-    //   }).then((response) => {
-    //     // console.log('Success in getting ');
-
-    //     this.setState({
-    //       iconsArray: response.data
-    //     })
-
-    //   }).catch((error) => {
-    //     console.log('Error getting, ', error);
-    //   }); //end axios
-    // }
     
   }
 
@@ -69,6 +43,8 @@ class EntryListItem extends Component {
       payload: itemID
     })
     // window.location.reload(); //if don't have this, past entries do not show deleting correctly
+    this.props.dispatch({type: 'FETCH_ENTRY'})
+    
   }
 
   //This will display the specific emoticon associated with the entry
@@ -127,7 +103,7 @@ class EntryListItem extends Component {
             {noteEntry}<br /> <br /> {/*The note section of the entry */}
 
             {/*The will map over and display the chosen icons for the specific entry */}
-            {JSON.stringify(this.props.iconsArray)}
+            
             {this.props.iconsArray.map((item, index) => {
 
               for (let i = 0; i < icons.length; i++) {

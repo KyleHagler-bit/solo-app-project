@@ -23,16 +23,15 @@ class NotesPage extends Component {
   submitInfo = (event) => {
     this.props.history.push('/home')
     this.postHandler(this.state)
-    this.props.dispatch({ type: 'FETCH_LINE' }) //if these are not here, then graphs dont appear after submitting note page
-    this.props.dispatch({ type: 'FETCH_PIE' }) //BUT they are one entyr behind in data
+   
   }
 
   //Handle case where user does not want to write any notes
   skipNotes = (event) => {
-    this.props.history.push('/home')
-    this.setState({ note: 'No entry written for today' });
+    this.setState({ note: 'No entry written for today' })
     this.postHandler(this.state)
-    
+    this.props.history.push('/home')
+     
   }
 
   postHandler = (entry) =>{

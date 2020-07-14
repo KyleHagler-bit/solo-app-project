@@ -70,7 +70,7 @@ return generatedColors;
 
   render() {
     const chartData = {
-      labels: this.props.pieChart.map((item, index) => {
+      labels: this.props.pieChart.map((item, index) => { 
         return (
           item.activity_name
         )

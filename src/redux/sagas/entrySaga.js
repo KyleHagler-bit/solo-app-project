@@ -27,7 +27,10 @@ function* deleteEntry(action) {
 		//with DELETE, does not need response
 		console.log(action.payload);
     yield axios.delete(`/api/entry/${action.payload}`, config);
-    yield put({ type: "FETCH_ENTRY" });
+    yield put({ type: "FETCH_ENTRY" }); //this does not seem to refresh one on home page?
+    yield put ({type:'FETCH_PIE'})
+    yield put ({type: 'FETCH_LINE'})
+    yield put ({type:'FETCH_LAST_ENTRY'}) //NEED this or home page does not update on delete
   } catch (error) {
     console.log("Error deleting entry from past entry:", error);
   }
@@ -43,6 +46,7 @@ function* addEntry(action) {
     //with POST, does not need response
     yield axios.post("/api/entry", action.payload, config);
     yield put({ type: "FETCH_ENTRY" });
+    yield put({type:'FETCH_LAST_ENTRY'})
   } catch (error) {
     console.log("Error with adding entry:", error);
   }

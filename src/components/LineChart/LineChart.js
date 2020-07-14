@@ -16,11 +16,13 @@ class LineChart extends Component {
     this.props.lineChart.map((item, index) => {
       emotionValues.push(item.emotion_value);
     })
-    return emotionValues;
+    return emotionValues; 
   }
 
-  state = {
-    chartData: {
+
+
+  render() {
+   const chartData =  {
       labels: this.props.lineChart.map((item, index) => {
         let x = new Date(item.date_logged)
         return (
@@ -35,10 +37,6 @@ class LineChart extends Component {
         }],
 
     }
-  }
-
-
-  render() {
     
     if (this.props.lineChart.length<5){
       return(
@@ -51,7 +49,7 @@ class LineChart extends Component {
     return (
       <div className="chart" style={{ width: "100%", height:'100%' }}>
         <Line
-          data={this.state.chartData}
+          data={chartData}
           width={10}
           height={3}
           options={{
