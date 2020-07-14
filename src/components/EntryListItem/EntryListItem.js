@@ -10,8 +10,6 @@ import ReactTooltip from 'react-tooltip';
 import { withRouter } from "react-router";
 
 
-import axios from 'axios';
-
 
 class EntryListItem extends Component {
 

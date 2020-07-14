@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 //npm install --save react-chartjs-2 chart.js
-import { Bar, Pie } from 'react-chartjs-2';
+import { Pie } from 'react-chartjs-2';
 import { withRouter } from "react-router";
 
 class PieChart extends Component {
@@ -28,8 +28,8 @@ colors = () =>{
     let r = Math.floor(Math.random() * 200);
     let g = Math.floor(Math.random() * 200);
     let b = Math.floor(Math.random() * 200);
-    let c = '';
-    let h =''
+    // let c = '';
+    // let h =''
     // let c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
     //let h = 'rgb(' + (r+20) + ', ' + (g+20) + ', ' + (b+20) + ')';
     generatedColors.push( 

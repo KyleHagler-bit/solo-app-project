@@ -10,12 +10,9 @@ class SelectedIcon extends Component {
     let {selected, toggleSelected, id, nameForClass,name} = this.props;
     
     return (
-      <div className="" >
-       
-           {console.log('selected is', selected)}
+      <div>
           <a type="button" id={selected? "activityClicked":"activity"} class="btn btn-success" onClick={() =>toggleSelected(id,selected)}><i className={nameForClass}></i></a>
           <h5>{name}</h5>
-        
       </div>
     );
   }

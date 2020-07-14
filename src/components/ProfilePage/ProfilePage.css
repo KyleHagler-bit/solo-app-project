@@ -3,7 +3,7 @@
   height:500px;
   border-radius: 100%;
   display:flex;
-  border: 5px solid turquoise;
+  
   box-shadow: turquoise 0px 0px 500px, inset rgba(0,0,0,0.2) 0px -1px 2px;
 
 }
@@ -23,5 +23,39 @@
   
 }
 #profileText{
-  margin:6%;
+  margin:5%;
+}
+
+#colorSelectorRed{
+ 
+  background-color:red;
+  outline:none;
+  
+}
+#colorSelectorGreen{
+ 
+  background-color:green;
+  outline:none;
+  
+}
+#colorSelectorBlue{
+ 
+  background-color:blue;
+  outline:none;
+  
+}
+
+.colorSelector{
+  
+  border-radius: 100%;
+
+  height:50px;
+  width:50px;
+  outline:none;
+  margin-left:5%;
+
+}
+
+.red{
+  background-color: red;
 }

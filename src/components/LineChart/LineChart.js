@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 //npm install --save react-chartjs-2 chart.js
-import { Bar, Line } from 'react-chartjs-2';
-import moment from 'moment';
+import { Line } from 'react-chartjs-2';
+
 
 class LineChart extends Component {
 

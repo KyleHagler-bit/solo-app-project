@@ -5,12 +5,12 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 
 const Nav = (props) => (
-  <div className="nav" style={{backgroundColor:'red'}}>
+  <div className="nav" style={{backgroundColor:props.color.color}}>
     <Link to="/home"> {/*If user clicks on the name of the app, they are taken to the homepage */}
       <h2 className="nav-title">Quick Journal</h2>
     </Link>
     <div className="nav-right">
-      <Link className="nav-link" to="/welcome" style={{backgroundColor:'red'}}>
+      <Link className="nav-link" to="/welcome" style={{backgroundColor:props.color.color}}>
         {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,
         and call this link 'Login / Register' if they are not */}
@@ -20,23 +20,23 @@ const Nav = (props) => (
       {/* Show the link to the info page and the logout button if the user is logged in */}
       {props.user.id && (
         <>
-          <Link className="nav-link" to="/info" style={{backgroundColor:'red'}}>
+          <Link className="nav-link" to="/info" style={{backgroundColor:props.color.color}}>
             Info Page
           </Link>
-          <Link className="nav-link" to="/home" style={{backgroundColor:'red'}}>
+          <Link className="nav-link" to="/home" style={{backgroundColor:props.color.color}}>
             Home
           </Link>
-          <Link className="nav-link" to="/pastentry" style={{backgroundColor:'red'}}>
+          <Link className="nav-link" to="/pastentry" style={{backgroundColor:props.color.color}}>
             Past Entries
           </Link>
-          <Link className="nav-link" to="/profile" style={{backgroundColor:'red'}}>
+          <Link className="nav-link" to="/profile" style={{backgroundColor:props.color.color}}>
             Profile
           </Link>
-          <LogOutButton className="nav-link" style={{backgroundColor:'red'}}/>
+          <LogOutButton className="nav-link" style={{backgroundColor:props.color.color}}/>
         </>
       )}
       {/* Always show this link since the about page is not protected */}
-      <Link className="nav-link" to="/about" style={{backgroundColor:'red'}}>
+      <Link className="nav-link" to="/about" style={{backgroundColor:props.color.color}}>
         About
       </Link>
     </div>
@@ -50,6 +50,7 @@ const Nav = (props) => (
 // const mapStateToProps = ({ user }) => ({ user });
 const mapStateToProps = state => ({
   user: state.user,
+  color:state.color
 });
 
 export default connect(mapStateToProps)(Nav);

@@ -10,7 +10,7 @@ class ProfilePage extends Component {
 
   state = {
     picIsEditable: false,
-    picture: ''
+    picture: '',
   }
 
   componentDidMount() {
@@ -43,14 +43,19 @@ class ProfilePage extends Component {
     })
   }
 
+  handleColor = (event) => {
+    console.log(event)
+    this.props.dispatch({type:'SET_COLOR', payload:event})
+  }
+
 
   render() {
-    const { icons, user } = this.props;
-    console.log(user)
+    const { icons, user, color } = this.props;
+    console.log(color.color)
     return (<>
 
       <div className="page" style={{ textAlign: 'center', border: '1px solid black', display: 'flex', height:'95%', top:'38px'}}>
-<div className='col-sm' style={{backgroundColor:'red', float:'left', maxWidth:'5%' }}></div>
+<div className='col-sm' style={{backgroundColor:color.color,float:'left', maxWidth:'5%' }}></div>
 
         <div className='card' style={{ width: '80%', margin: 'auto', display:'inline-block', height:'100%' }}><br/>
           <h1>{user.first_name}'s Profile Page!</h1><br/>
@@ -71,12 +76,18 @@ class ProfilePage extends Component {
               <option value='CHOOSE'>CHOOSE LANGUAGE</option>
               <option value='English' selected>English</option>
             </select></h4>
+            <div >
             <h4 id='profileText'>Change color theme of app?</h4>
+
+            <div><button className = 'colorSelector' id='colorSelectorRed' onClick={()=> this.handleColor('red')}></button>
+            <button className = 'colorSelector' id='colorSelectorGreen' onClick={()=> this.handleColor('green')}></button>
+            <button className = 'colorSelector' id='colorSelectorBlue' onClick={()=> this.handleColor('blue')}></button></div>
+            </div>
           </div>
 
         </div>
 
-        <div className='col-sm' style={{backgroundColor:'red', float:'right', maxWidth:'5%' }}></div>
+        <div className='col-sm' style={{backgroundColor:color.color, float:'right', maxWidth:'5%' }}></div>
       </div>
     </>
     );
@@ -85,6 +96,7 @@ class ProfilePage extends Component {
 
 const mapStateToProps = state => ({
   user: state.user,
+  color: state.color,
 
 });
 

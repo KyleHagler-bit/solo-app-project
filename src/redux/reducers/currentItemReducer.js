@@ -11,9 +11,9 @@ const currentItemReducer = (state = {
       newState = { ...newState, ...action.payload };
       return newState;
 
-    case 'ADD_ICON':
-      newState = { ...newState, iconsArray: [...newState.iconsArray, action.payload] };
-    //return action.payload;
+    // case 'ADD_ICON':
+    //   newState = { ...newState, iconsArray: [...newState.iconsArray, action.payload] };
+    // //return action.payload;
     case 'REMOVE_ICON':
       const filteredIcons = newState.iconsArray.filter(
         (item) => item !== action.payload

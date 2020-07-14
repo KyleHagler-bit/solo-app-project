@@ -21,7 +21,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 //App components
 import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
+
 import InfoPage from '../InfoPage/InfoPage';
 import WelcomePage from '../WelcomePage/WelcomePage';
 import IconsPage from '../IconsPage/IconsPage';

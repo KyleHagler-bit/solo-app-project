@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { put, takeLatest, takeEvery } from 'redux-saga/effects';
+import { put, takeEvery } from 'redux-saga/effects';
 
 //GET picture from database
 function* fetchPicture() {
@@ -21,10 +21,7 @@ function* fetchPicture() {
 function* updatePicture(action) {
   
   try {
-    const config = {
-      headers: { 'Content-Type': 'application/json' },
-      withCredentials: true,
-    };
+    
       const response = yield axios.put(`/api/picture`, action.payload);
       yield put({ type: 'FETCH_PICTURE' })
     
