@@ -39,7 +39,9 @@ class RegisterPage extends Component {
 
   render() {
     return (
-      <div className='page'>
+      <div className='page' style={{display:'flex', height:'94%', top:'38px'}}>
+<div className='col-sm' style={{backgroundColor:'red', float:'left', maxWidth:'5%' }}></div>
+<div style={{display:'inline-block', width:'90%', height:'50%'}}>
         {this.props.errors.registrationMessage && (
           <h2
             className="alert"
@@ -126,6 +128,8 @@ class RegisterPage extends Component {
             Back to Login
           </button>
         </center>
+        </div>
+        <div className='col-sm' style={{backgroundColor:'red', float:'right', maxWidth:'5%' }}></div>
       </div>
     );
   }

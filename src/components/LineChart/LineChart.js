@@ -31,7 +31,6 @@ class LineChart extends Component {
       }), 
       datasets: [
         {
-          label: 'Mood over time',
           data: this.values(), //dont have an array in an array
           backgroundColor: '#7FFFD4'
         }],
@@ -54,6 +53,9 @@ class LineChart extends Component {
           height={3}
           options={{
             responsive: true,
+            legend:{
+              display:false //allows legend to be hidden i.e. no box under graph title
+            },
             title: {
               display: true,
               fontColor: 'blue',
@@ -74,7 +76,7 @@ class LineChart extends Component {
               yAxes: [{
                 ticks: {
                   min: 0, max: 8,
-                  fontColor: 'green',
+                  fontColor: 'black',
                   callback: function (label, index, labels) {
                     switch (label) { //Allows us to change the yaxis labels
                       case 1:

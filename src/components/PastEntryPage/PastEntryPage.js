@@ -26,8 +26,9 @@ class PastEntryPage extends Component {
     } else {
     
     return (
-      <div className="page" style={{ display:'block', height:'100%', border:'1px solid red'}}>
-        <div className='col-sm' style={{backgroundColor:'red', float:'left', maxWidth:'5%' }}></div>
+      <div className="page" style={{ textAlign: 'center', border: 'none', display: 'flex', top:'38px', minHeight:'100%' }}>
+<div className='col-sm' style={{backgroundColor:'red', float:'left', maxWidth:'5%', minHeight:'100%' }}></div>
+<div style={{display:'inline-block', width:'90%', height:'100%', marginBottom:'1%'}}>
         
         <button style={{margin:'2%'}} onClick={() => this.props.history.push("/home")}>Back to Home Page</button>
         <br/> 
@@ -52,6 +53,8 @@ class PastEntryPage extends Component {
             );
           })}
           
+      </div>
+      <div className='col-sm' style={{backgroundColor:'red', float:'right', maxWidth:'5%' }}></div>
       </div>
     );
   }}

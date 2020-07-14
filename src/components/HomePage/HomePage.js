@@ -25,8 +25,9 @@ class HomePage extends Component {
 
     return (
       <>
-        <div className="page" style={{ textAlign: 'center', border: 'none', display: 'block',  marginBottom: '10%', top:'38px' }}>
+        <div className="page" style={{ textAlign: 'center', border: 'none', display: 'flex', top:'38px' }}>
 <div className='col-sm' style={{backgroundColor:'red', float:'left', maxWidth:'5%' }}></div>
+<div style={{display:'inline-block', width:'90%', marginBottom:'5%'}}>
           {this.props.lastEntry.map((item, index) => {
             let date = new Date(item.date_logged);
             date = date.toDateString(); //This will get the date to display in a nicer way
@@ -55,6 +56,9 @@ class HomePage extends Component {
           <div className='card' id='lineChart' style={{ width: '90%', margin: 'auto', border:'none' }}>
             <LineChart />
           </div>
+
+          </div>
+<div className='col-sm' style={{backgroundColor:'red', float:'right', maxWidth:'5%' }}></div>
         </div>
       </>
     );

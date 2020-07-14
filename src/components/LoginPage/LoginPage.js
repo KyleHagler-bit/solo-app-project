@@ -37,8 +37,9 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div className='page'>
-
+      <div className='page' style={{display:'flex', height:'94%', top:'38px'}}>
+<div className='col-sm' style={{backgroundColor:'red', float:'left', maxWidth:'5%' }}></div>
+<div style={{display:'inline-block', width:'90%', height:'50%'}}>
         {this.props.errors.loginMessage && (
           <h2
             className="alert"
@@ -73,14 +74,15 @@ class LoginPage extends Component {
             </label>
           </div>
           <div>
-            <center>
+            <center><br/>
             <input
               className="log-in"
               type="submit"
               name="submit"
               value="Log In"
+              
             />
-            </center>
+            </center> <br/>
           </div>
           <div>
             <input
@@ -101,6 +103,8 @@ class LoginPage extends Component {
             Register
           </button>
         </center>
+        </div>
+        <div className='col-sm' style={{backgroundColor:'red', float:'right', maxWidth:'5%' }}></div>
       </div>
     );
   }

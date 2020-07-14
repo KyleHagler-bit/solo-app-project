@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './EntryListItem.css';
 
+import swal from "sweetalert";
+
 import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import ReactTooltip from 'react-tooltip';
@@ -13,10 +15,10 @@ import axios from 'axios';
 
 class EntryListItem extends Component {
 
-  
+
 
   componentDidMount() {
-    
+
   }
 
 
@@ -36,15 +38,35 @@ class EntryListItem extends Component {
     this.props.dispatch({ type: 'FETCH_ENTRY' }) //Does this do anything?
   }
 
+
   //DELETE entry with selected ID
   deleteEntry = (itemID) => {
-    this.props.dispatch({
-      type: "DELETE_ENTRY",
-      payload: itemID
-    })
-    // window.location.reload(); //if don't have this, past entries do not show deleting correctly
-    this.props.dispatch({type: 'FETCH_ENTRY'})
-    this.props.dispatch({type:'FETCH_LAST_ENTRY'}) //thought this fixed things
+
+    swal({
+      title: "Are you sure you want to delete?",
+      text: `Once an entry is deleted it cannot be recovered. 
+              Please click 'ok' to confirm`,
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+
+    }).then((response) => {
+      if (response) { //if the user clicked okay, go through with deleting the item
+
+        this.props.dispatch({ type: "DELETE_ENTRY", payload: itemID });
+        this.props.dispatch({ type: 'FETCH_ENTRY' });
+        this.props.dispatch({ type: 'FETCH_LAST_ENTRY' });
+
+        swal("Entry deleted", {
+          icon: "success",
+        }); //end swal
+
+      } else {
+        swal("Entry has not been deleted");
+        return;
+      } //end else
+    });
+
   }
 
   //This will display the specific emoticon associated with the entry
@@ -80,7 +102,7 @@ class EntryListItem extends Component {
 
     return (
 
-      <div id='entrylist' style={{  textAlign: 'center'}}>
+      <div id='entrylist' style={{ textAlign: 'center' }}>
 
         <div className='card' style={{}}>
 
@@ -93,7 +115,7 @@ class EntryListItem extends Component {
               <i className='fa fa-trash' aria-hidden='true' style={{ float: 'right' }}></i>
             </a> <ReactTooltip id='delete'><span>Delete Entry?</span></ReactTooltip>
 
-            <h5 className='card-title' style={{  width: '60%', textAlign: 'center', marginLeft: 'auto', marginRight: 'auto' }}><i>{date_logged}</i></h5>
+            <h5 className='card-title' style={{ width: '60%', textAlign: 'center', marginLeft: 'auto', marginRight: 'auto' }}><i>{date_logged}</i></h5>
 
           </div> <br />
           <div className='card-body'>
@@ -103,7 +125,7 @@ class EntryListItem extends Component {
             {noteEntry}<br /> <br /> {/*The note section of the entry */}
 
             {/*The will map over and display the chosen icons for the specific entry */}
-            
+
             {this.props.iconsArray.map((item, index) => {
 
               for (let i = 0; i < icons.length; i++) {
@@ -123,7 +145,7 @@ class EntryListItem extends Component {
           </div>
 
         </div>
-        
+
       </div>
     );
   }

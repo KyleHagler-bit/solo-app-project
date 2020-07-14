@@ -19,7 +19,7 @@ class WelcomePage extends Component {
   render() {
 
     return (
-      <div className="page" style={{display:'flex', border:'1px solid black', height:'92%', top:'38px'}}>
+      <div className="page" style={{display:'flex', border:'none', height:'94%', top:'38px'}}>
         <div className='col-sm' style={{backgroundColor:'red', float:'left', maxWidth:'5%' }}></div>
         <div style={{width:'90%'}}>
         <br/><br/>
