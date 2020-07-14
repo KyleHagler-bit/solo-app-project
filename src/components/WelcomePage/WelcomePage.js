@@ -19,10 +19,11 @@ class WelcomePage extends Component {
   render() {
 
     return (
-      <div className="page" style={{display:'block', minHeight:'100%', border:'1px solid black'}}>
-        
+      <div className="page" style={{display:'flex', border:'1px solid black', height:'92%', top:'38px'}}>
+        <div className='col-sm' style={{backgroundColor:'red', float:'left', maxWidth:'5%' }}></div>
+        <div style={{width:'90%'}}>
         <br/><br/>
-        <h2>Welcome!</h2>
+        <h2>Welcome!</h2><br/>
         <h3>How are you feeling today?</h3>
         <EmotionScale/> 
         {/*User cannot move further on in the entry process unless they select an emotion*/}
@@ -31,6 +32,8 @@ class WelcomePage extends Component {
   
         <button id='skipHome' onClick={() => this.props.history.push("/home")}>Skip to Home Page</button>
         </div>
+        </div>
+        <div className='col-sm' style={{backgroundColor:'red', float:'right', maxWidth:'5%' }}></div>
       </div>
     );
   }

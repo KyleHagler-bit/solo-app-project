@@ -44,7 +44,7 @@ class EntryListItem extends Component {
     })
     // window.location.reload(); //if don't have this, past entries do not show deleting correctly
     this.props.dispatch({type: 'FETCH_ENTRY'})
-    
+    this.props.dispatch({type:'FETCH_LAST_ENTRY'}) //thought this fixed things
   }
 
   //This will display the specific emoticon associated with the entry
@@ -80,9 +80,9 @@ class EntryListItem extends Component {
 
     return (
 
-      <div id='entrylist' style={{ border: '1px solid black', textAlign: 'center', minHeight: '100%' }}>
+      <div id='entrylist' style={{  textAlign: 'center'}}>
 
-        <div className='card'>
+        <div className='card' style={{}}>
 
           <div id='head' className='card-header' >
             <a data-tip data-for='edit' onClick={() => this.editEntry(id)}>
@@ -93,7 +93,7 @@ class EntryListItem extends Component {
               <i className='fa fa-trash' aria-hidden='true' style={{ float: 'right' }}></i>
             </a> <ReactTooltip id='delete'><span>Delete Entry?</span></ReactTooltip>
 
-            <h5 className='card-title' style={{ border: '1px solid black', width: '60%', textAlign: 'center', marginLeft: 'auto', marginRight: 'auto' }}><i>{date_logged}</i></h5>
+            <h5 className='card-title' style={{  width: '60%', textAlign: 'center', marginLeft: 'auto', marginRight: 'auto' }}><i>{date_logged}</i></h5>
 
           </div> <br />
           <div className='card-body'>
@@ -123,7 +123,7 @@ class EntryListItem extends Component {
           </div>
 
         </div>
-        {this.props.id}
+        
       </div>
     );
   }

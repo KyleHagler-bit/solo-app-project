@@ -27,6 +27,7 @@ class PastEntryPage extends Component {
     
     return (
       <div className="page" style={{ display:'block', height:'100%', border:'1px solid red'}}>
+        <div className='col-sm' style={{backgroundColor:'red', float:'left', maxWidth:'5%' }}></div>
         
         <button style={{margin:'2%'}} onClick={() => this.props.history.push("/home")}>Back to Home Page</button>
         <br/> 

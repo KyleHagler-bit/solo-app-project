@@ -80,10 +80,12 @@ return generatedColors;
           label: 'Activities',
           data: this.values(), //dont have an array in an array
           backgroundColor:this.colors(),
-          hoverBackgroundColor:'black'
+          hoverBackgroundColor:'black',
+          
         }
         //end dataset
-      ] //end datset
+      ], //end datset
+      
     }
 
     if (this.props.pieChart.length===0 || this.props.pieChart.length===undefined){

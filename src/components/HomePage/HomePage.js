@@ -25,16 +25,16 @@ class HomePage extends Component {
 
     return (
       <>
-        <div className="page" style={{ textAlign: 'center', border: '1px solid black', display: 'block', margin: 'auto', width: '', height: '100%', marginBottom: '5%' }}>
-
+        <div className="page" style={{ textAlign: 'center', border: 'none', display: 'block',  marginBottom: '10%', top:'38px' }}>
+<div className='col-sm' style={{backgroundColor:'red', float:'left', maxWidth:'5%' }}></div>
           {this.props.lastEntry.map((item, index) => {
             let date = new Date(item.date_logged);
             date = date.toDateString(); //This will get the date to display in a nicer way
 
             return (
               <div id='homeEntry' style={{ border: '1px solid white' }}>
-                <br />
-                <h4 style={{ textAlign: 'left', marginLeft: '200px' }}>Latest Entry:</h4>
+               
+                <h4 style={{ textAlign: 'left', marginLeft: '13%' }}>Latest Entry:</h4>
                 <EntryListItem
                   id={item.id}
                   emotion_value={item.emotion_value}
@@ -48,11 +48,11 @@ class HomePage extends Component {
           <br />
 
           {/*This is where our pie chart lives */}
-          <div className='card' id='pieChart' style={{ width: '50%', margin: 'auto', textAlign: 'center' }}>
+          <div className='card' id='pieChart' style={{ width: '50%', margin: 'auto', textAlign: 'center', border:'none' }}>
             <PieChart />
           </div><br /><br /><br /><br />
           {/*This is where our line chart lives */}
-          <div className='card' id='lineChart' style={{ width: '80%', margin: 'auto' }}>
+          <div className='card' id='lineChart' style={{ width: '90%', margin: 'auto', border:'none' }}>
             <LineChart />
           </div>
         </div>

@@ -49,32 +49,34 @@ class ProfilePage extends Component {
     console.log(user)
     return (<>
 
-      <div className="page" style={{ textAlign: 'center', border: '1px solid black', display: 'flex', margin: 'auto', height: '100%' }}>
+      <div className="page" style={{ textAlign: 'center', border: '1px solid black', display: 'flex', height:'95%', top:'38px'}}>
+<div className='col-sm' style={{backgroundColor:'red', float:'left', maxWidth:'5%' }}></div>
 
-
-        <div className='card' style={{ width: '60%', margin: 'auto', height: '100%' }}><br /><br />
-          <h2>Your Profile Page!</h2>
-          <h4 className='card-title'>Hello {user.first_name}</h4>
-          <div style={{ borderRadius: '100%', height: '300px', width: '300px', margin: '3%' }}> <br />
+        <div className='card' style={{ width: '80%', margin: 'auto', display:'inline-block', height:'100%' }}><br/>
+          <h1>{user.first_name}'s Profile Page!</h1><br/>
+          
+          <div style={{ borderRadius: '100%', height: '500px', width: '500px', margin: '1%', display:'inline-block', float:'left' }}> <br />
             {user.profile_pic ? <img id='profilePic' src={user.profile_pic} /> : <img id='placeholder' src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png' />}
 
-          </div>
+          </div><br/><br/>
 
-          <div style={{ textAlign: 'left', margin: '2%', height: '100%' }}>
-            <h5 className='card-text'>Change Password?</h5>
-            <div><h5 style={{ display: 'inline-block' }}>Add Profile Picture?</h5>
-              {this.state.picIsEditable ? <div ><input style={{ width: '100%' }} value={this.state.picture} placeholder='image URL please' onChange={this.handlePicture}></input>
-                <button onClick={this.savePicture}>Save</button><button onClick={this.cancel}>Cancel</button></div>
-                : <button id='addImageBtn' onClick={this.editPicture}>+</button>} </div>
+          <div id='profileOptions' style={{ textAlign: 'left', margin: '2%',  float:'right', width: '50%', display:'inline-block' }}>
+            <h4 className='card-text'>Change Password?</h4>
+            <div><h4 style={{ display: 'inline-block' }}>Add Profile Picture?</h4>
+              {this.state.picIsEditable ? <div ><input style={{ width: '40%' }} value={this.state.picture} placeholder='image URL please' onChange={this.handlePicture}></input><br/>
+                <button id='savePic' className='btn btn-info' onClick={this.savePicture}>Save</button><button className='btn btn-danger' id='cancelPic' onClick={this.cancel}>Cancel</button></div>
+                : <button id='addImageBtn' className='btn btn-success' onClick={this.editPicture}>+</button>} </div>
 
-            <h5>Change Language? <select>
+            <h4>Change Language? <select>
               <option value='CHOOSE'>CHOOSE LANGUAGE</option>
               <option value='English' selected>English</option>
-            </select></h5>
-            <h5>Change color theme of app?</h5>
+            </select></h4>
+            <h4>Change color theme of app?</h4>
           </div>
+
         </div>
 
+        <div className='col-sm' style={{backgroundColor:'red', float:'right', maxWidth:'5%' }}></div>
       </div>
     </>
     );

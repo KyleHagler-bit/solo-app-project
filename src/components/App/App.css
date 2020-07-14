@@ -49,12 +49,36 @@ input {
     cursor: pointer;
 }
 
-.page{
-    height:100% !important;
-    /* margin-bottom: 20px !important; */
-}
+
 
 html{
     height:100%;
 }
 
+
+.page{
+    position:absolute; /*Need pages to sit on top of each other for route transition*/
+    top:100px;
+    left:0;
+    right:0;
+}
+
+.fade-appear
+.fade-enter{
+    opacity: 0;
+    z-index: 1;
+}
+.fade-appear-active
+.fade-enter.fade-enter-active{
+    opacity:1;
+    transition: opacity 300ms linear 150ms
+}
+
+.fade-exit{
+    opacity:1;
+}
+
+.fade-exit.fade-exit-active{
+    opacity:0;
+    transition: opacity 150ms linear
+}

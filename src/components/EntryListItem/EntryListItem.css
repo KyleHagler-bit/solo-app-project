@@ -4,6 +4,7 @@
   /* padding-bottom: 4%; */
   
   
+  
 
 }
 
@@ -16,6 +17,7 @@
   margin-top: 0%;
   /* position: static; */
   float:left;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.3), inset 0 -3px 3px rgba(0,0,0,0.1);
 }
 
 #entryIcon{

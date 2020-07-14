@@ -1,11 +1,30 @@
 #placeholder, #profilePic{
-  width:300px;
-  height:300px;
+  width:500px;
+  height:500px;
   border-radius: 100%;
   display:flex;
+  border: 5px solid turquoise;
+  box-shadow: turquoise 0px 0px 500px, inset rgba(0,0,0,0.2) 0px -1px 2px;
+
 }
 
 
 #addImageBtn {
   border-radius: 100%;
+  margin:1%;
+}
+
+#savePic, #cancelPic{
+  margin:1%;
+}
+
+#profileOptions{
+  background: rgb(18,171,179);
+background: radial-gradient(circle, rgba(18,171,179,0) 30%, turquoise 99%);
+  
+  border-radius:8%;
+}
+
+h4{
+  margin:3%;
 }

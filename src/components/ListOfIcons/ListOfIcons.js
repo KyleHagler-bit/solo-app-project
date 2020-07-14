@@ -38,7 +38,7 @@ class ListOfIcons extends Component {
     let selectedIcons = this.props.currentItem.iconsArray;
 
     return (
-      <div className='page' >
+      <div className='' style={{display:''}} >
 
       {this.props.icons.map((item,index) =>{  
         return(

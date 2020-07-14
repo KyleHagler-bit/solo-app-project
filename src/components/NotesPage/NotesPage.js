@@ -41,8 +41,10 @@ class NotesPage extends Component {
   render() {
     console.log('inside note', this.state.note)
     return (
-      <div className="page" style={{height:'100%', display:'block'}}>
-        
+      <div className="page" style={{display:'flex', border:'1px solid black', height:'92%', top:'38px'}}>
+      <div className='col-sm' style={{backgroundColor:'red', float:'left', maxWidth:'5%' }}></div>
+        <div style={{width:'90%'}}>
+        <br/><br/><br/>
         <h2> Have any notes you would like to log today?</h2> <br/>
         <textarea rows ='10' cols='100' placeholder='Write here' onChange={(event) => this.handleChange(event, "note")}></textarea>
         <br /> <br/>
@@ -51,6 +53,8 @@ class NotesPage extends Component {
         {this.state.note === ''  ? <button id='nextToHome' disabled>Next Page</button> : <button onClick={() => this.submitInfo()}>Next Page</button>}
         {this.state.note !== ''  ? <button id='skipHome' disabled>No Notes! Skip</button> : <button id='skipHome' onClick={() => this.skipNotes()}>No Notes! Skip</button>}
 
+      </div>
+      <div className='col-sm' style={{backgroundColor:'red', float:'right', maxWidth:'5%' }}></div>
       </div>
     );
   }
