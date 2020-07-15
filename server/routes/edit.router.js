@@ -42,9 +42,6 @@ router.put("/", async (req, res) => {
 
     await Promise.all(
       iconsArray.map((item) => {
-
-
-        console.log('what is this', item, id)
         //This is what I orginally was going for -->
         //     const insertLineItemText = `
         // IF EXISTS (SELECT * FROM "entry_activity" WHERE id=$1) THEN

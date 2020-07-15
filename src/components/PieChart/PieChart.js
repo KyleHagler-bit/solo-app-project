@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import { Pie } from 'react-chartjs-2';
 import { withRouter } from "react-router";
 
+//This takes care of getting data from the datbase and creating the pie chart
 class PieChart extends Component {
 
   componentDidMount() {
       this.props.dispatch({ type: 'FETCH_PIE' })
-    
   }
 
   values = () => {
@@ -16,11 +16,10 @@ class PieChart extends Component {
     this.props.pieChart.map((item, index) => {
       activityCount.push(item.count);
     })
-    
     return activityCount;
 }
 
-//LOOK INTO OTHER PROGRAM TO MAKE SURE COLORS ARE TRULY RANDOMIZED
+//randomly generates colors for pie slices
 colors = () =>{
   let generatedColors = [];
 
@@ -28,40 +27,15 @@ colors = () =>{
     let r = Math.floor(Math.random() * 200);
     let g = Math.floor(Math.random() * 200);
     let b = Math.floor(Math.random() * 200);
-    // let c = '';
-    // let h =''
-    // let c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
-    //let h = 'rgb(' + (r+20) + ', ' + (g+20) + ', ' + (b+20) + ')';
+  
     generatedColors.push( 
       'rgb(' + r + ', ' + g + ', ' + b + ')'
-      // highlight: h
     ) ;
-    
 };
-console.log(generatedColors)
+
 return generatedColors;
 }
 
-// highlights = () =>{
-  
-//   let generatedHighlights=[];
-  
-//   for (let i = 0; i < this.props.pie.length; i++) {
-//     let r = Math.floor(Math.random() * 200);
-//     let g = Math.floor(Math.random() * 200);
-//     let b = Math.floor(Math.random() * 200);
-//     let c = '';
-//     let h =''
-//     // let c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
-//     //let h = 'rgb(' + (r+20) + ', ' + (g+20) + ', ' + (b+20) + ')';
-    
-//     generatedHighlights.push(
-//     'rgb(' + (r+20) + ', ' + (g+20) + ', ' + (b+20) + ')'
-//     )
-// };
-
-// return generatedHighlights;
-// }
 
 
   render() {
@@ -84,7 +58,7 @@ return generatedColors;
       
     }
 
-    if (this.props.pieChart.length===0 || this.props.pieChart.length===undefined){
+    if (this.props.pieChart.length===0 || this.props.pieChart.length===undefined){ //conditional rendering
       return(
         <div style={{marginTop:'10%'}}>
         <h3>Oops! It looks like you may not have any data to display at the moment...</h3>

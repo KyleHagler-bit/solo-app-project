@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 //npm install --save react-chartjs-2 chart.js
 import { Line } from 'react-chartjs-2';
 
-
+//This gets the data and builds the line graph based on the user
 class LineChart extends Component {
 
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_LINE' })
   }
 
-  
+  //makes array of emotionValues from database
   values = () => {
     let emotionValues = [];
     this.props.lineChart.map((item, index) => {
@@ -20,11 +20,10 @@ class LineChart extends Component {
   }
 
 
-
   render() {
    const chartData =  {
       labels: this.props.lineChart.map((item, index) => {
-        let x = new Date(item.date_logged)
+        let x = new Date(item.date_logged) //want date to be friendlier looking
         return (
           x.toDateString()
         )
@@ -37,7 +36,7 @@ class LineChart extends Component {
 
     }
     
-    if (this.props.lineChart.length<5){
+    if (this.props.lineChart.length<5){ //conditional to see if any data can be displayed
       return(
         <div>
         <h3>Sorry! More data is needed before we display your mood graph</h3>
@@ -59,12 +58,11 @@ class LineChart extends Component {
             title: {
               display: true,
               fontColor: 'black',
-              fontSize: 24,
+              fontSize: 28,
               text: 'Mood Over Time'
             },
             scales: {
               xAxes: [{
-
                 display: true,
                 scaleLabel: {
                   display: true,

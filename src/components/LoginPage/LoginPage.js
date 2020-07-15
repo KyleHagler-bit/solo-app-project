@@ -5,6 +5,7 @@ import { withRouter } from "react-router";
 
 import './LoginPage.css';
 
+//most of this not changed. One major change is logging in with email and not username
 class LoginPage extends Component {
   state = {
     username: '',
@@ -25,7 +26,7 @@ class LoginPage extends Component {
     } else {
       this.props.dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
-    //CONDITIONAL RENDER TO PUSH TO WELCOME PAGE IF NO ENTRY TODAY???
+    
     this.props.history.push("/home") //makes sure that login takes user to home page
   } // end login
 

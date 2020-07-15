@@ -7,7 +7,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import SelectedIcon from '../SelectedIcon/SelectedIcon'
 
-
+//This gets the list of icons saved in the database
+//Think of it like a sort of library
 class ListOfIcons extends Component {
  
   componentDidMount() {

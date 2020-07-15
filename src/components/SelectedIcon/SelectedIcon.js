@@ -3,12 +3,11 @@ import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import './SelectedIcon.css';
 
+//This looks to see if icon is 'clicked' or not
 class SelectedIcon extends Component {
   
-
   render() {
     let {selected, toggleSelected, id, nameForClass,name} = this.props;
-    
     return (
       <div>
           <a type="button" style={{backgroundColor:this.props.color.iconColor}} id={selected? "activityClicked":"activity"} class="btn btn-success" onClick={() =>toggleSelected(id,selected)}><i className={nameForClass}></i></a>

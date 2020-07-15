@@ -9,7 +9,7 @@ function* fetchLineChart() {
       withCredentials: true,
     };
     
-    const response = yield axios.get('api/linechart', config);
+    const response = yield axios.get('api/linechart', config); //GET
    
     yield put({ type: 'SET_LINE', payload: response.data });
   } catch (error) {

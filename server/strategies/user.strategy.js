@@ -12,13 +12,11 @@ passport.deserializeUser((id, done) => {
     // Handle Errors
     const user = result && result.rows && result.rows[0];
 
-    if (user) {
-      // user found
+    if (user) { // user found
       delete user.password; // remove password so it doesn't get sent
       // done takes an error (null in this case) and a user
       done(null, user);
-    } else {
-      // user not found
+    } else { // user not found
       // done takes an error (null in this case) and a user (also null in this case)
       // this will result in the server returning a 401 status code
       done(null, null);

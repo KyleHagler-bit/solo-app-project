@@ -1,10 +1,10 @@
-//does this need to be [] or [{}] OR {}
+//handles colors coming in from profile page
 const colorReducer = (state = {
-  outlineColor:'#50A586',
+  outlineColor:'#50A586', //need a default color palette
   iconColor:'#3AAED8',
   buttonColor:'#0195B7'
 }, action) => {
-  // console.log('This is inside currItem Reducer', state)
+
   let newState = { ...state };
   switch (action.type) {
     case 'SET_COLOR':

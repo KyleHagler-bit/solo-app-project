@@ -8,7 +8,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 //      id    activity_name     activity_icon (this would be the bootstrap className)
 router.get('/', (req, res) => {
   pool.query('SELECT * FROM activity_library')
-  
+
     .then((result) => {
       res.send(result.rows);
     })

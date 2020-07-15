@@ -9,8 +9,7 @@ function* fetchPieChart() {
       withCredentials: true,
     };
     
-    const response = yield axios.get('api/piechart', config);
-    
+    const response = yield axios.get('api/piechart', config); //GET
     yield put({ type: 'SET_PIE', payload: response.data });
   } catch (error) {
     console.log('Pie get request failed', error);

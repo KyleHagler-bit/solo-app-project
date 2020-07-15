@@ -5,18 +5,18 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 async function getIconsById(entry_id) {
   // grab all entry_activities for a given entry_id
-  const result = await pool.query('SELECT * FROM entry_activity WHERE entry_id=$1;',[entry_id]);
+  const result = await pool.query('SELECT * FROM entry_activity WHERE entry_id=$1;', [entry_id]);
   return result.rows;
 }
 
 //GET all entries tied to user to display for past entries
 router.get('/', rejectUnauthenticated, (req, res) => {
-  pool.query('SELECT * FROM entry WHERE user_id=$1 ORDER BY id DESC',[req.user.id]) //only gets entries from specific user
+  pool.query('SELECT * FROM entry WHERE user_id=$1 ORDER BY id DESC', [req.user.id]) //only gets entries from specific user
     .then(async (result) => {
       const rows = result.rows;
       // add chosen_icons key to each entry (so the client doesnt have to)
       await Promise.all(
-        rows.map( async (entry) => {
+        rows.map(async (entry) => {
           entry.chosen_icons = await getIconsById(entry.id);
         })
       )
@@ -28,7 +28,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     });
 });
 
- //POST a new entry
+//POST a new entry
 router.post("/", async (req, res) => {
   const client = await pool.connect();
   let today = new Date();
@@ -76,7 +76,7 @@ router.post("/", async (req, res) => {
 //DELETEs the chosen entry with the entry id given
 router.delete("/:id", rejectUnauthenticated, (req, res) => {
   let id = req.params.id; // id of the thing to delete
-	
+
 
   /* if (session.id !== database.id) {sendStatus(403) return;}*/
   let queryText = `SELECT * FROM entry WHERE id=$1`; //grabs specific item to grab the item user_id
@@ -84,7 +84,7 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
   pool
     .query(queryText, queryValue)
     .then((result) => {
-			// console.log("result.rows[0].user_id", result.rows[0].user_id);
+      // console.log("result.rows[0].user_id", result.rows[0].user_id);
       if (result.rows[0].user_id === req.user.id) {
         queryText = `DELETE FROM entry WHERE id=$1;`; //deletes from database
         pool

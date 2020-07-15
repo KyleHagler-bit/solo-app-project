@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { put, takeEvery } from 'redux-saga/effects';
 
+//used for updating/editing past entries
 function* updateEntry(action) {
-  
   try {
       const response = yield axios.put(`/api/entryedit/`, action.payload);
       yield put({ type: 'FETCH_ENTRY'})
@@ -14,9 +14,7 @@ function* updateEntry(action) {
 }
 
 
-
 function* editSaga() {
-  
   yield takeEvery('UPDATE_ENTRY', updateEntry)
 }
 

@@ -3,9 +3,6 @@
   height:500px;
   border-radius: 100%;
   display:flex;
-  
-  
-
 }
 
 
@@ -27,39 +24,35 @@
 }
 
 #colorSelectorOne{
- 
   background-color:#50A586;
   outline:none;
-  
 }
+
 #colorSelectorTwo{
- 
   background-color:#A13D63;
   outline:none;
-  
 }
+
 #colorSelectorThree{
- 
   background-color:#F9A03F;
   outline:none;
-  
 }
 
 #colorSelectorFour{
- 
   background-color:#1982C4;
   outline:none;
-  
+}
+
+#colorSelectorFive{
+  background-color:#040F0F;
+  outline:none;
 }
 
 .colorSelector{
-  
   border-radius: 100%;
-
   height:50px;
   width:50px;
   outline:none;
   margin-left:5%;
-
 }
 

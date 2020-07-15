@@ -4,13 +4,13 @@ const currentItemReducer = (state = {
   iconsArray: [],
   note: '',
 }, action) => {
-  // console.log('This is inside currItem Reducer', state)
+ 
   let newState = { ...state };
   switch (action.type) {
     case 'CURRENT_ITEM':
       newState = { ...newState, ...action.payload };
       return newState;
-
+    //SHOULD this be it's own thing? Right now CURRENT_ITEM takes care of adding things
     // case 'ADD_ICON':
     //   newState = { ...newState, iconsArray: [...newState.iconsArray, action.payload] };
     // //return action.payload;

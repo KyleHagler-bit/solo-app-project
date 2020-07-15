@@ -4,17 +4,14 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
-import thunk from 'redux-thunk';
+// import thunk from 'redux-thunk'; THOUGHT this would solve some issues but NOT needed
 
 import rootReducer from './redux/reducers'; // imports ./redux/reducers/index.js
 import rootSaga from './redux/sagas'; // imports ./redux/sagas/index.js
 
 import App from './components/App/App';
 
-import {
-  Route,
-  BrowserRouter
-} from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -40,10 +37,10 @@ window.store = store;
 sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
-  <BrowserRouter>
-  <Provider store={store}>
-    <App />
-  </Provider>
+  <BrowserRouter> {/*Wrap things here to allow route transitions to work */}
+    <Provider store={store}>
+      <App />
+    </Provider>
   </BrowserRouter>,
   document.getElementById('react-root'),
 );

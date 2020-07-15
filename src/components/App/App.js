@@ -1,28 +1,18 @@
 import React, { Component } from 'react';
-import {
-  HashRouter as Router,
-  Route,
-  Redirect,
-  Switch,
-  BrowserRouter
-} from 'react-router-dom';
-
+import { HashRouter as Router, Route, Redirect, Switch, BrowserRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
 
 //CSS
 import './App.css';
-
-import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 //npm install react-transition-group --save
 
 //App components
+import Nav from '../Nav/Nav';
+import Footer from '../Footer/Footer';
 import AboutPage from '../AboutPage/AboutPage';
-
-
 import WelcomePage from '../WelcomePage/WelcomePage';
 import IconsPage from '../IconsPage/IconsPage';
 import NotesPage from '../NotesPage/NotesPage';
@@ -32,7 +22,7 @@ import ProfilePage from '../ProfilePage/ProfilePage';
 import EditEntryPage from '../EditEntryPage/EditEntryPage';
 
 class App extends Component {
-  componentDidMount() {
+  componentDidMount() { //want certain things to run when the App itself mounts
     this.props.dispatch({ type: 'FETCH_USER' });
     this.props.dispatch({ type: 'FETCH_ICONS' });
   }
@@ -40,19 +30,18 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-
         <div>
           <Nav />
           <Route render={({ location }) => (
 
-            <TransitionGroup>
+            <TransitionGroup> {/*Need to wrap things inside this for route transitions */}
               <CSSTransition
                 key={location.key} //unique identifier
                 timeout={300}
                 classNames="fade">
 
                 <Switch location={location}> {/*render route at the right time */}
-                  <Redirect exact from="/" to="/welcome" />
+                  <Redirect exact from="/" to="/home" />
 
                   <Route exact path="/about" component={AboutPage} />
 
@@ -78,13 +67,8 @@ class App extends Component {
             </TransitionGroup>
 
           )} />
-
-
-
-
           <Footer />
         </div>
-
       </BrowserRouter>
     )
   }

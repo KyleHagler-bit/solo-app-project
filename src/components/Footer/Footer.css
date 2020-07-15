@@ -1,18 +1,9 @@
 footer {
-    position: fixed;
-    /* position:absolute; */
+  position: fixed; /*Keeps footer always at the bottom of the visable page window*/
   left: 0;
   bottom: 0;
   width: 100%;
-
   color: white;
   text-align: center;
-  
-
- 
-
   padding-bottom:1%;
-  
-  
-  
 }

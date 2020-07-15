@@ -1,19 +1,17 @@
 import React, { Component } from "react";
-// import "./Edit.css";
-
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import axios from 'axios';
 
+//Let's reuse some components!
 import EmotionScale from '../EmotionScale/EmotionScale';
 import ListOfIcons from '../ListOfIcons/ListOfIcons';
 
+//This page is what the user sees when they choose to edit an existing entry
 class EditEntryPage extends Component {
 
-  
   componentDidMount() {
-    this.props.dispatch({type:'FETCH_ENTRY'})
-    this.props.dispatch({type:'FETCH_ACTIVITY_ENTRY'})
+    this.props.dispatch({ type: 'FETCH_ENTRY' })
+    this.props.dispatch({ type: 'FETCH_ACTIVITY_ENTRY' })
   }
 
   handleChange = (event, fieldName) => {
@@ -24,7 +22,7 @@ class EditEntryPage extends Component {
     });
   };
 
- //Send currentItem data off to update entry (PUT)
+  //Send currentItem data off to update entry (PUT)
   submit = () => {
     this.props.dispatch({ type: "UPDATE_ENTRY", payload: this.props.currentItem })
     this.props.history.push("/pastentry"); //move user to Past Entries Page
@@ -32,16 +30,15 @@ class EditEntryPage extends Component {
 
 
   render() {
-    const { entry, icons } = this.props;
-  
+    const {color} = this.props;
     return (
       <div>
-        <div className='page' id='editBox' style={{ textAlign: 'center', width: '100%', top:'38px', display:'flex' }}>
-        <div className='col-sm' style={{backgroundColor:this.props.color.outlineColor, float:'left', maxWidth:'5%' }}></div>
-          <div className='card' style={{minHeight:'100%', width:'90%'}}>
+        <div className='page' id='editBox' style={{ textAlign: 'center', width: '100%', top: '38px', display: 'flex' }}>
+          <div className='col-sm' style={{ backgroundColor: color.outlineColor, float: 'left', maxWidth: '5%' }}></div> {/*sidebar */}
+          <div className='card' style={{ minHeight: '100%', width: '90%' }}>
             <div id='head' className='card-header'  >
               {/*Displays date for entry on top of page*/}
-              <h2 className='card-title' style={{   textAlign: 'center', marginLeft: 'auto', marginRight: 'auto' }}>{this.props.currentItem.date}</h2>
+              <h2 className='card-title' style={{ textAlign: 'center', marginLeft: 'auto', marginRight: 'auto' }}>{this.props.currentItem.date}</h2>
 
             </div> <br />
             <div className='card-body'>
@@ -54,16 +51,16 @@ class EditEntryPage extends Component {
               <textarea rows='10' cols='100' value={this.props.currentItem.note} onChange={(event) => this.handleChange(event, 'note')}></textarea>
               <br />
 
-              <button style = {{margin: '1%'}} className='btn btn-info' onClick={() => this.submit()}>Save</button>
-              <button style = {{margin: '1%'}} className='btn btn-danger' onClick={() => this.props.history.push('/pastentry')}>Cancel Edit</button>
+              <button style={{ margin: '1%' }} className='btn btn-info' onClick={() => this.submit()}>Save</button>
+              <button style={{ margin: '1%' }} className='btn btn-danger' onClick={() => this.props.history.push('/pastentry')}>Cancel Edit</button>
               <br /><br />
 
             </div>
 
           </div>
-          <div className='col-sm' style={{backgroundColor:this.props.color.outlineColor, float:'left', maxWidth:'5%' }}></div>
+          <div className='col-sm' style={{ backgroundColor: color.outlineColor, float: 'left', maxWidth: '5%' }}></div> {/*sidebar */}
         </div>
-        
+
       </div>
 
     ); // end return
@@ -74,7 +71,7 @@ class EditEntryPage extends Component {
 const mapStateToProps = (state) => {
   return {
     currentItem: state.currentItem,
-    color:state.color
+    color: state.color
   };
 };
 

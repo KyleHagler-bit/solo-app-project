@@ -49,12 +49,9 @@ input {
     cursor: pointer;
 }
 
-
-
 html{
     height:100%;
 }
-
 
 .page{
     position:absolute; /*Need pages to sit on top of each other for route transition*/

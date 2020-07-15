@@ -9,7 +9,7 @@ function* fetchPicture() {
       withCredentials: true,
     };
     
-    const response = yield axios.get('/api/picture', config);
+    const response = yield axios.get('/api/picture', config); //GET
     console.log('inside Saga', response.data)
     yield put({ type: 'SET_PICTURE', payload: response.data });
   } catch (error) {
@@ -21,10 +21,8 @@ function* fetchPicture() {
 function* updatePicture(action) {
   
   try {
-    
-      const response = yield axios.put(`/api/picture`, action.payload);
+      const response = yield axios.put(`/api/picture`, action.payload); //PUT
       yield put({ type: 'FETCH_PICTURE' })
-    
   } catch (error) {
       console.log('Error updating', error);
   }

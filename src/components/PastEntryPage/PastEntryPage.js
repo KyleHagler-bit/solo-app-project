@@ -1,13 +1,10 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from "react-router";
 
 import EntryListItem from '../EntryListItem/EntryListItem';
 
-// import './PastEntryPage.css';
-
-import { withRouter } from "react-router";
-
-
+//This page is what holds all the individual past entries
 class PastEntryPage extends Component {
 
   componentDidMount() {
@@ -40,9 +37,7 @@ class PastEntryPage extends Component {
 
         {this.props.entry.map((item, index) => {
           let date=new Date (item.date_logged);
-          // console.log(item.iconsArray)
           date=date.toDateString();
-          //console.log('this is inside pastpagenetry',item.id)
             return (
               
               <EntryListItem 
@@ -68,7 +63,6 @@ class PastEntryPage extends Component {
 const mapStateToProps = state => ({
   entry: state.entry,
   color: state.color
-  // chosenIcons: state.chosenIcons
 
 });
 

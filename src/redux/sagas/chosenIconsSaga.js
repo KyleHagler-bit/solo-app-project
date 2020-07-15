@@ -9,7 +9,7 @@ function* fetchChosenIcons(action) {
       withCredentials: true,
     };
     console.log('inside chosen Saga', action)
-    const response = yield axios.get(`/api/chosen/${action.payload}`, config);
+    const response = yield axios.get(`/api/chosen/${action.payload}`, config); //GET
     console.log('inside Saga', response.data)
     yield put({ type: 'SET_CHOSEN_ICONS', payload: response.data });
   } catch (error) {

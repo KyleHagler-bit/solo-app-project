@@ -10,15 +10,8 @@ import ReactTooltip from 'react-tooltip';
 import { withRouter } from "react-router";
 
 
-
+//This page is what helps create each specific entry item
 class EntryListItem extends Component {
-
-
-
-  componentDidMount() {
-
-  }
-
 
   editEntry = (itemID) => {
     this.props.history.push('/edit');
@@ -40,7 +33,7 @@ class EntryListItem extends Component {
   //DELETE entry with selected ID
   deleteEntry = (itemID) => {
 
-    swal({
+    swal({ //Make sure user wants to actually delete the entry
       title: "Are you sure you want to delete?",
       text: `Once an entry is deleted it cannot be recovered. 
               Please click 'ok' to confirm`,
@@ -89,7 +82,7 @@ class EntryListItem extends Component {
 
 
   render() {
-    const { id, emotion_value, note, date_logged, icons, iconsArray } = this.props;
+    const { id, emotion_value, note, date_logged, icons } = this.props;
 
     let noteEntry = ''; //conditional rendering to see if note field is left empty
     if (note === '' || note === undefined || note === null) {
@@ -123,7 +116,6 @@ class EntryListItem extends Component {
             {noteEntry}<br /> <br /> {/*The note section of the entry */}
 
             {/*The will map over and display the chosen icons for the specific entry */}
-
             {this.props.iconsArray.map((item, index) => {
 
               for (let i = 0; i < icons.length; i++) {

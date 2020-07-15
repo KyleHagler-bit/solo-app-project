@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
-import Axios from 'axios';
 
 import './NotesPage.css';
 
+//Page where user can add notes to their entry if they wish
 class NotesPage extends Component {
   state = {
     emotionValue:this.props.currentItem.emotionValue,
@@ -41,7 +41,7 @@ class NotesPage extends Component {
   render() {
     console.log('inside note', this.state.note)
     return (
-      <div className="page" style={{display:'flex', border:'1px solid black', height:'92%', top:'38px'}}>
+      <div className="page" style={{display:'flex', border:'none', height:'92%', top:'38px'}}>
       <div className='col-sm' style={{backgroundColor:this.props.color.outlineColor, float:'left', maxWidth:'5%' }}></div>
         <div style={{width:'90%'}}>
         <br/><br/><br/>

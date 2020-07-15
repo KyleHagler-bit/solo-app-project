@@ -1,40 +1,25 @@
-
-
 #icon {
   font-size:120px;
   border-radius: 100%;
   cursor: pointer;
- 
   text-align:center;
   vertical-align: middle;
-   /* height:120px;  */
-   /* width:120px;   */
-margin:1%;
-
+  margin:1%;
   background: white;
   border: 1px solid white;
-  
-  
-
 }
 
+/*i.e. what the icon looks like when clicked*/
 #icon:focus {
   height:120px;
   width:120px;
   display:relative;
   background: #e5e5e5;
   outline: none;
-  /* -webkit-box-shadow: inset 0px 0px 15px black;
-     -moz-box-shadow: inset 0px 0px 15px black;
-          box-shadow: inset 0px 0px 15px black; */
-
-          font-size: 80px !important;
- 
+  font-size: 80px !important;
   text-align:center;
   vertical-align:middle !important;
-  
   text-shadow: -1px -1px 30px #777, -1px -1px 30px #777;
   box-shadow: inset 3px 5px 5px #222;
   /* margin: 3px -1px -1px 3px; */
-  
 }
