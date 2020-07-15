@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 
+
 const Nav = (props) => (
   <div className="nav" style={{backgroundColor:props.color.outlineColor}}>
     <Link to="/home"> {/*If user clicks on the name of the app, they are taken to the homepage */}
@@ -14,28 +15,31 @@ const Nav = (props) => (
         {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,
         and call this link 'Login / Register' if they are not */}
-        {props.user.id ? 'Make an Entry' : 'Login / Register'}
-       
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+         {props.user.id ? `Make an Entry` : 'Login / Register'}
+        
+
       </Link>
       {/* Show the link to the info page and the logout button if the user is logged in */}
       {props.user.id && (
         <>
           
           <Link className="nav-link" to="/home" style={{backgroundColor:props.color.color}}>
-            Home
+             <i class="fa fa-home" aria-hidden="true"></i>  Home
           </Link>
           <Link className="nav-link" to="/pastentry" style={{backgroundColor:props.color.color}}>
-            Past Entries
+           <i class="fa fa-list-ul" aria-hidden="true"></i>  Past Entries 
           </Link>
           <Link className="nav-link" to="/profile" style={{backgroundColor:props.color.color}}>
-            Profile
+             <i class="fa fa-user" aria-hidden="true"></i>  Profile
           </Link>
-          <LogOutButton className="nav-link" style={{backgroundColor:props.color.color}}/>
+          <LogOutButton className="nav-link" style={{backgroundColor:props.color.color}} />
+          
         </>
       )}
       {/* Always show this link since the about page is not protected */}
       <Link className="nav-link" to="/about" style={{backgroundColor:props.color.color}}>
-        About
+        <i class="fa fa-question" aria-hidden="true"></i>  About
       </Link>
     </div>
   </div>

@@ -12,7 +12,7 @@ const LogOutButton = props => (
       () => props.dispatch({ type: 'LOGOUT' })
 
     }>
-    Log Out
+   <i class="fa fa-sign-out" aria-hidden="true"></i> Log Out 
   </button>
 );
 

@@ -31,7 +31,7 @@ class LineChart extends Component {
       datasets: [
         {
           data: this.values(), //dont have an array in an array
-          backgroundColor: this.props.color.outlineColor
+          backgroundColor: this.props.color.iconColor
         }],
 
     }

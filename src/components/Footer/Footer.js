@@ -5,7 +5,7 @@ import { withRouter } from "react-router";
 
 const Footer = props => (
   <footer style={{backgroundColor:props.color.outlineColor}}>
-    &copy; Prime Digital Academy
+    &copy; 2020 Kyle Hagler
   </footer>
 );
 

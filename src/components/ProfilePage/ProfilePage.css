@@ -9,6 +9,13 @@
 #addImageBtn {
   border-radius: 100%;
   margin:0%;
+  color:white;
+  height:40px;
+  width:40px;
+  outline:none;
+  font-size: 20px;
+  vertical-align: middle;
+  top:0;
 }
 
 #savePic, #cancelPic{
@@ -20,7 +27,7 @@
   
 }
 #profileText{
-  margin:5%;
+  margin:3%;
 }
 
 #colorSelectorOne{
@@ -54,5 +61,9 @@
   width:50px;
   outline:none;
   margin-left:5%;
+}
+
+#reset{
+  margin:2%;
 }
 

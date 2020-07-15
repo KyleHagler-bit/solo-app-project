@@ -25,3 +25,7 @@
 a{ /*we want all a tags to have a pointer as the cursor*/
   cursor:pointer;
 }
+
+#entryCard{
+  overflow:scroll;
+}
