@@ -57,7 +57,7 @@ class ProfilePage extends Component {
       <div className="page" style={{ textAlign: 'center',  display: 'flex', height:'95%', top:'38px'}}>
 <div className='col-sm' style={{backgroundColor:color.outlineColor,float:'left', maxWidth:'5%' }}></div>
 
-        <div className='card' style={{ width: '80%', margin: 'auto', display:'inline-block', height:'100%' }}><br/>
+        <div className='card' style={{ width: '80%', margin: 'auto', display:'inline-block', height:'100%', border:'none' }}><br/>
           <h1>{user.first_name}'s Profile Page!</h1><br/>
           
           <div style={{ borderRadius: '100%', height: '500px', width: '500px', margin: '1%', display:'inline-block', float:'left' }}> <br />
@@ -81,7 +81,9 @@ class ProfilePage extends Component {
 
             <div><button className = 'colorSelector' id='colorSelectorOne' onClick={()=> this.handleColor('#50A586','#3AAED8','#0195B7')}></button>
             <button className = 'colorSelector' id='colorSelectorTwo' onClick={()=> this.handleColor('#A13D63','#351E29','#6A7062')}></button>
-            <button className = 'colorSelector' id='colorSelectorThree' onClick={()=> this.handleColor('#F9A03F','#084B83','FF66B3')}></button></div>
+            <button className = 'colorSelector' id='colorSelectorThree' onClick={()=> this.handleColor('#F9A03F','#084B83','#FF66B3')}></button>
+            <button className = 'colorSelector' id='colorSelectorFour' onClick={()=> this.handleColor('#1982C4','#8AC926','#FF686B')}></button>
+            </div>
             </div>
           </div>
 

@@ -102,7 +102,7 @@ class EntryListItem extends Component {
 
       <div id='entrylist' style={{ textAlign: 'center' }}>
 
-        <div className='card' style={{}}>
+        <div className='card' style={{minHeight:'450px'}}>
 
           <div id='head' className='card-header' >
             <a data-tip data-for='edit' onClick={() => this.editEntry(id)}>

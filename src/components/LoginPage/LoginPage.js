@@ -50,7 +50,7 @@ class LoginPage extends Component {
         )}
         <form id='loginForm' onSubmit={this.login}>
           <h1 id='loginTitle'>Login</h1>
-          <h5>Please use <b>'test'</b> and <b>'test'</b> to login</h5>
+          <br/>
           <div>
             <label>
               Email: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
