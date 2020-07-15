@@ -4,7 +4,7 @@
   border-radius: 100%;
   display:flex;
   
-  box-shadow: turquoise 0px 0px 500px, inset rgba(0,0,0,0.2) 0px -1px 2px;
+  
 
 }
 
@@ -34,13 +34,13 @@
 }
 #colorSelectorTwo{
  
-  background-color:green;
+  background-color:#A13D63;
   outline:none;
   
 }
 #colorSelectorThree{
  
-  background-color:blue;
+  background-color:#F9A03F;
   outline:none;
   
 }

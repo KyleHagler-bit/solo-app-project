@@ -61,7 +61,7 @@ class ProfilePage extends Component {
           <h1>{user.first_name}'s Profile Page!</h1><br/>
           
           <div style={{ borderRadius: '100%', height: '500px', width: '500px', margin: '1%', display:'inline-block', float:'left' }}> <br />
-            {user.profile_pic ? <img id='profilePic' src={user.profile_pic} /> : <img id='placeholder' src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png' />}
+            {user.profile_pic ? <img id='profilePic' src={user.profile_pic} style={{border:`10px solid ${this.props.color.outlineColor}`}}/> : <img id='placeholder' src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png' />}
 
           </div><br/><br/>
 
@@ -80,8 +80,8 @@ class ProfilePage extends Component {
             <h4 id='profileText'>Change color theme of app?</h4>
 
             <div><button className = 'colorSelector' id='colorSelectorOne' onClick={()=> this.handleColor('#50A586','#3AAED8','#0195B7')}></button>
-            <button className = 'colorSelector' id='colorSelectorTwo' onClick={()=> this.handleColor('white','yellow','black')}></button>
-            <button className = 'colorSelector' id='colorSelectorThree' onClick={()=> this.handleColor('blue')}></button></div>
+            <button className = 'colorSelector' id='colorSelectorTwo' onClick={()=> this.handleColor('#A13D63','#351E29','#6A7062')}></button>
+            <button className = 'colorSelector' id='colorSelectorThree' onClick={()=> this.handleColor('#F9A03F','#084B83','FF66B3')}></button></div>
             </div>
           </div>
 
