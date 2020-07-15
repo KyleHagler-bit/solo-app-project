@@ -22,7 +22,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 //App components
 import AboutPage from '../AboutPage/AboutPage';
 
-import InfoPage from '../InfoPage/InfoPage';
+
 import WelcomePage from '../WelcomePage/WelcomePage';
 import IconsPage from '../IconsPage/IconsPage';
 import NotesPage from '../NotesPage/NotesPage';
@@ -57,8 +57,6 @@ class App extends Component {
                   <Route exact path="/about" component={AboutPage} />
 
                   <ProtectedRoute exact path="/welcome" component={WelcomePage} />
-
-                  <ProtectedRoute exact path="/info" component={InfoPage} />
 
                   <ProtectedRoute exact path="/icons" component={IconsPage} />
 
