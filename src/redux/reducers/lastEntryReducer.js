@@ -1,5 +1,5 @@
 
-const entryReducer = (state = [], action) => {
+const lastEntryReducer = (state = [], action) => {
   switch (action.type) {
     case 'SET_LAST_ENTRY':
       return action.payload;
@@ -10,4 +10,4 @@ const entryReducer = (state = [], action) => {
   }
 };
 
-export default entryReducer;
+export default lastEntryReducer;

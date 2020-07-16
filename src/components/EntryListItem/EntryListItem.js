@@ -119,7 +119,7 @@ class EntryListItem extends Component {
             {this.props.iconsArray.map((item, index) => {
 
               for (let i = 0; i < icons.length; i++) {
-                if (icons[i].id === item.activity_id) {
+                if (icons[i].id === item.activity_id) { //check against icon library to find match
 
                   return (
                     <div key={index} style={{ display: 'inline-block', margin: '5%', fontSize: '90%' }}>

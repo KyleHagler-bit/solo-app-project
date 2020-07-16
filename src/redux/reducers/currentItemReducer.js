@@ -1,3 +1,5 @@
+//handles 'holding' the current item being worked on
+
 //does this need to be [] or [{}] OR {}
 const currentItemReducer = (state = {
   emotionValue: 0,
@@ -18,7 +20,7 @@ const currentItemReducer = (state = {
       const filteredIcons = newState.iconsArray.filter(
         (item) => item !== action.payload
       );
-      console.log('inside reducer', filteredIcons)
+   
       newState = { ...newState, iconsArray: filteredIcons };
       return newState;
     case 'RESET_CURRENT_ITEM':

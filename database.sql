@@ -1,7 +1,7 @@
 --Database created is titled: solo_app
 
 --CREATE tables needed (total of 4)
-CREATE TABLE "user" (
+CREATE TABLE "user" ( --handles user information and allows for login after registration
 	"id" SERIAL PRIMARY KEY,
     "first_name" VARCHAR (80) not null,
     "last_name" VARCHAR (80) not null,
@@ -13,7 +13,7 @@ CREATE TABLE "user" (
     "last_login" DATE
 );
 
-CREATE TABLE "entry" (
+CREATE TABLE "entry" ( --this holds all entries and in theory only show your specific entries
 	"id" SERIAL PRIMARY KEY,
 	"user_id" INT  NOT NULL REFERENCES "user"("id") ON DELETE CASCADE,
 	"emotion_value" INT,
@@ -21,21 +21,22 @@ CREATE TABLE "entry" (
 	"date_logged" DATE DEFAULT NOW()
 );
 
-CREATE TABLE "entry_activity" (
+CREATE TABLE "entry_activity" ( --this is a sort of join table between an entry and all the icons chosen for it
 	"id" SERIAL PRIMARY KEY,
 	"entry_id" INT NOT NULL REFERENCES "entry"("id") ON DELETE CASCADE,
 	"activity_id" INT REFERENCES "activity_library"("id") ON DELETE CASCADE
 );
 
-CREATE TABLE "activity_library" (
+CREATE TABLE "activity_library" ( --this has the list of icons to choose from on question 2
 	"id" SERIAL PRIMARY KEY,
 	"activity_name" VARCHAR(255),
 	"activity_icon" VARCHAR(255)
 );
 
---INSERT mock data
+----------------------------------------
+--INSERT mock data OTHERWISE register new account yourself to start journaling
 INSERT INTO "user" ("first_name","last_name","email","password","date_created","birthday","profile_pic","last_login")
-VALUES ('Kyle', 'Hagler', 'mockemail@yahoo.com', 'journal', '07/02/20', '11/11/95','https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.jpg','07/02/20');
+VALUES ('First', 'Last', 'mockemail@yahoo.com', 'journal', '07/02/20', '11/11/95','https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.jpg','07/02/20');
 
 --INSERT mock data
 INSERT INTO "entry" ("user_id","emotion_value","note","date_logged")

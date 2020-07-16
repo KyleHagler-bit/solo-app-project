@@ -66,7 +66,7 @@ router.post("/", async (req, res) => {
     res.sendStatus(201);
   } catch (error) {
     await client.query("ROLLBACK");
-    console.log("Error POST /api/order", error);
+    //console.log("Error POST /api/order", error);
     res.sendStatus(500);
   } finally {
     client.release();
@@ -76,7 +76,6 @@ router.post("/", async (req, res) => {
 //DELETEs the chosen entry with the entry id given
 router.delete("/:id", rejectUnauthenticated, (req, res) => {
   let id = req.params.id; // id of the thing to delete
-
 
   /* if (session.id !== database.id) {sendStatus(403) return;}*/
   let queryText = `SELECT * FROM entry WHERE id=$1`; //grabs specific item to grab the item user_id

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import EmotionScale from '../EmotionScale/EmotionScale';
-import './WelcomePage.css';
-
 import { withRouter } from "react-router";
+
+import './WelcomePage.css';
+import EmotionScale from '../EmotionScale/EmotionScale';
 
 //This holds the first question (gets emotion value)
 class WelcomePage extends Component {
@@ -21,7 +21,7 @@ class WelcomePage extends Component {
 
     return (
       <div className="page" style={{ display: 'flex', border: 'none', height: '94%', top: '38px' }}>
-        <div className='col-sm' style={{ backgroundColor: this.props.color.outlineColor, float: 'left', maxWidth: '5%' }}></div>
+        <div className='col-sm' style={{ backgroundColor: this.props.color.outlineColor, float: 'left', maxWidth: '5%' }}></div> {/*Sidebar */}
         <div style={{ width: '90%' }}>
           <br /><br />
           <h2>Welcome!</h2><br />
@@ -33,7 +33,7 @@ class WelcomePage extends Component {
 
           </div>
         </div>
-        <div className='col-sm' style={{ backgroundColor: this.props.color.outlineColor, float: 'right', maxWidth: '5%' }}></div>
+        <div className='col-sm' style={{ backgroundColor: this.props.color.outlineColor, float: 'right', maxWidth: '5%' }}></div> {/*Sidebar */}
       </div>
     );
   }

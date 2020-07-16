@@ -13,7 +13,7 @@ function* fetchLineChart() {
    
     yield put({ type: 'SET_LINE', payload: response.data });
   } catch (error) {
-    console.log('Chart get request failed', error);
+   // console.log('Chart get request failed', error);
   }
 }
 

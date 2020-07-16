@@ -30,7 +30,7 @@ class EditEntryPage extends Component {
 
 
   render() {
-    const {color} = this.props;
+    const { color } = this.props;
     return (
       <div>
         <div className='page' id='editBox' style={{ textAlign: 'center', width: '100%', top: '38px', display: 'flex' }}>

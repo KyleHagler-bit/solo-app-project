@@ -12,7 +12,7 @@ function* fetchLastEntry() {
     const response = yield axios.get('/api/lastEntry', config); //GET
     yield put({ type: 'SET_LAST_ENTRY', payload: response.data });
   } catch (error) {
-    console.log('Icons get request failed', error);
+    //console.log('Icons get request failed', error);
   }
 }
 

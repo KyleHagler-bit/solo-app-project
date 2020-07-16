@@ -9,7 +9,7 @@ function* updateEntry(action) {
       yield put({type:'FETCH_ACTIVITY_ENTRY'})
       
   } catch (error) {
-      console.log('Error updating', error);
+      //console.log('Error updating', error);
   }
 }
 

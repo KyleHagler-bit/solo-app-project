@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 
-
+//icons added next to nav titles
 const Nav = (props) => (
   <div className="nav" style={{backgroundColor:props.color.outlineColor}}>
     <Link to="/home"> {/*If user clicks on the name of the app, they are taken to the homepage */}
@@ -23,7 +23,6 @@ const Nav = (props) => (
       {/* Show the link to the info page and the logout button if the user is logged in */}
       {props.user.id && (
         <>
-          
           <Link className="nav-link" to="/home" style={{backgroundColor:props.color.color}}>
              <i class="fa fa-home" aria-hidden="true"></i>  Home
           </Link>

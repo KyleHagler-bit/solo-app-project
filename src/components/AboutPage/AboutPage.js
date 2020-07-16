@@ -9,7 +9,8 @@ const AboutPage = () => (
       <div className='card' id='aboutContent' style={{ width: '60%' }}>
         <br />
         <h1>So why journal?</h1><br />
-        <h3 style={{ width: '80%', margin: 'auto' }}>Journaling has been found to help in a multitude of ways! These include but are not limited to:</h3>
+        <h3 style={{ width: '80%', margin: 'auto' }}>
+          Journaling has been found to help in a multitude of ways! These include but are not limited to:</h3>
         <center>
           <div style={{ margin: '3%', textAlign: 'left', width: '40%' }}>
             <li>Helps establish future goals</li>

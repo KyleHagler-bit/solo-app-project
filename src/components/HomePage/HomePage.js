@@ -34,13 +34,13 @@ class HomePage extends Component {
                 <div id='homeEntry' style={{ border: '1px solid white' }}>
 
                   <h4 style={{ textAlign: 'left', marginLeft: '13%', marginTop: '3%' }}>Latest Entry:</h4>
-                  <EntryListItem
+                  <EntryListItem //pass necessary information down into the 'individual' component
                     id={item.id}
                     emotion_value={item.emotion_value}
                     iconsArray={item.chosen_icons}
                     note={item.note}
                     date_logged={date}
-                    key={`entrylistitem-${item.id}`} />
+                    key={`entrylistitem-${item.id}`} /> {/*Key helps make sure each entry is indeed unique */}
                 </div>
               );
             })}

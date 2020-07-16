@@ -18,7 +18,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
       res.send(results.rows)
     })
     .catch(error => {
-      console.log('Error making get on pie', error);
+      //console.log('Error making get on pie', error);
       res.sendStatus(500);
     });
 });

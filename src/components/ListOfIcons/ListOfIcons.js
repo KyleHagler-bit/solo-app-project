@@ -13,8 +13,6 @@ class ListOfIcons extends Component {
  
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_ICONS' })
-    console.log('inside compDidmount');
-
     this.props.dispatch({
       type: 'CURRENT_ITEM', payload: { activityEntry:this.props.activityEntry  }
     });
@@ -35,13 +33,11 @@ class ListOfIcons extends Component {
 
 
   render() {
-   
     let selectedIcons = this.props.currentItem.iconsArray;
 
     return (
       <div className='' style={{display:''}} >
-
-      {this.props.icons.map((item,index) =>{  
+      {this.props.icons.map((item,index) =>{   //map over array to display icon 
         return(
           <div id='container'>
            <SelectedIcon id={item.id} nameForClass={item.activity_icon} toggleSelected={this.toggleSelected}

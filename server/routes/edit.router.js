@@ -10,7 +10,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
       res.send(result.rows);
     })
     .catch((error) => {
-      console.log("Error GET entry", error);
+      //console.log("Error GET entry", error);
       res.sendStatus(500);
     });
 });
@@ -65,7 +65,7 @@ router.put("/", async (req, res) => {
     res.sendStatus(201);
   } catch (error) {
     await client.query("ROLLBACK");
-    console.log("Error POST /api/order", error);
+    //console.log("Error POST /api/order", error);
     res.sendStatus(500);
   } finally {
     client.release();

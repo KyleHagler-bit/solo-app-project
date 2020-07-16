@@ -13,7 +13,7 @@ const LogOutButton = props => (
 
     }>
    <i class="fa fa-sign-out" aria-hidden="true"></i> Log Out 
-  </button>
+  </button> //added sign-out icon to button
 );
 
 const mapStateToProps = state => ({

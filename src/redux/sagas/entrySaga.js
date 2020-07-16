@@ -13,7 +13,7 @@ function* fetchEntry() {
     
     yield put({ type: 'SET_ENTRY', payload: response.data });
   } catch (error) {
-    console.log('entry get request failed', error);
+    //console.log('entry get request failed', error);
   }
 }
 
@@ -25,14 +25,14 @@ function* deleteEntry(action) {
       withCredentials: true,
     };
 		//with DELETE, does not need response
-		console.log(action.payload);
+		
     yield axios.delete(`/api/entry/${action.payload}`, config);
     yield put({ type: "FETCH_ENTRY" }); //this does not seem to refresh one on home page?
     yield put ({type:'FETCH_PIE'})
     yield put ({type: 'FETCH_LINE'})
     yield put ({type:'FETCH_LAST_ENTRY'}) //NEED this or home page does not update on delete
   } catch (error) {
-    console.log("Error deleting entry from past entry:", error);
+    //console.log("Error deleting entry from past entry:", error);
   }
 }
 
@@ -48,7 +48,7 @@ function* addEntry(action) {
     yield put({ type: "FETCH_ENTRY" });
     yield put({type:'FETCH_LAST_ENTRY'})
   } catch (error) {
-    console.log("Error with adding entry:", error);
+    //console.log("Error with adding entry:", error);
   }
 }
 
@@ -56,7 +56,6 @@ function* entrySaga() {
   yield takeEvery('FETCH_ENTRY', fetchEntry);
   yield takeEvery('DELETE_ENTRY', deleteEntry);
   yield takeEvery('ADD_ENTRY', addEntry)
-  //yield takeEvery('UPDATE_ENTRY', updateEntry)
 }
 
 export default entrySaga;

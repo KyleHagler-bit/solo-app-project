@@ -11,22 +11,20 @@ router.get('/', rejectUnauthenticated, (req, res) => {
       res.send(result.rows);
     })
     .catch((error) => {
-      console.log("Error GET entry", error);
+      //console.log("Error GET entry", error);
       res.sendStatus(500);
     });
 });
 
 //PUT used to update picture in database
 router.put('/', (req, res) => {
-  console.log('this is req.body', req.body.picture)
-
   const queryText = `UPDATE "user" SET profile_pic = $1 WHERE id=$2;`
   const queryValues = [req.body.picture, req.user.id];
 
   pool.query(queryText, queryValues)
     .then(() => { res.sendStatus(200); })
     .catch((err) => {
-      console.log('Error completing UPDATE', err);
+      //console.log('Error completing UPDATE', err);
       res.sendStatus(500);
     });
 });

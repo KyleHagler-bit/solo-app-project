@@ -26,7 +26,7 @@ class LoginPage extends Component {
     } else {
       this.props.dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
-    
+
     this.props.history.push("/home") //makes sure that login takes user to home page
   } // end login
 
@@ -38,74 +38,73 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div className='page' style={{display:'flex', height:'94%', top:'38px'}}>
-<div className='col-sm' style={{backgroundColor:this.props.color.outlineColor, float:'left', maxWidth:'5%' }}></div>
-<div style={{display:'inline-block', width:'90%', height:'50%'}}><br/><br/>
-        {this.props.errors.loginMessage && (
-          <h2
-            className="alert"
-            role="alert"
-          >
-            {this.props.errors.loginMessage}
-          </h2>
-        )}
-        <form id='loginForm' onSubmit={this.login}><br/><br/>
-          <h1 id='loginTitle'>Login</h1>
-          <br/>
-          <div>
-            <label>
-              Email: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <div className='page' style={{ display: 'flex', height: '94%', top: '38px' }}>
+        <div className='col-sm' style={{ backgroundColor: this.props.color.outlineColor, float: 'left', maxWidth: '5%' }}></div> {/*Sidebar */}
+        <div style={{ display: 'inline-block', width: '90%', height: '50%' }}><br /><br />
+          {this.props.errors.loginMessage && (
+            <h2
+              className="alert"
+              role="alert">
+              {this.props.errors.loginMessage}
+            </h2>
+          )}
+          <form id='loginForm' onSubmit={this.login}><br /><br />
+            <h1 id='loginTitle'>Login</h1>
+            <br />
+            <div>
+              <label>
+                Email: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
               <input
-                type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="password">
-              Password: &nbsp;
+                  type="text"
+                  name="username"
+                  value={this.state.username}
+                  onChange={this.handleInputChangeFor('username')}
+                />
+              </label>
+            </div>
+            <div>
+              <label htmlFor="password">
+                Password: &nbsp;
               <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
+                  type="password"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.handleInputChangeFor('password')}
+                />
+              </label>
+            </div>
+            <div>
+              <center><br />
+                <input
+                  className="log-in"
+                  type="submit"
+                  name="submit"
+                  value="Log In"
+
+                />
+              </center> <br />
+            </div>
+            <div>
+              <input
+                className="link-button"
+                type="button"
+                name="submit"
+                value="Forgot Password?"
+                onClick={() => { alert('This is a placeholder! NONFUNCTIONAL') }}
               />
-            </label>
-          </div>
-          <div>
-            <center><br/>
-            <input
-              className="log-in"
-              type="submit"
-              name="submit"
-              value="Log In"
-              
-            />
-            </center> <br/>
-          </div>
-          <div>
-            <input
-              className="link-button"
+            </div>
+          </form>
+          <center>
+            <button
               type="button"
-              name="submit"
-              value="Forgot Password?"
-              onClick={() => { alert('This is a placeholder! NONFUNCTIONAL') }}
-            />
-          </div>
-        </form>
-        <center>
-          <button
-            type="button"
-            className="link-button"
-            onClick={() => { this.props.dispatch({ type: 'SET_TO_REGISTER_MODE' }) }}
-          >
-            Register
+              className="link-button"
+              onClick={() => { this.props.dispatch({ type: 'SET_TO_REGISTER_MODE' }) }}
+            >
+              Register
           </button>
-        </center>
+          </center>
         </div>
-        <div className='col-sm' style={{backgroundColor:this.props.color.outlineColor, float:'right', maxWidth:'5%' }}></div>
+        <div className='col-sm' style={{ backgroundColor: this.props.color.outlineColor, float: 'right', maxWidth: '5%' }}></div> {/*Sidebar */}
       </div>
     );
   }

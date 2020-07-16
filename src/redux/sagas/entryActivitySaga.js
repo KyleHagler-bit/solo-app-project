@@ -10,10 +10,10 @@ function* fetchActivityEntry() {
     };
     
     const response = yield axios.get('/api/entryactivity', config);
-    console.log('inside Saga', response.data)
+    
     yield put({ type: 'SET_ACTIVITY_ENTRY', payload: response.data });
   } catch (error) {
-    console.log('Icons get request failed', error);
+    //console.log('Icons get request failed', error);
   }
 }
 

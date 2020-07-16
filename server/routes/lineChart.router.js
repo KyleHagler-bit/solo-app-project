@@ -12,7 +12,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
           // console.log(results.rows);
         res.send(results.rows)})
         .catch(error => {
-            console.log('Error making get on linechart', error);
+            //console.log('Error making get on linechart', error);
             res.sendStatus(500);
         });
 });

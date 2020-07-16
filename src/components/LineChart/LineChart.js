@@ -16,108 +16,106 @@ class LineChart extends Component {
     this.props.lineChart.map((item, index) => {
       emotionValues.push(item.emotion_value);
     })
-    return emotionValues; 
+    return emotionValues;
   }
 
 
   render() {
-   const chartData =  {
+    const chartData = {
       labels: this.props.lineChart.map((item, index) => {
         let x = new Date(item.date_logged) //want date to be friendlier looking
         return (
           x.toDateString()
         )
-      }), 
+      }),
       datasets: [
         {
           data: this.values(), //dont have an array in an array
           backgroundColor: this.props.color.iconColor
         }],
-
     }
-    
-    if (this.props.lineChart.length<5){ //conditional to see if any data can be displayed
-      return(
+
+    if (this.props.lineChart.length < 5) { //conditional to see if any data can be displayed
+      return (
         <div>
-        <h3>Sorry! More data is needed before we display your mood graph</h3>
-        <h4>Check back after 5 entries have been logged :)</h4>
+          <h3>Sorry! More data is needed before we display your mood graph</h3>
+          <h4>Check back after 5 entries have been logged :)</h4>
         </div>
       )
     } else {
-    return (
-      <div className="chart" style={{ width: "100%", height:'100%' }}>
-        <Line
-          data={chartData}
-          width={10}
-          height={3}
-          options={{
-            responsive: true,
-            legend:{
-              display:false //allows legend to be hidden i.e. no box under graph title
-            },
-            title: {
-              display: true,
-              fontColor: 'black',
-              fontSize: 28,
-              text: 'Mood Over Time'
-            },
-            scales: {
-              xAxes: [{
+      return (
+        <div className="chart" style={{ width: "100%", height: '100%' }}>
+          <Line
+            data={chartData}
+            width={10}
+            height={3}
+            options={{
+              responsive: true,
+              legend: {
+                display: false //allows legend to be hidden i.e. no box under graph title
+              },
+              title: {
                 display: true,
-                scaleLabel: {
+                fontColor: 'black',
+                fontSize: 28,
+                text: 'Mood Over Time' //title for graph
+              },
+              scales: {
+                xAxes: [{
                   display: true,
-                  labelString: 'Date of Entry',
-                  fontColor: 'black',
-                  fontSize: 24
-                }
-              }],
-              yAxes: [{
-                ticks: {
-                  min: 0, max: 8,
-                  fontColor: 'black',
-                  callback: function (label, index, labels) {
-                    switch (label) { //Allows us to change the yaxis labels
-                      case 1:
-                        return 'Horrible';
-                      case 2:
-                        return 'Bad';
-                      case 3:
-                        return 'Poor';
-                      case 4:
-                        return 'Neutral';
-                      case 5:
-                        return 'Okay';
-                      case 6:
-                        return 'Good';
-                      case 7:
-                        return 'Great!';
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Date of Entry', //x-axis title
+                    fontColor: 'black',
+                    fontSize: 24
+                  }
+                }],
+                yAxes: [{
+                  ticks: {
+                    min: 0, max: 8,
+                    fontColor: 'black',
+                    callback: function (label, index, labels) {
+                      switch (label) { //Allows us to change the yaxis labels
+                        case 1:
+                          return 'Horrible';
+                        case 2:
+                          return 'Bad';
+                        case 3:
+                          return 'Poor';
+                        case 4:
+                          return 'Neutral';
+                        case 5:
+                          return 'Okay';
+                        case 6:
+                          return 'Good';
+                        case 7:
+                          return 'Great!';
                         default: //Expects default case or gives warning
                           return 'Error'
+                      }
                     }
-                  }
-                },
-                display: true,
-                scaleLabel: {
+                  },
                   display: true,
-                  labelString: 'Mood',
-                  fontColor: 'black',
-                  fontSize: 24
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Mood', //y-axis title
+                    fontColor: 'black',
+                    fontSize: 24
 
-                }
-              }]
-            }
+                  }
+                }]
+              }
+            }} />
 
-
-          }} />
-
-      </div>
-    )}
+        </div>
+      )
+    }
   }
 }
 
 const mapStateToProps = state => ({
   lineChart: state.lineChart,
-  color:state.color
+  color: state.color
 });
 
 export default connect(mapStateToProps)(LineChart);

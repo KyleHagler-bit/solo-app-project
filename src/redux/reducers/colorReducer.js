@@ -8,9 +8,7 @@ const colorReducer = (state = {
   let newState = { ...state };
   switch (action.type) {
     case 'SET_COLOR':
-      console.log('action is', action)
       newState = {outlineColor:action.payload.outline, iconColor:action.payload.icon, buttonColor: action.payload.button};
-      console.log('inside reducer',newState)
       return newState;
     default:
       return state;

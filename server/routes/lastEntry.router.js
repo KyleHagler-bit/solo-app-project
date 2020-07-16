@@ -26,7 +26,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     res.send(rows);
   })
   .catch((error) => {
-    console.log("Error GET entry", error);
+    //console.log("Error GET entry", error);
     res.sendStatus(500);
   });
 });

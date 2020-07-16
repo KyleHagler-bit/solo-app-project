@@ -11,17 +11,15 @@ class NotesPage extends Component {
     iconsArray:this.props.currentItem.iconsArray,
     note: '',
     userID: this.props.user.id,
-    // date_logged: 
   }
 
-  //Will probably need for this page to save notes if user goes back?
+  //handle changes
   handleChange = (event, fieldName) => {
-
     this.setState({ [fieldName]: event.target.value });
   };
 
   submitInfo = (event) => {
-    this.props.history.push('/home')
+    this.props.history.push('/home') //push user to the home page once submission completes
     this.postHandler(this.state)
    
   }
@@ -39,10 +37,10 @@ class NotesPage extends Component {
   }
 
   render() {
-    console.log('inside note', this.state.note)
+    
     return (
       <div className="page" style={{display:'flex', border:'none', height:'92%', top:'38px'}}>
-      <div className='col-sm' style={{backgroundColor:this.props.color.outlineColor, float:'left', maxWidth:'5%' }}></div>
+      <div className='col-sm' style={{backgroundColor:this.props.color.outlineColor, float:'left', maxWidth:'5%' }}></div> {/*Sidebar */}
         <div style={{width:'90%'}}>
         <br/><br/><br/>
         <h2> Have any notes you would like to log today?</h2> <br/>
@@ -54,7 +52,7 @@ class NotesPage extends Component {
         {this.state.note !== ''  ? <button id='skipHome' className='btn btn-info' disabled>No Notes! Skip</button> : <button id='skipHome' className='btn btn-info' onClick={() => this.skipNotes()}>No Notes! Skip</button>}
 
       </div>
-      <div className='col-sm' style={{backgroundColor:this.props.color.outlineColor, float:'right', maxWidth:'5%' }}></div>
+      <div className='col-sm' style={{backgroundColor:this.props.color.outlineColor, float:'right', maxWidth:'5%' }}></div> {/*Sidebar */}
       </div>
     );
   }
