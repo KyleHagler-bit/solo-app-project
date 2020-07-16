@@ -91,6 +91,8 @@ class LineChart extends Component {
                         return 'Good';
                       case 7:
                         return 'Great!';
+                        default: //Expects default case or gives warning
+                          return 'Error'
                     }
                   }
                 },

@@ -7,10 +7,11 @@ It also allows for past entries to be deleted or updated and a profile page to a
 We want to solve the issue of people not finding enough time in the day or not finding a reason to catalogue/journal their feeelings. So by creating a quick, easy app to use, we can still self reflect on our day and hopefully get some understanding from the data gathered over time.
 
 ## Screenshots
-![HomePage] (/Screenshots/NAME.png?raw=true)
-![ProfilePage]
-![IconsPage]
-![PastEntries]
+![LoginPage](/Screenshots/login.png?raw=true)
+![HomePage](/Screenshots/homepage.png?raw=true)
+![ProfilePage](/Screenshots/profilepage.png?raw=true)
+![IconsPage](/Screenshots/iconspage.png?raw=true)
+![PastEntries](/Screenshots/pastentries.png?raw=true)
 
 
 ### Prerequisites
