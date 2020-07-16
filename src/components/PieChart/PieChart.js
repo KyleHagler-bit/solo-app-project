@@ -61,10 +61,10 @@ class PieChart extends Component {
 
     if (this.props.pieChart.length === 0 || this.props.pieChart.length === undefined) { //conditional rendering
       return (
-        <div style={{ marginTop: '10%' }}>
-          <h3>Oops! It looks like you may not have any data to display at the moment...</h3>
+        <div className='card' style={{ marginTop: '10%', padding:'3%', boxShadow: '0 3px 6px rgba(0,0,0,0.3), inset 0 -3px 3px rgba(0,0,0,0.1)' }}>
+          <h3>Oops! It looks like you may not have any data to display at the moment...</h3><br/>
 
-          <button className='btn btn-info' style={{ margin: '2%' }} onClick={() => this.props.history.push("/welcome")}>Make an Entry</button>
+          <button className='btn btn-info' style={{ margin: '2%', width:'20%', margin:'auto' }} onClick={() => this.props.history.push("/welcome")}>Make an Entry</button>
         </div>
       )
     } else {

@@ -37,7 +37,7 @@ class LineChart extends Component {
 
     if (this.props.lineChart.length < 5) { //conditional to see if any data can be displayed
       return (
-        <div>
+        <div className='card' style={{width:'60%', margin:'auto', padding:'3%',boxShadow: '0 3px 6px rgba(0,0,0,0.3), inset 0 -3px 3px rgba(0,0,0,0.1)'}}>
           <h3>Sorry! More data is needed before we display your mood graph</h3>
           <h4>Check back after 5 entries have been logged :)</h4>
         </div>

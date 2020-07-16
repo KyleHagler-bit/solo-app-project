@@ -17,10 +17,13 @@ class PastEntryPage extends Component {
       return (
         <div className="page" style={{ textAlign: 'center', border: 'none', display: 'flex', top: '38px', minHeight: '100%' }}>
           <div className='col-sm' style={{ backgroundColor: this.props.color.outlineColor, float: 'left', maxWidth: '5%', minHeight: '100%' }}></div>
-          <div style={{ marginTop: '10%', width: "90%" }}>
-
+          <div  style={{ marginTop: '10%', width: "90%" }}>
+          <div className = 'card' style={{width:'40%', margin:'auto', padding:'3%', boxShadow: '0 3px 6px rgba(0,0,0,0.3), inset 0 -3px 3px rgba(0,0,0,0.1)'}}>
             <h4 >Oops! It's empty in here... why not make an entry?</h4>
-            <button className='btn btn-info' style={{ margin: '2%' }} onClick={() => this.props.history.push("/welcome")}>Make an Entry</button>
+            <center>
+            <button className='btn btn-info' style={{ margin: '2%', width:'30%' }} onClick={() => this.props.history.push("/welcome")}>Make an Entry</button>
+            </center>
+            </div>
           </div>
           <div className='col-sm' style={{ backgroundColor: this.props.color.outlineColor, float: 'right', maxWidth: '5%', minHeight: '100%' }}></div>
         </div>
