@@ -37,7 +37,7 @@ const currentItemReducer = (state = {
 
 
 
-//export default currentItemReducer;
-module.exports = currentItemReducer; //USE THIS FOR TESTING
+export default currentItemReducer;
+//module.exports = currentItemReducer; //USE THIS FOR TESTING
 
 //SO I guess I would need to chnage these to function BLAH BLAH for testing purposes?
